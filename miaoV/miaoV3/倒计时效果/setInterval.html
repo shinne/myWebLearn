@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="setInterval.css">
+</head>
+<body>
+	<div id="bodyWrapper">
+		<form id="searchForm" action="">
+			<label for=""> 请输入</label>
+			<input id="yearSearch" type="text" value="2016"> <span id="year">年</span> 
+			<input id="monthSearch" type="text" value="7"> <span id="month">月</span>
+			<input id="daySearch" type="text" value="19"> <span id="day">日</span>
+		</form>
+
+		<div id="go"></div>
+
+		<div id="searchTime">
+			<p id="juli">现在距离 - </p>
+			<p id="searchContent">dddddd</p>
+			<p id="leave">-还剩：</p>
+		</div>
+
+		<div id="realLeave">
+			<span id="date">000</span>
+			<span id="hour">00</span>
+			<span id="minute">00</span>
+			<span id="second">00</span>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			var yearSearch;
+			var monthSearch;
+			var daySearch;
+			var btn = document.getElementById("go");
+			var leaveDay;
+			var leaveHour;
+			var leaveMinute;
+			var leaveSecond;
+			var iLeave = 0;
+			var iDay = 0 ;
+			var iMinute = 0;
+			var iSecond = 0 ; 
+			var timer = null;
+			var sSearchContent = document.getElementById("searchContent");
+			var yearInput = document.getElementById("yearSearch");
+			var	monthInput = document.getElementById("monthSearch");
+			var	dayInput = document.getElementById("daySearch");
+
+			function dateDigit(time,n){
+				var newTime = time + "";
+				if(n == 3){
+				}
+				if(newTime.length < n){
+					newTime = "0" + newTime;
+				}
+				
+				return newTime;
+			}
+
+			function overTime(){
+				yearSearch = document.getElementById("yearSearch").value;
+				monthSearch = document.getElementById("monthSearch").value;
+				daySearch = document.getElementById("daySearch").value;
+				sSearchContent.innerHTML = yearSearch + "年" + monthSearch + "月" + daySearch + "日";
+				console.log(sSearchContent);
+				var searchDate = new Date();
+				var nowDate = new Date();
+				searchDate.setYear(yearSearch);
+				searchDate.setMonth(parseInt(monthSearch)-1);
+				searchDate.setDate(daySearch);
+				searchDate.setHours(0);
+				searchDate.setMinutes(0);
+				searchDate.setSeconds(0);
+				iLeave = (searchDate.getTime()-nowDate.getTime())/1000;
+
+				if(iLeave < 0 ){
+					/*alert("时间已过期");*/
+					return false;
+				}
+
+				iDay = parseInt(iLeave/86400);
+				iLeave = iLeave%86400;
+
+				iHour = parseInt(iLeave/3600);
+				iLeave = iLeave%3600;
+
+				iMinute = parseInt(iLeave/60);
+				iLeave = iLeave%60;
+
+				iSecond = parseInt(iLeave);
+
+				console.log("day:"  + iDay + "hour:" + iHour + "iLeave:" + iLeave + "iMinute:" + iMinute + "iSecond:" + iSecond);
+
+				leaveDay = document.getElementById("date");
+				leaveHour = document.getElementById("hour");
+				leaveMinute = document.getElementById("minute");
+				leaveSecond= document.getElementById("second");
+				leaveDay.innerHTML =  dateDigit(iDay,3);
+				/*console.log("day" + leaveDay.innerHTML);*/
+				leaveHour.innerHTML =  dateDigit(iHour,2);
+				leaveMinute.innerHTML =  dateDigit(iMinute,2);
+				leaveSecond.innerHTML =  dateDigit(iSecond,2);
+			}
+		
+
+			btn.onclick = function(){
+			/*	console.log("hi1");*/
+				clearInterval(timer);
+				/*console.log("hi2");*/
+				timer = setInterval(overTime,1000);
+				overTime();
+					/*yearInput.onchange = function(){
+						alert("change");
+						clearInterval(timer);
+					}
+
+					monthInput.onchange = function(){
+						alert("change");
+						clearInterval(timer);
+					}
+
+					dayInput.onchange = function(){
+						alert("change");
+						clearInterval(timer);
+					}*/
+			}
+
+			
+		
+		}
+
+
+	</script>
+</body>
+</html>

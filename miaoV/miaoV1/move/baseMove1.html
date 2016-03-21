@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value='开始运动'/>
+	<div id="pressDiv" style="width:80px;height:80px;background:red;position:absolute;"></div>
+<script type="text/javascript">
+	
+	window.onload = function(){
+		oDiv = document.getElementById("pressDiv");
+		var oBtn = document.getElementById("btn");
+		var oTime;
+
+		oBtn.onclick = function(){
+			var iSpeed = 10;
+			
+			//确保在每一次onclick的时候只有一个oTime在运行，需在每一次click的时候将以前的oTime清除掉
+			clearInterval(oTime);
+			oTime = setInterval(function(){
+				//超出500的时候就将这个移除
+				if(oDiv.offsetLeft >= 500){
+					clearInterval(oTime);
+				}
+				//用if-else判断是否超过500，如果不用else则在每一次onclick的时候都要再往右边移动10px
+				else{
+					oDiv.style.left = oDiv.offsetLeft + 10 + "px";
+				}
+			},30);
+		}
+	}
+</script>
+</body>
+
+
+</html>

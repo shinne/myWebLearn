@@ -1,0 +1,122 @@
+<!DOCTYPE html>        <!-->写在最前面表明文档的规范是什么，这里是HTML5,	
+                        如果使用xhtml，则是xhtml，不过xhtml语法更加的严谨</!-->
+<html lang="en"><!--告诉搜索引擎你的使用语言是中文还是英文的 lang="zh"表示是中文的-->
+<head>
+	<meta charset="UTF-8">   <!-->文档的编码格式是utf-8</!-->
+	<title>Document</title>
+	<link rel="stylesheet" href="">
+	<script></script>
+</head>
+<body>
+	<form id="formId" action="">
+		<input name= "input1" type="text" value="dd">
+		<input name= "input2" type="text" value="vv">
+
+	</form>
+	<p id="description"><abbr title="gggggggggggggggggg">'ddddd你丫的就是个渣渣'</abbr>	<img src="ddd ">bbbbbbbbbbbbbbb</p>
+	<a href="http://www.baidu.com" accesskey="4" target="_blank">dddd</a>
+	<a href="video.html" target="blank" onclick="console.log('dfffffff');return false">jjjjjjjjj</a>
+</body>
+<script type="text/javascript">
+	var form = document.getElementById("formId");
+	/*var b = new FormData(form);*/
+	/*var b = new FormData();
+	b.append("name","yoyo");*/
+	/*console.info(b);*/
+	var xhr = new XMLHttpRequest();
+	
+	xhr.timeout = 10000;
+	xhr.onerror = function(){
+		console.log("error");
+	}
+	xhr.open("get",'example.php');
+	xhr.send(null);
+	console.info(xhr);
+
+	var img = new Image();
+	img.onload = img.onerror = function(){
+		console.log(this.src);
+	}
+	<!--DDDDD-->
+	img.src ='../img/search_biao.gif';
+
+	var text = "cat,bat,sat,fat";
+	var pattern1 = /.at/;
+	var matches = pattern1.exec(text);
+	console.log(matches.index);
+	console.log(matches[0]);
+	console.log(matches.lastIndex);
+	matches = pattern1.exec(text);
+	console.log(matches.index);
+	console.log(matches[0]);
+	console.log(matches.lastIndex);
+
+	var pattern2 = /.at/g;
+	matches = pattern2.exec(text);
+	console.log(matches.index);
+	console.log(matches[0]);
+	console.log(matches.lastIndex);
+
+	matches = pattern2.exec(text);
+	console.log(matches.index);
+	console.log(matches[0]);
+	console.log(matches.lastIndex);
+
+	matches = pattern2.exec(text);
+	console.log(matches.index);
+	console.log(matches[0]);
+	console.log(matches.lastIndex);
+
+
+	console.log('matches.lastIndex');
+	var re = null ; 
+	
+
+	for(var i = 0 ; i < 19; i ++){
+		re = /cat/g;
+		var result = re.test("catastrophe");
+		console.log(result);
+	}
+		console.log(i);
+	for(var i = 0 ; i < 10; i ++){
+		re = new RegExp("cat",'g');
+		var result = re.test("catastrophe");
+		console.log(result);
+	}
+
+
+	var text = "mom";
+	var re = /^mom( and dad( and baby)?)?/gi;
+	var c = re.test("mom and fff");
+	console.log(c);
+
+	var a = 5;
+	a = +a;
+	console.log(a);
+
+	function say(){
+		//alert("aaaa" + arguments[0] + arguments[1]);
+	}
+
+	say();
+
+
+	var c = document.getElementsByTagName("body")[0].childNodes[1][1].getAttribute("value");
+	c = document.getElementsByTagName("body")[0];
+	console.log(c);
+	c = document.getElementById("description").childNodes;
+	console.log(c);
+
+	var u = ['a','b','c','c','e'];
+	for(var f in u){
+		console.log(f + "ffffffffffff"  +  u[f]);
+	}
+
+	var g = [1,4,3,44,23,54];
+	g.sort(function(n,m){
+		return n-m;
+	});
+	console.log(g);
+
+</script>
+</html>

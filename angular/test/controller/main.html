@@ -1,0 +1,7 @@
+<table border="0">
+   // 更改这里的ng-model，当这里变得时候，下面的内容也随之改变
+   <tr><td>姓氏:</td><td><input type="text" ng-model="student.subjects[0].name"></td></tr>
+   <tr><td>姓氏:</td><td><input type="text" ng-model="student.firstName"></td></tr>
+   <tr><td>名字: </td><td><input type="text" ng-model="student.lastName"></td></tr>
+   <tr><td>全名: </td><td>{{student.fullName()}}</td></tr>
+</table>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="pressDiv" style="width:200px;height:200px;background:grey;position:absolute;">
+		<div id="yellowDiv" style="width:10px;height:10px;background:red;position:absolute;bottom:0px;right:0px;cursor:nw-resize"></div>
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("yellowDiv");
+		var oBigDiv = document.getElementById("pressDiv");
+		var disX = 0 ;
+		var disY = 0 ;
+
+		/*
+		点击更换的小图加上onmousedown
+		*/
+		oDiv.onmousedown = function(ev){
+
+			var oEvent = window.event || ev ;
+			disX = oDiv.offsetLeft - oEvent.clientX; 
+			disY = oDiv.offsetTop - oEvent.clientY; 
+
+			document.onmousemove = function(ev){
+				var oEvent = window.event || ev ;
+				/*
+				将小图的left + width赋给oBigDiv就是它的宽度，高度同理
+				*/
+				var left = oEvent.clientX + disX + oDiv.offsetWidth;
+				var top = oEvent.clientY + disY + oDiv.offsetHeight;
+				oBigDiv.style.width = left + "px";
+				oBigDiv.style.height = top + "px";
+			};
+
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			return false;
+		};
+	};
+
+	</script>
+</body>
+</html>

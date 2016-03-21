@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type = "text" id="text1">
+<button id="btn1">过滤</button>
+	
+
+	<p>一串字母、数字、下划线      @     一串英文、数字      .     一串英文（长度是2-4）</p>
+    <p>        \w +                @        [0-9a-z]        \.           [a-z]{2,4}</p>
+<script type="text/javascript">
+	  window.onload = function() {
+		var oText1 = document.getElementById("text1");
+
+		var oBtn = document.getElementById("btn1");
+
+		oBtn.onclick = function () {
+			var re = /^\w+@[0-9a-z]+\.[a-z]{2,4}$/;
+			if(re.test(oText1.value)){
+				alert("格式正确");
+			}
+			else{
+				alert("格式错误");
+			}
+		}
+	}
+</script>
+  
+</body>
+</html>

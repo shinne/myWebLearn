@@ -1,0 +1,467 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+
+.header{
+	background: url(images/top_bg.jpg);
+	height: 452px;
+
+}
+
+/*
+如果块状元素不设置宽度，则默认为父级宽度
+*/
+.cen{
+	margin: 0px auto;
+	width:68%;
+}
+
+#top{
+	height: 98px;
+}
+
+
+#topLeft{
+	float:left;
+	width:291px;
+}
+
+#topImg{
+	margin-top: 16px;
+}
+
+
+#topText{
+	font-size: 14px;
+	color: #CCCCCC;
+	float: right;
+}
+
+
+
+
+
+#topRight{
+	float:right;
+}
+
+.topForm{
+	margin-top: 40px;
+}
+
+#topInput{
+	border-radius: 5px;
+	width:180px;
+	height: 20px;
+	background-color: #161B1F;
+	border:1px solid #0B0E10;
+	color: #BCBCBC;
+	padding: 2px;
+	font-size: 15px;
+}
+#topSubmit{
+	border-radius: 3px;
+	width:50px;
+	height: 25px;
+	border:1px solid #0B0E10;
+	font-size: 12px;
+}
+
+
+/**********************************************/
+
+
+
+#nav{
+	height:50px;
+}
+
+#nav ul{
+	list-style-type: none;
+}
+
+#nav ul li{
+	text-decoration: none;
+	float:left;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 10px;
+	width:103px;
+	height:27px;
+
+}
+
+#nav ul li a{
+	display: block;
+	width:103px;
+	height:27px;
+	text-align: center;
+	text-decoration: none;
+	/*   
+	line-height设置跟height一样高就能保持居中
+	*/
+	line-height:27px;
+	color:black; 
+	margin: 10px 0 0 0;
+
+
+}
+
+
+#nav ul li a:hover{
+	background: url(images/hover.png);
+	color: #FFFFFF;
+
+
+}
+
+
+#bottom{
+	height:302px;
+	background: url(images/runplay_bg.jpg);
+
+}
+
+
+
+#bottomLeft{
+	float:left;
+	width:40%;
+	height: 100%;
+}
+
+
+#bottomLeft a img{
+	margin: 50px 0 0 30px;
+}
+
+#bottomRight{
+	float:left;
+	width:40%;
+	height: 100%;
+}
+
+
+#text{
+	margin: 50px 0 0 30px;
+	color: #FFFFFF;
+}
+
+
+.big{
+	font-size: 24px;
+	margin: 0 0 20px 0;
+}
+
+.middle{
+	font-size: 16px;
+	margin: 0 0 20px 0;
+}
+
+dd a{
+	display: block;
+	background: url(images/default.png);
+	height: 27px;
+	width: 103px;
+	text-decoration: none;
+	line-height: 27px;
+	text-align: center;
+	color:white;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.main{
+
+	background: url(images/main_top_bg.jpg) 0px top repeat-x;
+}
+
+
+.mainBottom{
+	/*
+	background设置背景图片的位置
+	*/
+
+	/*
+	在没有内容的情况下要给div设置高度，不然默认为0
+	*/
+	height:900px;
+	background:url(images/main_bottom_bg.jpg) 0px bottom repeat-x;
+
+}
+
+.mainCenter{
+	width: 68%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#mainLeft{
+	width: 65%;
+	height: 100%;
+	float:left;
+}
+
+
+#left1{
+	margin: 20px 0 0 20px;
+}
+
+.mainTitle{
+	font-size: 24px;
+	color: white;
+	margin-bottom: 15px;
+	color: #000000;
+}
+
+
+.littleTitle{
+	font-size: #555555;
+	font-size: 13px;
+}
+
+.littleTitle a{
+	text-decoration: none;
+	color: blue;
+}
+
+
+#left2{
+	margin: 30px 0 0 20px;
+	width: 100%;
+	height: 80%;
+
+}
+
+#left2 h2{
+	font-size: 24px;
+	font-weight: normal;
+}
+
+#left2 ul{
+	list-style-type: none;
+}
+
+#left2 ul li{
+	margin: 25px 25px 0 0;
+	background:#F1F2EA;
+	width:270px;
+	height: 170px;
+	border: 1px solid #D5D7CA;
+	padding: 6px;
+	float: left;
+	border-radius: 8px;
+
+}
+
+
+#left2 ul li p{
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+#left3{
+	margin: -35px 0 0 20px;
+}
+
+#left3 a{
+	display: block;
+	background: url(images/default.png);
+	height: 27px;
+	width: 103px;
+	text-decoration: none;
+	line-height: 27px;
+	text-align: center;
+	color:white;
+	font-size: 13px;
+	font-weight: bold;
+}
+#mainRight{
+	width: 25%;
+	height: 100%;
+	float:right;
+}
+
+
+#right1 #para{
+	font-size: 24px;
+	color: #000000;
+	font-weight: normal;
+	margin:25px 0 20px 0;
+}
+
+#right1 ul{
+	list-style-type: none;
+}
+#right1 ul li a{
+	text-decoration: underline;
+	color: #0074c5;
+	font-weight: normal;
+	font-size: 13px;
+	margin-bottom: 100px;
+}
+
+
+#right1 ul li a:hover{
+	color: green;
+}
+
+#right1 ul li {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px dashed #CCCCCC;
+}
+
+#right1 ul li .allRight{
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+#right2{
+	margin-top: 50px;
+}
+
+
+#right2 .dl1{
+	width: 100%;
+	height: 64px;
+	background: url(images/twitter.png) right center no-repeat;
+}
+
+#right2 .dl1 dt a{
+	font-size:24px;
+	color: #333333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+#right2 .dl1 dd{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+
+#right2 .dl2{
+	width: 100%;
+	height: 64px;
+	background: url(images/rss.png) right center  no-repeat;
+	margin-top: 30px;
+}
+
+
+#right2 .dl2 dt a{
+	font-size:24px;
+	color: #333333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+#right2 .dl2 dd{
+	font-size: 15px;
+	font-weight: bold;
+}
+.foot{
+	height: 100px;
+	background: url(images/footer_bg.jpg) repeat-x;
+	/*
+	在大容器里面设置成居中，可以免去对其他的设置
+	*/
+	text-align: center;
+
+}
+
+
+.foot .p1 {
+	padding-top: 20px;
+}
+.foot p a{
+	color: #FFFFFF;
+	font-size: 14px;
+	margin-right: 10px;
+	text-align: center;
+	
+}
+
+.foot .p2 {
+	color: #FFFFFF;
+	margin-top:10px;
+	font-size: 12px;
+}
+
+.foot .p2 a{
+	font-size: 12px;
+}
+
+.foot p a.last{
+	/*
+	由于最后一个后面有30px的右边距导致不是完全居中，所以最后一个需要设置margin:0px使得完全居中
+	*/
+	margin:0px;
+
+}
+
+
+
+/***************************************表单*******************************************/
+
+
+#left{
+	margin-left: 30px;
+}
+.formP{
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+label.title{
+	font-size: 14px;
+	font-weight: normal;
+	color: #555555;
+	display: block;
+	margin-top: 20px;
+}
+
+input.formGroup{
+	height: 20px;
+	width: 270px;
+	margin-top: 3px;
+
+}
+
+.textArea{
+	margin-top: 3px;
+}
+
+.btn{
+	margin-top: 10px;
+}
+
+.btn_sub{
+	width: 103px;
+	height: 27px;
+	background: url(images/default.png);
+	text-align: center;
+	line-height: 27px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px dashed #111111;
+}
+
+.btn_sub:hover{
+	background: url(images/d_hover.png);
+}
+.btn1{
+	display: block;
+	float: left;
+}
+
+.btn2{
+	display: block;
+	float: right;
+	margin-right: 230px;
+}

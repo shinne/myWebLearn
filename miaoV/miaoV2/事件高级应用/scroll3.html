@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="pressDiv" style="width:500px;height:15px;background:grey;position:absolute;top:100px;left:400px;">
+	<div id="yellowDiv" style="
+		width:15px;height:15px;background:red;position:absolute;top:0px;left:0px;"></div>
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("yellowDiv");
+		var oBigDiv = document.getElementById("pressDiv");
+		var disX = 0 ;
+		oDiv.onmousedown = function(ev){
+
+			var oEvent = window.event || ev ;
+			disX = oDiv.offsetLeft - oEvent.clientX; 
+
+			document.onmousemove = function(ev){
+				var oEvent = window.event || ev ;
+
+				//当鼠标超出可视区域时，固定在边缘上
+				var left = oEvent.clientX + disX;
+				if (left < 0 ) {
+					left = 0;
+				}
+				else if(left > oBigDiv.offsetWidth - oDiv.offsetWidth){
+					left = oBigDiv.offsetWidth - oDiv.offsetWidth;
+				}
+
+				oDiv.style.left = left + "px";
+				/*
+				计算小块在大块中移动的比例
+				*/
+				document.title = left/(oBigDiv.offsetWidth - oDiv.offsetWidth);
+			};
+
+
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			return false;
+		};
+	};
+
+	</script>
+</body>
+</html>

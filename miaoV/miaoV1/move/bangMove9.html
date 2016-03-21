@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#block{
+		height: 50px;
+		width: 100px;
+		background: red;
+		position: absolute;
+		left:0px;
+		top:0px;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="block">
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var block = document.getElementById("block");
+		var iSpeedX = 6 ; 
+		var iSpeedY = 8 ;
+		var l ;
+		var t ;
+		var allX;
+		var allY;
+		var timer = setInterval(function(){
+			/*
+			每一次跳动的纵向速度都增加,这个是重力作用
+			*/
+			iSpeedY += 3;
+			l = block.offsetLeft + iSpeedX;
+			t = block.offsetTop + iSpeedY;
+			
+			allX = document.documentElement.clientWidth - block.offsetWidth;
+			allY = document.documentElement.clientHeight - block.offsetHeight;
+
+			/*
+			每次撞墙的时候速度都变成原来的0.8倍
+			*/
+			if(l >= allX ){
+				iSpeedX *= -0.8;
+				l = allX;
+			}
+			else if(l <= 0){
+				iSpeedX *= -0.8;
+				l = 0;
+			}
+
+			if(t >= allY ){
+				iSpeedY *= -0.8;
+				iSpeedX *= 0.8;
+				t = allY;
+
+			}
+			else if(t <= 0){
+				iSpeedY *= -1;
+				iSpeedX *= 0.8;
+				t = 0;
+			}
+
+			/*
+			每次撞墙的时候速度都变成原来的0.8倍
+			*/
+			if(Math.abs(iSpeedX) < 1){
+				iSpeedX = 0;
+			}
+
+			if(Math.abs(iSpeedY) < 1){
+				iSpeedY = 0;
+			}
+			block.style.left = l + "px";
+			block.style.top = t  + "px";
+
+		},30); 
+	}
+
+	</script>
+</body>
+</html>

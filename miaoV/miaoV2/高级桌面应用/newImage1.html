@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	//直接这样从服务器上加载图片会很缓慢，用户体验不好
+	<img width="400" height = "300" src="http://img.taopic.com/uploads/allimg/110921/2979-1109210RK616.jpg" alt="" onmouseover="this.src = 'http://img1.imgtn.bdimg.com/it/u=1015779869,2495565788&fm=206&gp=0.jpg'" onmouseout = "this.src = 'http://img.taopic.com/uploads/allimg/110921/2979-1109210RK616.jpg'">
+
+	<br/><br/>
+	//这样用new Image的方式在后台加载应该会好一点
+	<img width="400" height = "300" src="http://pic10.nipic.com/20101020/6007208_215114083000_2.jpg" alt="">
+
+
+	<script type="text/javascript">
+	window.onload = function() {
+		var oImg = new Image();
+		oImg.src = "http://img0.imgtn.bdimg.com/it/u=3977241530,1751538992&fm=206&gp=0.jpg";
+
+		oImg.onload = function () {
+			alert("图片加载完成");
+		}
+
+		oImg.oneror = function () {
+			alert("图片加载失败");
+		}
+	}
+
+
+	</script>
+</body>
+</html>

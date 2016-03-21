@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="templatemo_style.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+   <!-- <script type="text/javascript" src="js/jquery.simplemodal.js"></script>-->
+   <!-- <script type="text/javascript" src="js/gallery.js"></script>-->
+    
+</head>
+<body>
+    <div class="centerBody">    
+        <div class="bigTitle">Metro</div>  
+
+       
+        <div class="centerContent">
+
+            <div class="contentLeft">
+                <div class="contentTitle">Welcome</div>
+                <div class="contentText">
+                    Metro is a <a class="aLink" href="#">free website template</a> for everyone from <a class="aLink" href="#">CssSucai.com</a> and it can be used for any purpose. Validate <a class="aLink" href="#">XHTML</a> & <a class="aLink" href="#">CSS</a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus felis leo, feugiat sed porttitor sagittis, facilisis sit amet lectus. Aenean elementum tellus auctor dolor auctor luctus. Vivamus eu orci purus, ut vulputate nisl.
+                </div>
+                <div class="contentText">
+                    Praesent imperdiet mauris et lorem malesuada consequat. Proin nisl metus, faucibus vitae malesuada non, interdum sed felis. Sed ut turpis feugiat lorem faucibus dignissim. Donec magna tellus, feugiat vel fermentum eget, fringilla at metus.
+
+                </div>
+
+            </div>
+            <div class="contentRight">
+                <div class="imgDiv" imgInfo = "images/gallery/01-l.jpg">
+                        <img class="imgInfo" src="images/gallery/01.jpg" alt="imgContent">
+                </div>
+
+                <div class="imgDiv" imgInfo = "images/gallery/02-l.jpg">
+                        <img class="imgInfo" src="images/gallery/02.jpg" alt="imgContent">
+                </div>
+
+                <div class="imgDiv imgLastDiv" imgInfo = "images/gallery/03-l.jpg">
+                        <img class="imgInfo" src="images/gallery/03.jpg" alt="imgContent">
+                </div>
+
+                <div class="imgDiv" imgInfo = "images/gallery/04-l.jpg">
+                        <img class="imgInfo" src="images/gallery/04.jpg" alt="imgContent">
+                </div>
+
+                <div class="imgDiv" imgInfo = "images/gallery/05-l.jpg">
+                        <img class="imgInfo" src="images/gallery/05.jpg" alt="imgContent">
+                </div>
+
+                <div class="imgDiv imgLastDiv" imgInfo = "images/gallery/06-l.jpg">
+                        <img class="imgInfo" src="images/gallery/06.jpg" alt="imgContent">
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="centerFoot">
+            <div class="footLogo">
+                <a href="#" class="footA">
+                    <img src="images/templatemo_services.jpg" alt="" class="footImg">
+                </a>
+            </div>
+
+            <div class="footLogo">
+                <a href="#" class="footA">
+                    <img src="images/testimonial.jpg" alt="" class="footImg">
+                </a>
+            </div>
+
+            <div class="footLogo footLogoBlue">
+                <a href="#" class="footA">
+                    <img src="images/facebook.png" alt="" class="footImg">
+                </a>
+                <a href="#" class="footA">
+                    <img src="images/flickr.png" alt="" class="footImg">
+                </a>
+                <a href="#" class="footA">
+                    <img src="images/twitter.png" alt="" class="footImg">
+                </a>
+                <a href="#" class="footA">
+                    <img src="images/youtube.png" alt="" class="footImg">
+                </a>
+                <a href="#" class="footA">
+                    <img src="images/vimeo.png" alt="" class="footImg">
+                </a>
+
+                <div class="social">Social</div>
+            </div>
+
+            <div class="footLogo footLastLogo">
+                <a href="#" class="footA">
+                    <img src="images/contact.jpg" alt="" class="footImg">
+                </a>
+
+            </div>
+        </div>
+
+        <div class="bodyFoot">
+            <div class="footContent">
+                Copyright © 2072 <a class="aLink" href="#">Your Company</a> Name | Designed by 
+                <a class="aLink" href="#">Free CSS Templates</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id='bPopup'>
+        <img src="#">
+    </div>
+</body>
+<script type="text/javascript">
+
+
+/*
+    用的bpopup的模态框插件，
+
+*/
+     $('.imgDiv').bind('click', function(e) {
+        var imgInfo = this.getAttribute("imgInfo");
+        var img = $("#bPopup img").attr("src",imgInfo);
+        var bPopup = $('#bPopup');
+        bPopup.append(img);
+		$(img).on('load',function(){
+        $('#bPopup').bPopup();
+		});
+     });
+</script>
+</html>

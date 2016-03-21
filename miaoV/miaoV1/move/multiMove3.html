@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div{
+		width:100px;
+		height:40px;
+		background:green;
+		position:absolute;
+		left:20px;
+	}
+	</style>
+</head>
+<body>
+	
+	<div style="top:20px;"></div>
+	<div style="top:80px;"></div>
+	<div style="top:140px;"></div>
+	<div style="top:200px;"></div>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+window.onload = function(){
+
+	var divArray = document.getElementsByTagName("div");
+	for(var i = 0 ; i < divArray.length ; i ++){
+		/*
+		给每一个div都加上一个都属于自己的timer定时器，并且在startMove函数里面只能操控属于自己的
+		*/
+		console.log(divArray[i].currentStyle['left']);
+		console.log(divArray[i].style.left);
+		divArray[i].timer = null;
+		divArray[i].onmouseover = function(){
+			startMove(this,300);
+		};
+		divArray[i].onmouseout = function(){
+			startMove(this,100);
+		}
+	}
+}
+
+
+/*
+写一个封装函数，里面包含obj，所以可以动态的给多个div设置运动
+*/
+function startMove(obj,iTarget){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var iSpeed = (iTarget - obj.offsetWidth)/8;
+		iSpeed = iSpeed > 0 ? Math.ceil(iSpeed):Math.floor(iSpeed);
+		alert(iSpeed);
+		if(obj.offsetWidth == iTarget){
+			clearInterval(obj.timer);
+		}
+		else{
+			obj.style.width = obj.offsetWidth + iSpeed + "px";
+		}
+	},30);
+}
+
+</script>

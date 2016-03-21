@@ -1,0 +1,316 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	line-height: 1.5em;
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial;
+}
+
+div.container{
+	background: #999999 url(images/templatemo_bg.gif);
+	height:1000px;
+}
+
+div.mainBody{
+	height: 100%;
+	width: 100%;
+	background:url(images/templatemo_side_bg.gif) repeat-x;
+}
+
+
+div.mainBody>div.centerContainer{
+	width: 810px;
+	margin: 0 auto;
+	padding-top: 18px;
+}
+
+div.centerContainer>div.top{
+	width: 100%;
+	height: 67px;
+	background: url(images/templatemo_top_bg.gif);
+}
+
+div.centerContainer>div.top>div.topContent{
+	padding-top: 42px;
+	margin-left: 30px;
+	height: 25px;
+}
+
+div.topContent>ul.topLink{
+	list-style: none;
+}
+
+div.topContent>ul.topLink>li.topLi{
+	display: inline-block;
+}
+
+div.topContent>ul.topLink>li.topLi>a.topALink{
+	font-size: 11px;
+	color: #0066CC;
+	text-decoration: none;
+}
+
+div.topContent>ul.topLink>li.topLi>a.topALink:hover{
+	font-size: 11px;
+	color: #008000;
+	text-decoration: underline;
+}
+
+div.centerContainer>div.header{
+	width: 100%;
+	height: 179px;
+	margin: 0 auto;
+	background: url(images/templatemo_header_bg.gif);
+}
+
+div.header>div.headerContent{
+	width: 780px;
+	height: 150px;
+	margin:0px auto;
+	background: url(images/templatemo_header.jpg);
+}
+
+div.centerContainer>div.mainContent{
+	background: url(images/templatemo_content_bg.gif) repeat-y;
+	height: 680px;
+}
+
+div.mainContent>div.contentLeft{
+	width: 548px;
+	height: 600px;
+	float: left;
+	margin-left: 17px;
+}
+
+div.mainContent>div.contentRight{
+	width: 215px;
+	height: 600px;
+	float: right;
+	margin-right:16px;
+}
+
+div.header>div.headerContent>div.headerTitle{
+	padding-top: 50px;
+	text-align: center;
+
+}
+
+div.headerContent>div.headerTitle>p.bigTitle{
+	font-size: 32px;
+	font-weight: bold;
+	color: white;
+}
+
+div.headerContent>div.headerTitle>p.smallTitle{
+	font-size: 13px;
+	font-weight: bold;
+	color: #AAFFFF;
+	margin-top: -2px;
+}
+
+div.mainContent>div.contentLeft>div.cssWebsite{
+	margin: 5px 12px;
+	background: #F6F6F6;
+	padding-bottom: 20px;
+}
+
+div.contentLeft>div.cssWebsite>div.cssTitle{
+	font-size: 18px;
+	font-weight: bold;
+	color: #0066CC;
+	margin-bottom: 5px;
+
+}
+
+div.contentLeft>div.cssWebsite>p.cssContent{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 5px;
+	text-align: justify;
+
+}
+
+a.comLink{
+	text-decoration: none;
+	color: #0066CC;
+}
+
+p.contentLast{
+	margin-top: 18px;
+}
+
+div.contentLeft>div.websiteDesign{
+	margin: 5px 12px;
+	height: 200px;
+
+	color: #555555;
+}
+
+div.flashPlayer{
+	margin: 5px 12px;
+	height: 200px;
+	margin-top: 40px;
+}
+
+div.websiteDesign>div.designTitle,div.flashPlayer>div.flashTitle{
+	padding: 6px;
+	background: #DDEEFF;
+	padding-left: 10px;
+
+}
+
+div.designTitle>p.titleContent,div.flashTitle>p.titleContent{
+	font-size: 14px;
+	font-weight: bold;
+	color: #0066CC;
+}
+
+div.websiteDesign>div.designContent,div.flashPlayer>div.flashContent{
+	padding: 10px;
+	background: #F6F6F6;
+	margin-bottom: 20px;
+
+}
+
+div.designContent>img.designImg,div.flashContent>img.flashImg{
+	display: block;
+	float: left;
+	width: 120px;
+	height: 90px;
+	border: 1px solid black;
+	margin-right: 10px;
+}
+
+div.designContent>p.designPar,div.flashContent>p.flashPar{
+	text-align: justify;
+	font-size: 12px;
+	color: black;
+}
+
+p.designLastPar{
+	margin-top: 20px;
+}
+
+div.designContent>p.designFoot,div.flashContent>p.flashFoot{
+	margin-top: 10px;
+	font-size: 11px;
+	color: #999999;
+	font-weight: bold;
+	clear: left;
+}
+
+div.flashContent>p.flashFoot{
+	margin-top: 30px;
+}
+
+p.designPar>a.alink,p.flashPar>a.alink{
+	color: #0066CC;
+}
+
+p.designPar>a.alink:hover,p.flashPar>a.alink:hover{
+	color: #008000;
+	text-decoration: underline;
+	/*
+	这里设置光标指过来时如何cursor
+	*/
+	cursor: pointer;
+}
+
+
+div.contentRight>div.navLeft{
+	padding: 10px;
+	background: white;
+}
+
+div.contentRight>div.navLeft>ul.navUl{
+	list-style: none;
+}
+
+ul.navUl>li.navList>a.navALink{
+	display: block;
+	margin-bottom: 2px;
+	background: #F4F4F4 url(images/button_default.gif) no-repeat;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px;
+	padding-left: 10px;
+	text-decoration: none;
+	color: #0066CC;
+}
+
+ul.navUl>li.navList>a.navALink:hover{
+	background: #F4F4F4 url(images/button_active.gif) no-repeat;
+	color: red;
+}
+
+div.contentRight>div.contactMe,div.contentRight>div.aboutWebsite,
+div.contentRight>div.thanks{
+	margin: 0px 10px;
+	padding: 10px;
+	padding-bottom: 25px;
+	border: 1px dashed #CCCCCC;
+	background: #F2F2F2;
+}
+
+
+div.contentRight>div.aboutWebsite,div.contentRight>div.thanks{
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+div.contactMe>div.contactTitle,div.aboutWebsite>div.aboutTitle,
+div.thanks>div.thanksTitle{
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+	padding-bottom:6px;
+}
+
+div.contactMe>p.contactInfo,div.aboutWebsite>p.aboutInfo{
+	font-size: 12px;
+	color: black;
+	text-align: justify;
+}
+
+p.aboutImg{
+	margin-top: 10px;
+}
+
+div.thanks>ul.thanksUl{
+	list-style: none;
+}
+
+div.thanks>ul.thanksUl>li.thanksli>a.thanksA{
+	display: block;
+	font-size: 12px;
+	color: #0066CC;
+	text-decoration: none;
+
+}
+
+div.thanks>ul.thanksUl>li.thanksli>a.thanksA:hover{
+	color: #008000;
+	text-decoration: underline;
+}
+
+div.centerContainer>div.foot{
+	clear: both;
+	width: 100%;
+	height:50px;
+	margin-top: 0px;
+	background: url(images/templatemo_footer_bg.gif);
+}
+
+div.foot>div.footContent{
+	padding-top: 15px;
+	text-align: center;
+	font-size: 11px;
+	color: #666666;
+}
+
+div.footContent>a.footLink{
+	text-decoration: none;
+	color: #666666;
+}
+
+div.footContent>a.footLink:hover{
+	text-decoration: underline;
+}

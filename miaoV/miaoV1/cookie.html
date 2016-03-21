@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		username <input id="usr" type="text">
+		password<input type="text">
+		<input id ="submit" type="submit" value = "login">
+		<input id ="button" type="button" value = "清除记录">
+	</form>
+	<script type="text/javascript">
+    function setCookie(name,value,day){
+      var time = new Date();
+      console.log(time);
+      time.setDate(time.getDate() + day);
+      document.cookie = name + "=" + value + ";expires=" + time;
+    }
+    
+
+
+    function getCookie(name){
+    	//这里注意是！   ;空格
+      var cookieArray = document.cookie.split("; ");
+      for(var cookie=0 ; cookie < cookieArray.length; cookie++){
+      		var array = cookieArray[cookie].split("=");
+      		console.log(array);
+      		if(array[0] == name){
+      			console.log(array[1]);
+      			return array[1];
+      		}
+        
+      }
+      return '';
+    }
+
+
+    function removeCookie(name){
+    	setCookie(name,'',-1);
+    }
+
+    var save = document.getElementById("submit");
+    var clear = document.getElementById("button");
+    var usr = document.getElementById("usr").value;
+    save.onclick = function(){
+    	setCookie("user",usr,30);
+    	console.log("success");
+    	return false;
+    }
+    console.log(document.cookie);
+    clear.onclick = function(){
+    	removeCookie("user");
+    	usr.value = "";
+    }
+   
+  </script>
+</body>
+</html>

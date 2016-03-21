@@ -1,0 +1,81 @@
+#body{
+	height: 650px;
+}
+.bodyClass{
+
+    
+	width: 980px;
+	height: 494px;
+	background:rgba(255,255,255,0.5) none repeat scroll !important;
+	margin: 0px auto;
+
+	
+}
+
+.mainReply{
+
+	height: 362px;
+	width: 925px;
+	margin: 0px auto;
+	background-color: #EEEEEE;
+	/*
+	box-shadow:  投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色; 
+	*/
+	/*firefox*/
+	-webkit-box-shadow: 1px 3px 10px #D6D5D5;  
+	/*Safariand Google chrome10.0*/
+    -moz-box-shadow: 1px 3px 10px #D6D5D5;  
+    box-shadow: 1px 3px 10px #D6D5D5;  
+}
+
+.main{
+	clear: both;
+	width: 550px;
+	margin: 0px auto;
+	padding-top: 90px;
+
+}
+
+
+.labelClass{
+	font-size: 17px;
+	color: #204E70;
+	font-weight: 600;
+}
+
+.labelFor{
+	height: 35px;
+	/*
+	box-shadow:  投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色; 
+	*/
+	/*firefox*/
+	-webkit-box-shadow: inset -1px 0 1px #D6D5D5,
+	1px 0 1px #D6D5D5,
+	0 -1px 1px #D6D5D5,
+	0 1px 1px #D6D5D5;
+	/*Safariand Google chrome10.0*/
+    -moz-box-shadow:inset -1px 0 1px #D6D5D5,
+	1px 0 1px #D6D5D5,
+	0 -1px 1px #D6D5D5,
+	0 1px 1px #D6D5D5;
+    box-shadow: inset -1px 0 1px #D6D5D5,
+	1px 0 1px #D6D5D5,
+	0 -1px 1px #D6D5D5,
+	0 1px 1px #D6D5D5;
+}
+
+.buttonClass{
+	display: block;
+	height: 42px;
+	width: 148px;
+	margin-left: 240px;
+	margin-top: 40px;
+	font-size: 20px;
+	font-weight: 500;
+	font-family: "幼圆";
+	background-color: #4085BC;                                            
+	border-radius: 10px;
+	color: white;
+
+}
+

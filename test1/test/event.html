@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head> 
+ <meta charset="UTF-8"> 
+  <title>事件冒泡</title> 
+   <style type="text/css">
+     #child{    background: red;    width:50px;    height:50px;  }  
+     #father{    width:100px;    height:100px;    background:green;  } 
+      #grandparent{    width:150px;    height:150px;    background:black;    margin:100px auto 0;  } 
+       </style>
+       </head>
+       <body>  
+       <div id='grandparent'>  
+         <div id='father'>     
+          <div id='child'></div>  
+            </div>  </div>
+
+            </body>
+
+
+            <script type="text/javascript">  
+            var grandparent = document.getElementById("grandparent");  
+            var parent = document.getElementById("father"); 
+             var child = document.getElementById('child'); 
+              var html = document.getElementsByTagName("html")[0]; 
+               var body = document.body;
+                 grandparent.addEventListener("click",function () { 
+                    console.log("I am capturing grandparent");  
+                    },true); 
+                     grandparent.addEventListener("click",function () {  
+                       console.log("I am grandparent");  },false); 
+                         parent.addEventListener("click",function() { 
+                            console.log("I am parent");  },false); 
+                             parent.addEventListener("click",function() {  
+                               console.log("I am capturing parent");  },true); 
+                                 child.addEventListener("click",function() { 
+                                    console.log("I am capturing child");  },true); 
+                                     child.addEventListener("click",function() {  
+                                       console.log("I am child");  },false);  
+                                         body.addEventListener("click",function() { 
+                                            console.log("I am body");  },false); 
+                                             body.addEventListener("click",function() {  
+                                               console.log("I am capturing body"); 
+                                                },true); 
+                                                 html.addEventListener("click",function() {  
+                                                   console.log("I am capturing html");  
+                                                   },true); 
+                                                    html.addEventListener("click",function() {  
+                                                      console.log("I am html");  },
+                                                      false);  
+                                                      document.addEventListener("click",function() { 
+                                                         console.log("I am capturing document");  
+                                                         },true);  
+                                                         document.addEventListener("click",function() {   
+                                                          console.log("I am document"); 
+                                                           },false);  
+                                                           window.addEventListener("click",function() {  
+                                                             console.log("I am window");  },false);  
+                                                             window.addEventListener("click",function() {    console.log("I am capturing window");  },true);</script></html>

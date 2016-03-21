@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height:2000px;">
+	<div id="pressDiv" style="width:500px;height:15px;background:grey;position:absolute;top:100px;left:400px;">
+	<div id="yellowDiv" style="
+		width:15px;height:15px;background:red;position:absolute;top:0px;left:0px;"></div>
+	</div>
+	<div id="textDiv" style="width:500px;height:300px;position:absolute;top:200px;left:400px;border:1px solid black;overflow:hidden;">
+		<div id="changeDiv" style="padding-top:0px;margin-top:0px;width:500px;position:absolute;top:0px;left:0px;">
+			近日，因邓超的一则寻人启示，淘宝网红穆雅斓一夜炮红，随后其个人资料遭到网友起底。据了解，穆雅斓是一90后平面模特，15年因录制搞笑视频逐渐火起来。爆红后其男朋友是谁也遭到起底，随后摄影师艾克里里被曝光，但据网络传言，艾克里里并不是穆雅斓的男朋友。随着《偶滴歌神啊》第一期的播出，网络红人穆雅斓引起了网友的广泛关注，连跑男队长邓超都惊叹不已，微博上求网友人肉奇葩女穆雅斓，那么穆雅斓为什么走红呢?下面我们来揭秘穆雅斓为什么走红原因吧!一般人都是在私密场合才能放开手脚撒疯，这个妹子却独挑人多的地儿，你要是碰见会不会觉得介个人是个神经病?目前穆雅斓在成都从事平面模特工作。穆雅斓说：“我就是觉得很感谢大家，居然有人喜欢我，真是诚惶诚恐。”穆雅斓说她并没有学过表演，那个在网络爆红的视频足足拍了一个月，全部是自己拍的，没有花一分钱的制作费。
+			近日，因邓超的一则寻人启示，淘宝网红穆雅斓一夜炮红，随后其个人资料遭到网友起底。据了解，穆雅斓是一90后平面模特，15年因录制搞笑视频逐渐火起来。爆红后其男朋友是谁也遭到起底，随后摄影师艾克里里被曝光，但据网络传言，艾克里里并不是穆雅斓的男朋友。随着《偶滴歌神啊》第一期的播出，网络红人穆雅斓引起了网友的广泛关注，连跑男队长邓超都惊叹不已，微博上求网友人肉奇葩女穆雅斓，那么穆雅斓为什么走红呢?下面我们来揭秘穆雅斓为什么走红原因吧!一般人都是在私密场合才能放开手脚撒疯，这个妹子却独挑人多的地儿，你要是碰见会不会觉得介个人是个神经病?目前穆雅斓在成都从事平面模特工作。穆雅斓说：“我就是觉得很感谢大家，居然有人喜欢我，真是诚惶诚恐。”穆雅斓说她并没有学过表演，那个在网络爆红的视频足足拍了一个月，全部是自己拍的，没有花一分钱的制作费。
+			近日，因邓超的一则寻人启示，淘宝网红穆雅斓一夜炮红，随后其个人资料遭到网友起底。据了解，穆雅斓是一90后平面模特，15年因录制搞笑视频逐渐火起来。爆红后其男朋友是谁也遭到起底，随后摄影师艾克里里被曝光，但据网络传言，艾克里里并不是穆雅斓的男朋友。随着《偶滴歌神啊》第一期的播出，网络红人穆雅斓引起了网友的广泛关注，连跑男队长邓超都惊叹不已，微博上求网友人肉奇葩女穆雅斓，那么穆雅斓为什么走红呢?下面我们来揭秘穆雅斓为什么走红原因吧!一般人都是在私密场合才能放开手脚撒疯，这个妹子却独挑人多的地儿，你要是碰见会不会觉得介个人是个神经病?目前穆雅斓在成都从事平面模特工作。穆雅斓说：“我就是觉得很感谢大家，居然有人喜欢我，真是诚惶诚恐。”穆雅斓说她并没有学过表演，那个在网络爆红的视频足足拍了一个月，全部是自己拍的，没有花一分钱的制作费。结束！
+		</div>
+	<div>
+</body>
+<script type="text/javascript">
+
+	//普通事件：onclick,onmouseover
+	//DOM事件：DOMMouseScroll
+	//DOM事件只能通过绑定来添加
+	window.onload = function(){
+
+		function myAddEvent(obj,sEvent,fn){
+			if(obj.attachEvent){
+				obj.attachEvent("on" + sEvent,fn);
+			}
+			else{
+				obj.addEventListener(sEvent,fn);
+			}
+		}
+		var oBigDiv = document.getElementById("pressDiv");
+		var oSmallDiv = document.getElementById("yellowDiv");
+		var oChangeDiv = document.getElementById("changeDiv");
+		var oTextDiv = document.getElementById("textDiv");
+
+		function mouse(ev){
+			var oEvent = ev || window.event;
+			var bDown = true;
+			bDown = oEvent.wheelDelta ?oEvent.wheelDelta<0 : oEvent.detail>0;
+			if(bDown){
+				setLeft(oSmallDiv.offsetLeft + 10);
+			}
+			else{
+				setLeft(oSmallDiv.offsetLeft - 10);
+			}
+
+			if(oEvent.preventDefault){
+				oEvent.preventDefault();
+			}			return false;
+
+		}
+
+		/*
+		这是计算小块的left和文字的上升下降的函数
+		*/
+		function setLeft(left){
+				if (left < 0 ) {
+					left = 0;
+				}
+				else if(left > oBigDiv.offsetWidth - oSmallDiv.offsetWidth){
+					left = oBigDiv.offsetWidth - oSmallDiv.offsetWidth;
+				}
+
+				oSmallDiv.style.left = left + "px";
+				/*
+				计算小块在大块中移动的比例
+				*/
+				var percent = document.title = left/(oBigDiv.offsetWidth - oSmallDiv.offsetWidth);
+				oChangeDiv.style.top = - percent * (oChangeDiv.offsetHeight - oTextDiv.offsetHeight) + "px";
+		}
+		myAddEvent(oBigDiv,"mousewheel",mouse);
+		myAddEvent(oBigDiv,"DOMMouseScroll",mouse);
+		myAddEvent(oTextDiv,"mousewheel",mouse);
+		myAddEvent(oTextDiv,"DOMMouseScroll",mouse);
+
+	}
+
+
+
+
+
+</script>
+</html>

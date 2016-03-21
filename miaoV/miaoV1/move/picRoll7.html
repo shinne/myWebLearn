@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0px;
+		padding: 0px;
+	}
+	#frameWork{
+		height: 200px;
+		width: 760px;
+		border: 1px solid black;
+		overflow: hidden;
+		position: absolute;
+		left: 300px;
+		top:100px;
+	}
+	#ulDiv{
+		list-style: none;
+		margin:10px 0;
+		overflow: hidden;
+		height: 180px;
+		position: absolute;
+	}
+
+	ul>li{
+		float: left;
+		height: 150px;
+		width: 180px;
+		padding:10px 5px;
+	}
+
+	ul>li>img{
+		height: 150px;
+		width: 180px;
+		
+	}
+
+	</style>
+</head>
+<body>
+	<div id="frameWork">
+		<ul id="ulDiv">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+		</ul>
+	</div>
+	<button>往左</button>
+	<button>往右</button>
+	<script type="text/javascript">
+	window.onload = function(){
+		var timer;
+		var btn = document.getElementsByTagName("button");
+		var oUl = document.getElementById("ulDiv");
+		var oLi = document.getElementsByTagName("li");
+		oUl.style.width = oLi.length * 2 * oLi[0].offsetWidth + "px";
+		oUl.innerHTML +=oUl.innerHTML;
+		var speed = -10;
+		function fnMove(){
+			if(oUl.offsetLeft <= -oUl.offsetWidth/2){
+				oUl.style.left = "0px";
+			}
+			/*
+			往左往右滚的思想很重要
+			*/
+			else if(oUl.offsetLeft >=0){
+				oUl.style.left = -oUl.offsetWidth/2 + "px";
+			}
+
+			oUl.style.left = oUl.offsetLeft + speed + "px";
+		}
+
+		var timer = setInterval(fnMove,30);
+		btn[0].onclick = function(){
+			speed = -10;
+		}
+
+		btn[1].onclick = function(){
+			speed = 10;
+		}
+
+		oUl.onmouseover = function(){
+			clearInterval(timer);
+		}
+
+		oUl.onmouseout = function(){
+			timer = setInterval(fnMove,30);
+
+		}
+
+		
+
+	}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/picLunBo4.css">
+	<script src = "js/startMove3.js"></script>
+</head>
+<body>
+	<div id="bodyCenter">
+		<div id="bodyBigPic">
+			<a id="leftPartA">
+				<img class="prevAndNext" id="prevImg" src="img/prev.png" alt="prev">
+			</a>
+			<a id="rightPartA">
+				<img class="prevAndNext" id="nextImg" src="img/next.png" alt="next">
+			</a>
+
+			
+			
+
+			<div id="picShow">
+				<ul id="picShowUl">
+					<li class="picShowLi showPic"><img src="img/1.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/2.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/3.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/4.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/5.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/6.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/7.jpg" alt=""></li>
+					<li class="picShowLi"><img src="img/8.jpg" alt=""></li>
+				</ul>
+
+			</div>
+		</div>
+		<div id="bodySmallPic">
+			<ul id="picChangeUl">
+					<li class="picChangeLi changePic"><img src="img/1.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/2.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/3.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/4.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/5.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/6.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/7.jpg" alt=""></li>
+					<li class="picChangeLi"><img src="img/8.jpg" alt=""></li>
+				</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			var leftPartA = document.getElementById("leftPartA");
+			var rightPartA = document.getElementById("rightPartA");
+			var prevImg = document.getElementById("prevImg");
+			var nextImg = document.getElementById("nextImg");
+			var picSmallUl = document.getElementById("picChangeUl");
+			var picSmallLi = document.getElementsByClassName("picChangeLi");
+			var picBigLi = document.getElementsByClassName("picShowLi");
+			var smallWidth = picSmallLi[0].childNodes[0].offsetWidth;
+			var smallHeight = picSmallLi[0].childNodes[0].offsetHeigth;
+			var ulWidth = 3 * smallWidth + "px";
+			picSmallUl.setAttribute("width",ulWidth);
+			var height = picBigLi[0].childNodes[0].offsetHeight;
+			console.log(height); 
+			var iNow = 0;
+			var iBiggestIndex = 2;
+
+			//当鼠标移到左半边的时候左箭头出现，移到右边的时候右箭头出现
+			leftPartA.onmouseover = function(){
+				startMove(prevImg,"opacity",100);
+			}
+
+			leftPartA.onmouseout = function(){
+				startMove(prevImg,"opacity",0);
+			}
+
+			rightPartA.onmouseover = function(){
+				startMove(nextImg,"opacity",100);
+			}
+
+			rightPartA.onmouseout = function(){
+				startMove(nextImg,"opacity",0);
+			}
+			//当鼠标移到左半边的时候左箭头出现，移到右边的时候右箭头出现
+
+			//小图进行效果展示，点击时切换图片
+			for(var i = 0 ; i < picSmallLi.length ; i ++){
+				picSmallLi[i].index = i;
+				picSmallLi[i].onmouseover = function(){
+					startMove(this,"opacity",100);
+				}
+				picSmallLi[i].onmouseout= function(){
+					if(this.index != iNow){
+						startMove(this,"opacity",60);
+					}
+					
+				}
+				picSmallLi[i].onclick = function(){
+
+					/*
+					如果当前图片就是小图点击的图片时，什么都不做
+					*/
+					if(iNow == this.index){
+						return;
+					}
+					iNow = this.index; 
+					for(var i = 0 ; i < picBigLi.length ; i ++ ){
+						/*picBigLi[i].childNodes[0].style.zIndex= 0;*/
+						picSmallLi[i].style.opacity= 0.6;
+					}
+					picBigLi[this.index].childNodes[0].style.zIndex= iBiggestIndex++;
+					picBigLi[this.index].childNodes[0].style.height= 0;
+					startMove(picBigLi[this.index].childNodes[0],"height",height);
+					this.style.opacity = 1;
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//选中的小图会居中在中央，还未实现
+					//这个似乎是跟布局有关，思考中啊。。。
+					//  ul的left向左边移动-(iNow-1)*smallWidth
+					//已经实现
+					if(iNow == 0){
+						startMove(picSmallUl,"left",0);
+					}
+					else if(iNow == picSmallLi.length - 1){
+						startMove(picSmallUl,"left",-(iNow-2)*smallWidth);
+					}
+					else{
+						startMove(picSmallUl,"left",-(iNow-1)*smallWidth);
+					}
+				}
+			}
+			//小图进行效果展示，点击时切换图片
+
+
+			//点击左右箭头的时候图片进行切换
+			prevImg.onclick = function(){
+				iNow--;
+				iNow = (iNow == -1) ? picBigLi.length-1:iNow;
+				for(var i = 0 ; i < picBigLi.length ; i ++ ){
+					/*picBigLi[i].childNodes[0].style.zIndex= 0;*/
+					picSmallLi[i].style.opacity= 0.6;
+				}
+				picBigLi[iNow].childNodes[0].style.zIndex= iBiggestIndex++;
+				picBigLi[iNow].childNodes[0].style.height= 0;
+				startMove(picBigLi[iNow].childNodes[0],"height",height);
+				picSmallLi[iNow].style.opacity = 1 ;
+				if(iNow == 0){
+						startMove(picSmallUl,"left",0);
+						/*
+						这种体验似乎更好一些
+						*/
+						/*picSmallUl.style.left = "0px";*/
+					}
+					else if(iNow == picSmallLi.length - 1){
+						startMove(picSmallUl,"left",-(iNow-2)*smallWidth);
+						/*
+						这种体验似乎更好一些
+						*/
+						/*picSmallUl.style.left = -(iNow-2)*smallWidth + "px";*/
+					}
+					else{
+						startMove(picSmallUl,"left",-(iNow-1)*smallWidth);
+
+					}
+
+			}
+
+			nextImg.onclick = function(){
+				iNow++;
+				iNow = (iNow == picBigLi.length) ? 0 : iNow;
+				for(var i = 0 ; i < picBigLi.length ; i ++ ){
+					/*picBigLi[i].childNodes[0].style.zIndex= 0;*/
+					picSmallLi[i].style.opacity= 0.6;
+				}
+				picBigLi[iNow].childNodes[0].style.zIndex= iBiggestIndex++;
+				picBigLi[iNow].childNodes[0].style.height= 0;
+				startMove(picBigLi[iNow].childNodes[0],"height",height);
+				picSmallLi[iNow].style.opacity = 1 ;
+				if(iNow == 0){
+						startMove(picSmallUl,"left",0);
+						/*
+						这种体验似乎更好一些
+						*/
+						/*picSmallUl.style.left = "0px";*/
+					}
+					else if(iNow == picSmallLi.length - 1){
+						startMove(picSmallUl,"left",-(iNow-2)*smallWidth);
+						/*
+						这种体验似乎更好一些
+						*/
+						/*picSmallUl.style.left = -(iNow-2)*smallWidth + "px";*/
+					}
+					else{
+						startMove(picSmallUl,"left",-(iNow-1)*smallWidth);
+
+					}
+			}
+			//点击左右箭头的时候图片进行切换
+		}	
+	</script>
+</body>
+</html>

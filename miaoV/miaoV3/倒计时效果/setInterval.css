@@ -1,0 +1,149 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+body{
+	background: url(images/body.gif) repeat;
+	color: white;
+	font-weight: bold;
+}
+
+#bodyWrapper{
+	background: url(images/miaov_bg.jpg);
+	height: 600px;
+	width: 600px;
+	position: absolute;
+	left: 30%;
+	top: 100px;
+}
+
+#searchForm{
+	position: absolute;
+	top: 110px;
+	left: 140px;
+	/* background-color: rgba(0,0,0,0.2); */
+}
+
+input{
+	/*
+	设置input的border为0
+	*/
+	border: 0;
+	text-align: center;
+}
+
+#yearSearch{
+	/*
+	设置background:none;能够实现很美的效果
+	*/
+	background: none;
+	position: absolute;
+	left: 56px;
+	top: 0px;
+	float: left;
+	width: 80px;
+	height: 19px;
+}
+
+#monthSearch{
+	background: none;
+	position: absolute;
+	left: 172px;
+	top: 0px;
+	float: left;
+	width: 50px;
+	height: 19px;
+}
+
+#daySearch{
+	background: none;
+	position: absolute;
+	left: 252px;
+	top: 0px;
+	float: left;
+	width: 48px;
+	height: 19px;
+}
+
+
+#year{
+	position: absolute;
+	left: 142px;
+	top: 0px;
+}
+
+#month{
+	position: absolute;
+	left: 228px;
+	top: 0px;
+}
+
+#day{
+	position: absolute;
+	left: 306px;
+	top: 0px;
+}
+
+#go{
+	background: black url(images/btn_hover.jpg);
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	top: 155px;
+	left: 237px;
+}
+
+#juli{
+	position: absolute;
+	top: 355px;
+	left: 137px;
+}
+
+#searchContent{
+	position: absolute;
+	top: 355px;
+	left: 227px;
+	color: yellow;
+	width: 140px;
+	font-size: 20px;
+	text-align: center;
+}
+
+#leave{
+	position: absolute;
+	top: 355px;
+	left: 377px;
+}
+
+#realLeave{
+	position: absolute;
+	top: 392px;
+	left: 98px;
+	font-size: 46px;
+	height: 50px;
+	width: 400px;
+	line-height: 50px;
+	color: yellow;
+}
+
+#day{
+	position: absolute;
+	left: 0px;
+}
+
+#hour{
+	position: absolute;
+	left: 122px;
+}
+
+#minute{
+	position: absolute;
+	left: 260px;
+}
+
+#second{
+	position: absolute;
+	left: 362px;
+}

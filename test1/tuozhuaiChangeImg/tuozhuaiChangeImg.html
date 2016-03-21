@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#imgDiv{
+			position: relative;
+			margin: 20px auto;
+			width: 700px;
+			height: 1000px;
+		}
+
+		ul{
+			text-decoration: none;
+			list-style-type: none;
+		}
+
+		li{
+			display: block;
+			float: left;
+			margin: 10px;
+			height: 150px;
+			width: 200px;
+		}
+
+		img{
+			height: 150px;
+			width: 200px;
+		}
+
+		.active{
+			border:1px dashed black;
+		}
+		
+
+	</style>
+
+
+	<!--<script type="text/javascript" src="perfectMove5.js"></script>-->
+	<script type="text/javascript" src="startMove.js"></script>
+</head>
+<body>
+	<div id="imgDiv">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+			<li><img src="img/7.jpg" alt=""></li>
+			<li><img src="img/8.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script>
+	window.onload = function(){
+		var aLi = document.getElementsByTagName("li");
+		var aPos = [];
+		var minZIndex = 1;
+		//将相对定位变成绝对定位
+		for(var i = 0 ; i < aLi.length ; i++){
+			aPos[i] = {};
+			aPos[i] = {left:aLi[i].offsetLeft,top:aLi[i].offsetTop};
+			aLi[i].index = i;
+		}
+		for(var i = 0 ; i < aLi.length ; i ++){
+			aLi[i].style.left = aPos[i].left + "px";
+			aLi[i].style.top = aPos[i].top + "px";
+			aLi[i].style.position = "absolute";
+			aLi[i].style.margin = "0px";
+		}
+		//将相对定位变成绝对定位
+
+		for(var i = 0; i < aLi.length ; i++){
+			setDrag(aLi[i]);
+		}
+
+
+		function setDrag(obj){
+			obj.onmousedown = function(ev){
+				var oEvent = window.event || ev;
+				var disX = oEvent.clientX - obj.offsetLeft;
+				var disY = oEvent.clientY - obj.offsetTop;
+
+				document.onmousemove = function(ev){
+					var oEvent = window.event || ev;
+					obj.style.left = oEvent.clientX - disX + "px";
+					obj.style.top = oEvent.clientY - disY + "px";
+
+					obj.style.zIndex = ++minZIndex;
+					for(var i = 0 ;i < aLi.length ; i ++){
+						aLi[i].className = "";
+					}
+					var nearestIndex = getNearestObj(obj);
+					if((nearestIndex!=null)){
+						/*console.log(nearestIndex);*/
+						aLi[nearestIndex].className = "active";
+						/*console.log("ff");*/
+					}
+					return false;
+				}
+
+				document.onmouseup = function(ev){
+					var nearestIndex = getNearestObj(obj);
+					if((nearestIndex!=null)){
+
+						//这里的逻辑要搞清楚。图片所对应的index的位置
+						startMove(aLi[nearestIndex],aPos[obj.index]);
+						startMove(obj,aPos[aLi[nearestIndex].index]);
+
+						var indexChange = obj.index;
+						obj.index = aLi[nearestIndex].index;
+						aLi[nearestIndex].index = indexChange;
+						aLi[nearestIndex].className = "";
+		
+					}
+					else{
+						startMove(obj,aPos[obj.index]);
+					/*miaovStartMove(obj,aPos[obj.index],MIAOV_MOVE_TYPE.FLEX);*/
+					}
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		}
+
+		function collision(obj,obj1){
+			var l = obj.offsetLeft;
+			var r = obj.offsetLeft + obj.offsetWidth;
+			var t = obj.offsetTop;
+			var b = obj.offsetTop + obj.offsetHeight; 
+
+			var l1 = obj1.offsetLeft;
+			var r1 = obj1.offsetLeft + obj.offsetWidth;
+			var t1 = obj1.offsetTop;
+			var b1 = obj1.offsetTop + obj.offsetHeight; 
+
+			if(r < l1 || l > r1 || t > b1 || b < t1){
+				return false;
+			}
+			else{
+				return true;
+			}
+
+		}
+
+		function getNearestObj(obj){
+			var i;
+			var nearIndex = null;
+			var minDis = 999999999;
+			var objDis = 0 ;
+			for(i = 0 ;i < aLi.length; i++){
+				if(aLi[i] == obj){
+					continue;
+				}
+				else{
+					if(collision(obj,aLi[i])){
+						var x = obj.offsetLeft - aLi[i].offsetLeft;
+						var y = obj.offsetTop - aLi[i].offsetTop;
+						objDis = Math.sqrt(x*x + y*y);
+						if(objDis < minDis){
+							nearIndex = i;
+							minDis = objDis;
+						}
+					}
+				}
+			}
+			return nearIndex;
+		}
+	}
+
+
+	
+
+	</script>
+</body>
+</html>

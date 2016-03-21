@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片说明demo</title>
+    <!--样式-->
+    <style type="text/css">
+        /*主div*/
+        #main
+        {
+            width: 960px;        
+            height: 600px;      
+            border: 1px solid #000;     
+            margin: auto;
+        }
+        .content
+        {
+            margin:auto;
+            margin-top: 50px;
+            width: 99%;
+        }
+        .photo
+        {
+            float: left;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        /*图片*/
+        .pic
+        {
+            height: 287px;
+            width: 287px;         
+            border: 1px solid #fc2;
+        }
+
+        /*文字描述*/
+        .des
+        {
+            display: none;
+            width: 289px;
+            height: 289px;
+            margin-top: -289px;
+            border: 1px solid #ce3; 
+            background-color: #000;
+            color: #fff;
+            z-index:10px;
+            position: relative;
+        }
+        .detail
+        {
+            display: none;
+            width: 300px;
+            height: 200px;
+            background-color: #eec;
+        }
+    </style>
+    <!--JS代码-->
+    <script type="text/javascript">
+        function ShowDes( id ){
+            document.getElementById('des'+ id ).style.display = "block";
+        }
+        function ClearDes( id ){
+            document.getElementById('des'+ id ).style.display = "none";
+        }
+        function ShowDetail( id ){
+            document.getElementById( 'detail'+id ).style.display = "block";
+            document.getElementById('list_content').style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="list_content" class="content">
+            <div class="photo">
+                <img class="pic" id="img1" onmouseover="ShowDes(1)" onmouseout="ClearDes(1)" src="http://img0.bdstatic.com/img/image/sy1204.jpg" />
+                <span  id="des1" onclick="ShowDetail(3)" class="des">
+                    图片一
+                </span>
+            </div>
+            <div  class="photo">
+                        <img id="img2" class="pic" onmouseover="ShowDes(2)" onmouseout="ClearDes(2)" src="http://img0.bdstatic.com/img/image/8034a36acaf2edda3cc7a7cfd3703e93901213f9208.jpg" />
+
+                <span  id="des2" class="des">
+                    图片二
+                </span>
+            </div>
+            <div  class="photo">
+                <img class="pic"  id="img3" onmouseover="ShowDes(3)" onmouseout="ClearDes(3)" src="http://img0.bdstatic.com/img/image/379b8389b504fc2d5625c364ec2e51190ef76c66ce7.jpg" />
+
+                <span id="des3" class="des" >
+                    图片三
+                </span>
+            </div>
+        </div>
+        <div id = "detail1" class = "detail" >
+            APP详情1
+        </div>
+        <div id = "detail2" class = "detail" >
+            APP详情2
+        </div>
+        <div id = "detail3" class = "detail" >
+            APP详情3
+        </div>
+    </div>
+</body>
+</html>

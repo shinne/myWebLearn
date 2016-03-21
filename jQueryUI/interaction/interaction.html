@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/external/jquery/jquery.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="myJs.js"></script>
+	<link rel="stylesheet" href="../js/jquery-ui.css">
+	<link rel="stylesheet" href="myStyle.css">
+</head>
+<body>
+	
+	<div class="draggable">draggable</div>
+<hr/>
+	<div class="droppable">droppable</div>
+<hr/>
+	<div class="resizable">droppable</div>
+<hr/>
+<style type="text/css">
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+</style>
+<ol id="selectable">selectable
+  <li class="ui-widget-content">Item 1</li>
+  <li class="ui-widget-content">Item 2</li>
+  <li class="ui-widget-content right" >Item 3</li>
+  <li class="ui-widget-content">Item 4</li>
+  <li class="ui-widget-content">Item 5</li>
+  <li class="ui-widget-content">Item 6</li>
+  <li class="ui-widget-content">Item 7</li>
+</ol>
+<button id="selectButton">答题开始</button>
+<hr/>
+
+<ol id="sortable">sortable
+  <li >Item 1</li>
+  <li >Item 2</li>
+  <li >Item 3</li>
+  <li >Item 4</li>
+  <li >Item 5</li>
+  <li >Item 6</li>
+  <li >Item 7</li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height:2000px;">
+	<div id="pressDiv" style="width:200px;height:200px;background:grey;position:absolute;">
+</body>
+<script type="text/javascript">
+
+	//普通事件：onclick,onmouseover
+	//DOM事件：DOMMouseScroll
+	//DOM事件只能通过绑定来添加
+	window.onload = function(){
+
+		function myAddEvent(obj,sEvent,fn){
+			if(obj.attachEvent){
+				obj.attachEvent("on" + sEvent,fn);
+			}
+			else{
+				obj.addEventListener(sEvent,fn);
+			}
+		}
+		var oDiv = document.getElementById("pressDiv");
+		/*
+		//IE,chrome
+		oDiv.onmousewheel = function(){
+			alert("a");
+		}
+		
+		//FF
+		oDiv.addEventListener("DOMMouseScroll",function(){
+			alert("a");
+		});*/
+
+		
+		function mouse(ev){
+			var oEvent = ev || window.event;
+			//IE wheelDelta:下  负，上  正
+			//IE detail:下  正，上  负
+
+			/*
+			这里是给各个浏览器指定统一的标准，下为负
+			*/
+			var bDown = true;
+			/*
+			这句话解决了下面的if-else
+			*/
+			bDown = oEvent.wheelDelta ?oEvent.wheelDelta<0 : oEvent.detail>0;
+			/*if(oEvent.wheelDelta){
+				if(oEvent.wheelDelta < 0 ){
+					bDown = true;
+				}
+				else{
+					bDown = false;
+				}
+			}
+
+			else{
+				if(oEvent.detail > 0 ){
+					bDown = true;
+				}
+				else{
+					bDown = false;
+				}
+			}*/
+			if(bDown){
+				oDiv.style.height = oDiv.offsetHeight + 10 + "px";
+			}
+			else{
+				oDiv.style.height = oDiv.offsetHeight - 10 + "px";
+			}
+			/*
+			oDiv滚轮运动的时候body的滚动条不滑动，当然也有兼容问题
+			*/
+			if(oEvent.preventDefault){
+				oEvent.preventDefault();
+			}
+			return false;
+			/*
+			oDiv滚轮运动的时候body的滚动条不滑动，当然也有兼容问题
+			*/
+		}
+
+		/*
+		为了兼容这里是必须要写两个，以识别chrome,FF,IE
+		*/
+		myAddEvent(oDiv,"mousewheel",mouse);
+		myAddEvent(oDiv,"DOMMouseScroll",mouse);
+		/*
+		为了兼容这里是必须要写两个，以识别chrome,FF,IE
+		*/
+	}
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="drawing" width="200px" height="200px"></canvas>
+
+
+	<script type="text/javascript">
+	var drawing = document.getElementById("drawing");
+	if(drawing.getContext){
+		var context = drawing.getContext("2d");
+		context.strokeStyle = "#00FF00";
+		context.strokeRect(10,10,50,50);
+		console.log("red");
+
+		context.shadowOffsetX = 5;
+		context.shadowOffsetY = 5;
+		context.shadowBlur = 4;
+		context.shadowColor = "rgba(0,0,0,0.5)";
+		context.fillStyle = "rgba(0,0,255,0.5)";
+		context.fillRect(30,30,50,50);
+		console.log("red");
+
+		context.clearRect(40,40,10,10);
+
+		context.beginPath();
+		context.arc(100,100,99,0,2*Math.PI,false);
+
+		context.moveTo(194,100);  //这句拿来没用？
+		context.arc(100,100,94,0,2*Math.PI,false);
+
+		context.moveTo(100,100);
+		context.lineTo(100,15);
+
+		context.moveTo(100,100);
+		context.lineTo(35,100);
+
+		context.stroke();
+
+		context.textAlign = "start";
+		context.fillText("FFFFFFFF",100,40);
+
+		context.textAlign = "end";
+		context.fillText("FFFFFFFF",100,60);
+
+		var gradient = context.createLinearGradient(100,100,300,300);
+		gradient.addColorStop(0,"yellow");
+		gradient.addColorStop(0.2,"black");
+		gradient.addColorStop(0.6,"orange");
+		gradient.addColorStop(1,"green");
+		context.fillStyle = gradient;
+		context.fillRect(100,100,200,200);
+		console.log("red");
+	}
+
+	</script>
+</body>
+</html>

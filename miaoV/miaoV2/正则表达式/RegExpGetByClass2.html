@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="box"></li>
+			<li></li>
+			<li class="box"></li>
+			<li></li>
+			<li class="box"></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function() {
+		function getByClass(oParent,sClass){
+			var aElements = oParent.getElementsByTagName("*");
+			var re = new RegExp("\\b" + sClass + "\\b","g");
+			var aResult = [];
+			for(var i = 0 ; i < aElements.length ; i ++){
+				//
+				if(re.test(aElements[i].className)){
+					aResult.push(aElements[i]);
+				}
+			}
+			return aResult;
+		}
+
+
+		var oUl = document.getElementsByTagName("ul")[0];
+		var aResult = getByClass(oUl,"box");
+		for(var i = 0 ; i < aResult.length ; i ++){
+			aResult[i].style.background = "red";
+		}
+	}
+
+
+	</script>
+</body>
+</html>

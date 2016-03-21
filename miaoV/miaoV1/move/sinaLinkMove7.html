@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/perfectMove5.js"></script>
+	<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+	#speak{
+		height: 300px;
+		width: 300px;
+	}
+	#showUl{
+		height: 400px;
+		width: 500px;
+		margin: 10px auto;
+		border: 3px solid black;
+		overflow: hidden;
+	}
+	#showUl{
+		list-style: none;
+	}
+	div#showUl>li{
+		border-bottom: 1px dashed #939796;
+		padding-bottom: 2px;
+	}
+	</style>
+</head>
+<body>
+	<textarea id="speak"></textarea>
+	<button>发布</button>
+	<div id="showUl">
+		
+	</div>
+	<script type="text/javascript">
+	var speakDiv = document.getElementById("speak");
+	var btn = document.getElementsByTagName("button")[0];
+	var ul = document.getElementById("showUl");
+	var li = document.getElementsByTagName("li");
+	btn.onclick = function(){
+		var content = speakDiv.value;
+		speakDiv.value = "";
+		var aLi = document.createElement("li");
+		aLi.innerHTML = content;
+		aLi.style.opacity = "0.5";
+		/*
+		在一个元素的头加上内容
+		*/
+		if(li.length){
+			ul.insertBefore(aLi,li[0])
+		}
+		else{
+			ul.appendChild(aLi);
+		}
+		
+		iHeight = aLi.offsetHeight;
+		aLi.style.height = 0;
+		//先将高度设置为0，后使用动画设置高度
+		startMove(aLi,{"height":iHeight},function(){
+			startMove(aLi,{"opacity":100});
+		});
+	}
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#bigDiv{
+		position: absolute;
+		height: 500px;
+		width: 500px;
+		background: red;
+		left: 0px;
+		top: 0px;
+	}
+	#div1{
+		position:relative;
+		height: 100px;
+		width: 100px;
+		background: yellow;
+		left: 50px;
+		top: 50px;
+	}
+
+	#div2{
+		position: relative;
+		height: 100px;
+		width: 100px;
+		background: green;
+		left: 60px;
+		top: 60px;
+	}
+
+	#div3{
+		position: fixed;
+		height: 100px;
+		width: 100px;
+		background:blue;
+		left: 260px;
+		top: 260px;
+	}
+
+
+	#bigDiv2{
+		position: absolute;
+		height: 500px;
+		width: 500px;
+		background: #939796;
+		left: 500px;
+		top: 500px;
+	}
+	#div5{
+		float: left;
+		height: 100px;
+		width: 100px;
+		background: yellow;
+
+	}
+
+	#div6{
+		height: 100px;
+		width: 100px;
+		background: green;
+	
+	}
+
+	#div7{
+		float: left;
+		height: 100px;
+		width: 100px;
+		background:blue;
+
+	}
+
+	div{
+		height: 100px;
+		width: 100px;
+		background:purple;
+	}
+
+	#bigDiv3{
+		position: absolute;
+		height: 500px;
+		width: 500px;
+		background: green;
+		left: 500px;
+		top: 1200px;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="bigDiv">
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+	</div>
+
+
+	<div id="bigDiv2">
+		<span>span4</span>
+		<div id="div5">div5float</div>
+		<div id="div6">div6</div>
+		<div id="div7">div7float</div>
+		<span>span8</span>
+	</div>
+
+	<div id="bigDiv3">
+		
+		<span>span10</span>
+		<div>div9</div>
+		<span>span11</span>
+	</div>
+	
+</body>
+</html>

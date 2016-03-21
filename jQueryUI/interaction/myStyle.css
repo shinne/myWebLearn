@@ -1,0 +1,17 @@
+.draggable{
+	height: 200px;
+	width: 200px;
+	background: #939796;
+}
+
+.droppable{
+	height: 500px;
+	width: 500px;
+	background: orange;
+}
+
+.resizable{
+	height: 100px;
+	width: 100px;
+	background: red;
+}

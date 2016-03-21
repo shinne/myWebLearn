@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#blockDiv{
+			height: 100px;
+			width: 100px;
+			background: red;
+			margin-top: 10px;
+			display: none;
+		}
+
+	</style>
+	<script type="text/javascript" src="VQuery.js"></script>
+</head>
+<body>
+	<button id="button1">显示/隐藏</button>
+	<div id="blockDiv"></div>
+	<button id="button2">222</button>
+	<button id="button3">333</button>
+	<button id="button4">444</button>
+	<button id="button5">555</button>
+	<br/>
+	<input id ="text" type="text" value = "attr">
+	<button id="button6">读取文字</button>
+	<button id="button7">设置文字</button>
+	<script>
+	$("#button1").toggle(function(){
+		$("#blockDiv").show();
+	},function(){
+		$("#blockDiv").hide();
+	});
+
+	$("#button2").toggle(function(){
+		
+	},function(){
+		
+	});
+
+	$("#button3").toggle(function(){
+	
+	},function(){
+		
+	});
+
+	$("#button4").toggle(function(){
+		
+	},function(){
+		
+	});
+
+	$("#button5").toggle(function(){
+		
+	},function(){
+	
+	});
+
+	$("#button6").click(function(){
+		var text = $("#text").attr("value");
+		console.log(text);
+	});
+
+	$("#button7").click(function(){
+		$("#text").attr("value","设置文字");
+	});
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	table{
+		border: 1px solid red;
+	}
+	tr{
+		border: 1px solid #939796;
+
+	}
+
+	td{
+		border: 1px solid #939796;
+		height: 20px;
+		width: 80px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<input id = "oTxt" type="text">
+	<button>增加元素</button>
+	<br/>
+	<br/>
+	<input id = "oSearch" type="text">
+	<button>关键字搜索</button>
+	<br/><br/>
+	<table id = "oTable">
+		<thead>
+			<td>Id</td>
+			<td>Name</td>
+			<td>Do</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>yoyo1</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>happ2</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>niwa3</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>jiaf4</td>
+				<td>44</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>soso5</td>
+				<td>55</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>beibei6</td>
+				<td>66</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+
+	<br/><br/>
+	<button>Id排序</button>
+	<br/><br/>
+	<table id = "oPaiXuTable">
+		<thead>
+			<td>Id</td>
+			<td>Name</td>
+			<td>Do</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>17</td>
+				<td>yoyo1</td>
+				<td>11</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>happ2</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>niwa3</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>jiaf4</td>
+				<td>44</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>soso5</td>
+				<td>55</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>beibei6</td>
+				<td>66</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+	window.onload = function(){
+		var oldBgColor = "";
+		var oTxt = document.getElementById("oTxt");
+		var oTable = document.getElementById("oTable");
+		var oButton1 = document.getElementsByTagName("button")[0];
+		var oButton2 = document.getElementsByTagName("button")[1];
+		var oButton3 = document.getElementsByTagName("button")[2];
+		
+		for(var i = 0 ; i < oTable.tBodies[0].rows.length ; i ++){
+			/*
+			偶数行为yellow
+			*/
+			// if(i%2){
+			// 	 oTable.tBodies[0].rows[i].style.background = "yellow";
+			// }
+			/*
+			当鼠标经过的时候展示的颜色
+			*/
+			oTable.tBodies[0].rows[i].onmouseover = function(){
+				oldBgColor = this.style.background;
+				this.style.background = "#CCC";
+			}
+			/*
+			当鼠标离开的时候回到最初的颜色
+			*/
+			oTable.tBodies[0].rows[i].onmouseout = function(){
+				this.style.background = oldBgColor;
+			}
+		}
+
+		oButton1.onclick = function(){
+			var sValue = oTxt.value;
+			var oAddTd = null;
+			var oAddTr = document.createElement("tr");
+
+			oAddTd = document.createElement("td");
+			oAddTd.innerHTML = parseInt(oTable.tBodies[0].rows[oTable.tBodies[0].rows.length - 1].cells[0].innerHTML) + 1;
+			oAddTr.appendChild(oAddTd);
+
+			oAddTd = document.createElement("td");
+			oAddTd.innerHTML = sValue;
+			oAddTr.appendChild(oAddTd);
+
+			oAddTd = document.createElement("td");
+			oAddTd.innerHTML = "<a href='#'>删除</a>";
+			oAddTr.appendChild(oAddTd);
+
+			oTable.tBodies[0].appendChild(oAddTr);
+
+			var aDo = document.getElementsByTagName("a"); 
+			for(var j = 0 ; j < aDo.length ; j++){
+				aDo[j].onclick = function(){
+				/*
+				删除的是父级的父级
+				*/
+				oTable.tBodies[0].removeChild(this.parentNode.parentNode);
+				return false;
+				}
+			}
+		}
+
+		oButton2.onclick = function(){
+			var oSearch = document.getElementById("oSearch").value;
+			var oSearchArray = oSearch.split(" ");
+			for(var i  = 0 ; i <oSearchArray.length ; i ++){
+				for(var j = 0 ; j <oTable.tBodies[0].rows.length ; j ++){
+					var oRowTxt = oTable.tBodies[0].rows[j].cells[1].innerHTML.toLowerCase();
+					var oSearchTxt = oSearchArray[i].toLowerCase();
+					oTable.tBodies[0].rows[j].color = oTable.tBodies[0].rows[j].style.background;
+					if(oRowTxt.search(oSearchTxt) != -1){
+						oTable.tBodies[0].rows[j].style.background = "red";
+					}
+					else{
+						oTable.tBodies[0].rows[j].style.background = "";
+					}
+				}
+			}
+		}
+
+
+		
+	
+		/*
+		将得到的数组进行正序排列，注意使用sort函数
+		*/
+		function smallToBig(arr){
+			arr.sort(function(tr1,tr2){
+			return parseInt(tr1.cells[0].innerHTML) - parseInt(tr2.cells[0].innerHTML);
+		});
+			return arr;
+		}
+
+		/*
+		将得到的数组进行倒序排列，注意使用sort函数
+		*/
+		function bigToSmall(arr){
+			arr.sort(function(tr1,tr2){
+			return parseInt(tr2.cells[0].innerHTML) - parseInt(tr1.cells[0].innerHTML);
+		});
+			return arr;
+		}
+		/*
+		正序和逆序的转换
+		*/
+		var bUp = true;
+		var oPaiXuTable = document.getElementById("oPaiXuTable");
+		var oPaiXuRow = oPaiXuTable.tBodies[0].rows;
+		var arr = [];
+		
+		oButton3.onclick = function(){
+			/*
+			将得到的rows全部全部存到数组里面，进行排序
+			*/
+			for(var i = 0 ; i <oPaiXuRow.length ; i++){
+				arr[i] = oPaiXuRow[i];
+			}
+			if(bUp){
+				bUp=false;
+				smallToBig(arr);
+			}
+			else{
+				bUp=true;
+				bigToSmall(arr);
+			}
+			for(var i = 0 ; i <arr.length ; i++){
+				oPaiXuTable.tBodies[0].appendChild(arr[i]);
+			}
+		}
+	
+		/*
+		用json获得每列每行的数据
+		*/
+		var rowsLen = oTable.tBodies[0].rows.length;
+		var cellsLen = oTable.tBodies[0].rows[0].cells.length;
+		var tableContent ={"trContent":[]};
+		function TrContent(){
+		}
+		for(var i = 0 ; i < rowsLen ; i ++ ){
+			var trContent = new TrContent();
+			for(var j = 0 ; j < cellsLen ; j++){
+				console.log(oTable.tBodies[0].rows[i].cells[j].innerHTML);
+				switch(j){
+					case 0:
+						trContent["Id"] = oTable.tBodies[0].rows[i].cells[j].innerHTML;
+					case 1:
+					trContent["Name"] = oTable.tBodies[0].rows[i].cells[j].innerHTML;
+					case 2:
+					trContent["Do"] = oTable.tBodies[0].rows[i].cells[j].innerHTML;
+				}
+
+			}
+			tableContent.trContent.push(trContent);
+		}
+		console.log(tableContent);
+		/*
+		用json获得每列每行的数据
+		*/
+			
+
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#blockDiv{
+			height: 100px;
+			width: 100px;
+			background: red;
+			margin-top: 10px;
+		}
+
+		#hover{
+			height: 100px;
+			width: 100px;
+			background: orange;
+			margin-top: 10px;
+		}
+	</style>
+	<script type="text/javascript" src="VQuery.js"></script>
+</head>
+<body>
+	<button id="button1">show</button>
+	<button id="button2">hide</button>
+	<div id="blockDiv"></div>
+
+	<div id="hover"> hover</div>
+
+	<script>
+	$("#button1").click(function(){
+		$("#blockDiv").show();
+	})
+
+	$("#button2").click(function(){
+		$("#blockDiv").hide();
+	})
+
+	$("#hover").hover(function(){
+		$(this).css("background","yellow");
+		var width = $(this).css("width");
+		console.log(width);
+	},function(){
+		$(this).css("background","orange")
+	})
+
+	</script>
+</body>
+</html>

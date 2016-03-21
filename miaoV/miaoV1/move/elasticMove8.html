@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#elasticDiv{
+		height: 100px;
+		width: 100px;
+		background: red;
+		position: absolute;
+		left: 0px;
+	}
+
+	#div{
+		height: 500px;
+		width: 500px;
+		position: absolute;
+		left: 300px;
+		border-left: 1px solid black;
+	}
+
+	</style>
+</head>
+<body>
+	<button>go</button>
+	<div id="elasticDiv">
+		
+	</div>
+	<div id="div">
+		
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var iSpeed = 0;
+		var target = 300;
+		var moveDiv = document.getElementById("elasticDiv");
+		var btn = document.getElementsByTagName("button")[0];
+		btn.onclick = function(){
+			
+			/*iSpeed *=0.95;*/
+			var timer = setInterval(function(){
+			/*
+			能够使物体速度随着目标点的距离变化而变化
+			*/
+			iSpeed += (target - moveDiv.offsetLeft)/8;
+
+			/*
+			为速度加上一个摩擦力，使他们慢慢变为0
+			*/
+			iSpeed *=0.8;
+			moveDiv.style.left = moveDiv.offsetLeft + iSpeed + "px";
+			},30);
+		}
+
+	}
+
+
+	</script>
+</body>
+</html>

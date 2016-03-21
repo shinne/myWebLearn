@@ -1,0 +1,292 @@
+*{
+	margin: 0px;
+	padding: 0px;	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+}
+
+body{
+	/*
+	
+	设置背景主题颜色，同时背景图片同时设置
+
+	*/
+	background: #CCCCCC url(images/templatemo_bg.gif) repeat-x;
+
+}
+
+div.body{
+	background: white;
+	height: 810px;
+}
+.centerBody{
+	width: 800px;
+	height: 100%;
+	background-color: #FFBB66;
+	margin: 0px auto;
+}
+
+
+.titleTop,.titleFoot{
+	width: 100%;
+	height: 3px;
+	background-color: green;
+}
+.centerTitle{
+	width: 800px;
+	height: 160px;
+	background: green url(images/templatemo_header.jpg)
+}
+
+
+.titleText{
+	padding-top: 60px;
+	padding-left: 80px;
+	width: auto;
+	height: auto;
+}
+
+div.titleText>p.bigText{
+	font-family: Arial;
+	color: white;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+div.titleText>p.smallText{
+	font-family: Arial;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 5px;
+}
+
+div.body>div.bodyLeft{
+	width: 200px;
+	background-color:#BBDDBB;
+	float: left;
+}
+
+div.bodyLeft>div.nav{
+	width: 185px;
+	margin-top: 5px;
+	margin-left: 5px;
+	background-color:#FFFFFF; 
+	height: 162px;
+}
+
+ul.navList{
+	list-style: none;
+	border: 1px solid #006600;
+	
+}
+
+
+ul.navList>li.liList>a.navLink{
+	display: block;
+	padding-left: 10px;
+	height: 27px;
+	line-height: 27px;
+	/*
+	background属性还需要学习啊
+	*/
+	background: green url(images/button_default.gif) repeat-x center;
+	text-decoration: none;
+	color: white;
+	font-family: Helvetica;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+ul.navList>li.liList>a.navLink:hover
+{
+	background: green url(images/button_active.gif) repeat-x center;
+	color: #0066CC;
+}
+
+div.bodyLeft>div.featured{
+	/*
+	当不知道长宽时，只需要设置它的margin既可以确定他的位置和大小
+
+	*/
+	margin:10px;
+	padding: 10px;
+	background-color:#DDF2DD;
+	border: 2px solid #AACCAA;
+
+}
+
+div.featured>p.featureLink{
+	margin-bottom: 5px;
+	color: #008000;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 1.5em;
+}
+
+div.featured>ul.links{
+	list-style-type:none; 
+}
+
+li.aLinks>a.aLink{
+	display: block;
+	color: #0066CC;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: 500;
+}
+
+li.aLinks>a.aLink:link{
+	text-decoration: none;
+}
+
+li.aLinks>a.aLink:hover{
+	text-decoration: underline;
+	color: #008000;
+}
+
+div.featured>div.secondTitle{
+	font-size: 11px;
+	color: #008000;
+	text-align: justify;
+}
+
+
+div.bodyLeft>div.contactMe{
+	margin: 10px;
+}
+
+div.bodyLeft>div.contactMe>div.contactTitle{
+	padding-bottom: 5px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+div.bodyLeft>div.contactMe>p.contactContent{
+	font-size: 11px;
+}
+
+div.bodyLeft>div.aboutMe{
+	margin: 10px;
+	margin-top: 30px;
+}
+
+div.bodyLeft>div.aboutMe>div.aboutTitle{
+	padding-bottom: 5px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+div.bodyLeft>div.aboutMe>p.aboutContent{
+	font-size: 11px;
+	text-align: justify;
+}
+
+
+/*
+bodyRight
+*/
+
+div.body>div.bodyContent{
+	width: 580px;
+	float: right;
+	background-color:white; 
+	padding:10px; 
+
+}
+
+div.bodyContent>div.bodyTitle{
+	color: #008800;
+	font-weight: bold;
+	font-size: 16px;
+	padding-bottom: 5px;
+}
+
+div.content>img.imgRight{
+	display: block;
+	float: right;
+	height: 240px;
+	width: 180px;
+	margin-left: 10px;
+	border: 1px solid black;
+}
+
+div.bodyContent>p.par{
+	font-size: 11px;
+	padding-bottom: 18px;
+	text-align: justify;
+}
+
+p.par>a.aHref{
+	font-size: 13px;
+	text-decoration: none;
+	color: #0066CC;
+}
+
+p.par>a.aHref:hover{
+	text-decoration: underline;
+	color: #008000;
+}
+
+div.bodyContent>p.lastPar{
+	padding-bottom: 0px;
+}
+
+div.bodyContent>div.itemClass{
+	margin-top: 10px;
+	border: 1px solid #CCCCCC;
+	background-color: #F8F8F8;
+	padding: 10px;
+
+}
+
+
+div.itemClass>p.itemTitle{
+	padding-bottom: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #666666;
+	text-align: left;
+}
+
+div.itemClass>p.itemContent{
+	font-size: 11px;
+	color: #666666;
+	text-align: justify;
+	padding-bottom: 5px;
+}
+
+div.itemClass>p.itemFoot{
+	color: #999999;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+p.itemFoot>a.itemLink{
+	color: #0066CC;
+	text-decoration: none;
+}
+
+p.itemFoot>a.itemLink:hover{
+	color: #008000;
+	text-decoration: underline;
+}
+
+div.foot{
+	width: 100%;
+	height: 28px;
+	background: #007700;
+	line-height: 28px;
+	text-align: center;
+	color: white;
+	font-size: 11px;
+}
+
+div.foot>a.footLink{
+	text-decoration: none;
+	color: white;
+}
+
+div.foot>a.footLink:hover{
+	text-decoration: underline;
+}

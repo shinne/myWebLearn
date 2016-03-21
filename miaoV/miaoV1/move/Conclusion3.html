@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+	div{
+		width:200px;
+		height:40px;
+		background:green;
+		margin-top: 40px;
+	}
+</style>
+</head>
+<body>
+	<div style=""></div>
+	<div style=""></div>
+	<div style="font-size:20px;">dddddddd</div>
+	<div style="border:1px solid black"></div>
+	<div style="filter:alpha(30);opacity:0.3;"></div>
+
+</body>
+	<script type="text/javascript">
+
+
+	function getStyle(obj,attr){
+		if(window.currentStyle){
+			if(attr=="opacity");
+			return obj.currentStyle[attr];
+		}
+		else{
+			return getComputedStyle(obj,false)[attr];
+		}
+	}
+
+	function startMove(obj,attr,iTarget){
+		clearInterval(obj.timer);
+		/*var iCur = parseInt(getStyle(obj,attr));*/
+		obj.timer = setInterval(function(){
+
+			//iCur的值一定要写在定时器的里面，不然的话只会变动一次，因为最后面的else总是执行的是iCur加上速度，没有变化
+			var iCur=0;
+			//对opacity进行特殊处理
+			if(attr == "opacity"){
+				iCur = parseInt(parseFloat(getStyle(obj,attr))*100);
+			}
+			else{
+				var iCur = parseInt(getStyle(obj,attr));
+			}
+			iSpeed = (iTarget - iCur)/8;
+			iSpeed = iSpeed > 0 ? Math.ceil(iSpeed):Math.floor(iSpeed);
+
+			console.log(iSpeed);
+			if(iCur == iTarget){
+				clearInterval(obj.timer);
+			}
+			else{
+				if(attr == "opacity"){
+					//对opacity进行特殊处理
+					obj.style.filter = 'alpha(opacity:' + (iCur + iSpeed) + ')';
+					obj.style.opacity = (iCur + iSpeed)/100;
+				}
+				else{
+					obj.style[attr] = iCur + iSpeed + "px";
+				}
+			}
+		},30);
+	}
+
+	window.onload = function(){
+
+	var divArray = document.getElementsByTagName("div");
+		divArray[0].timer = null;
+		divArray[0].onclick = function(){
+			startMove(this,'width',400);
+		}
+
+		divArray[1].timer = null;
+		divArray[1].onclick = function(){
+			startMove(this,'height',300);
+		}
+
+		divArray[2].timer = null;
+		divArray[2].onclick = function(){
+			startMove(this,'font-size',80);
+		}
+
+		divArray[3].timer = null;
+		divArray[3].onclick = function(){
+			startMove(this,'borderWidth',5);
+		}
+
+		divArray[4].timer = null;
+		divArray[4].onclick = function(){
+			startMove(this,'opacity',100);
+		}
+	}
+
+	</script>
+</body>
+</html>
+

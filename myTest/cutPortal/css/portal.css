@@ -1,0 +1,415 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+	font-family: "微软雅黑"
+}
+
+
+body{
+	background-color: #EDEBE8;
+}
+.external{
+	width: 1100px;
+	background-color: #EDEBE8;
+	margin:0px auto;
+}
+
+
+.nav{
+	height: 100px;
+	width: 100%;
+}
+
+.advertisement{
+	height: 295px;
+	width: 100%;
+}
+
+.service{
+	height: 175px;
+	width: 100%;
+	margin-top: 12px;
+}
+.companyInfo{
+	height: 220px;
+	width: 100%;
+}
+.foot{
+	height: 60px;
+	width: 100%;
+	text-align: center;
+	line-height: 60px;
+	color: #646464;
+	font-size: 12px;
+	border-top: 1px solid #D7D5D3;
+}
+
+.telephone{
+	float: right;
+	margin-top: 20px;
+}
+
+.telText{
+	line-height: 27px;
+	float: right;
+	font-size: 14px;
+	color: #636363;
+}
+
+.navLeft{
+	clear:both;
+	float: left;
+	color: #443325;
+	width: 240px;
+}
+
+
+.bluePencil{
+	float: left;
+
+}
+.bigBlue{
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.block{
+	width: 70px;
+	height: 30px;
+	float: right;
+	margin-top: 5px;
+	background-color: black;
+}
+
+.smallBlue{
+	font-size: 12px;
+}
+
+.navRight{
+	margin-left: 13px;
+	float: right;
+	width: 847px;
+	height: 45px;
+}
+
+ul.navClass{
+	list-style-type: none;
+	font-size: 16px;
+
+}
+
+ul.navClass li{
+	float: left;
+	line-height: 45px;
+}
+
+ul.navClass li a{
+	display: block;
+	width: auto;
+	height: 45px;
+	text-decoration: none;
+	color: #555555;
+	font-weight: bold;
+	margin-right: 40px;
+}
+
+
+.adLeft{
+	height: 99%;
+	width: 240px;
+	float: left;
+	background-color: #F6C20E;
+
+}
+
+.adRight{
+	margin-left: 13px;
+	width: 847px;
+	height: 100%;
+	float: right;
+	background:url(../images/portal.jpg) no-repeat;
+
+}
+
+.loginClass{
+	height: 18px;
+	width: 200px;
+	margin:0px auto;
+	border-bottom: 2px dashed #FFFFFF;
+	padding-top: 26px;
+	padding-bottom: 12px;
+	padding-left: 16px;
+	font-weight: bold;
+	color: #1E1E1E;
+	font-size: 18px;
+}
+
+
+.formClass{
+	width: 178px;
+	height: 178px;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.aBlock{
+	display: block;
+	font-size: 14px;
+	color: #6F593F;
+	margin-bottom: 12px;
+}
+
+.textInput{
+	width: 175px;
+	border-radius: 8px;
+	height: 25px;
+}
+
+.buttonClass{
+	display: block;
+	background:url(../images/buttonBg.jpg);
+	width: 90px;
+	height: 28px;
+	border-radius: 10px;
+	margin:8px auto;
+	color: white;
+}
+
+.forget{
+	height: 42px;
+	line-height: 42px;
+	width: 90px;
+	font-size: 12px;
+	color: #6F593F;
+	margin: 0px auto;
+}
+
+
+.mvClass{
+	width: 320px;
+	height: 100%;
+	margin-right: 70px;
+	float: left;
+}
+
+.div1{
+	float: left;
+	width: 178px;
+	height: 50%;
+}
+
+.div1Title{
+	font-size: 14px;
+	font-weight: bold;
+	color: #0A7D99;
+}
+
+.div1Text{
+    margin-left: 18px;
+    font-size: 12px;
+    color: #575753;
+}
+.div2{
+	float: right;
+	height: 140px;
+	width: 120px;
+}
+
+.div3{
+	background:url(../images/button2Bg.jpg);
+	float: left;
+	margin-top: 20px;
+	width: 75px;
+	height: 23px;
+	border-radius: 8px;
+	color: white;
+	font-size:12px;
+	line-height: 23px;
+	text-align: center;
+
+}
+
+.lastClass{
+	margin-right: 0px;
+}
+
+.infoFirst{
+	width: 240px;
+	height: 170px;
+	border-radius: 5px;
+	float: left;
+	background-color: #DEDEDE;
+	-webkit-box-shadow:1px 1px 1px #666666;
+}
+
+
+
+
+.text{
+	float: left;
+	margin-top: 12px;
+	margin-left: 18px;
+	margin-right: 6px;
+	font-weight: 900;
+
+}
+
+.radius{
+	/*position:relative;
+	top:0px;
+	left: 100px;*/
+}
+
+.contact{
+	display: block;
+	float: right;
+	margin-top: -10px;
+	margin-right: 0px;
+}
+p.callUs{
+	color:#3B3B3B;
+	font: 18px;
+
+}
+
+p.smallText{
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666;
+}
+
+p.firstText{
+	padding-top: 20px;
+}
+
+
+p.underLineText{
+	border-bottom: 1px dashed #AAAAAA;
+}
+
+p.lastText{
+	padding-top: 15px;
+	
+
+}
+
+
+.infoEnergy{
+	margin-left: 25px;
+	margin-right: 6px;
+	width: 296px;
+	height: 100%;
+	float: left;
+
+	
+
+}
+
+.titleBig{
+	width: 100%;
+	height: 20px;
+	padding-bottom:8px;
+	border-bottom: 2px solid #D7D5D3;
+	padding-top: 0px;
+	line-height: 20px;
+}
+
+.lineImg{
+	display: block;
+	float: left;
+	margin-top: 10px;
+}
+
+.companyEngergy{
+	margin-left: 12px;
+	font-size: 14px;
+	color: #0A7D99;
+	font-weight: 900;
+}
+
+.more{
+	float: right;
+	font-size:14px;
+	font-family: "Arial";
+	color: #636363;
+}
+
+.description{
+	padding-top: 8px;
+	height: 180px;
+	margin-left: 20px;
+	float: left;
+	width: 276px;
+	
+}
+
+.description ul{
+	list-style-type: none;
+}
+
+
+.description ul li a{
+	text-decoration: none;
+	color: #7D7979;
+	font-size: 12px;
+	font-weight: 500;
+	
+}
+
+.description ul li a:hover,.description ul li a:active{
+	text-decoration: underline;
+	color: #AAAAAA;
+}
+
+.infoLink{
+	width: 180px;
+	height: 100%;
+	margin-left: 25px;
+	margin-right: 0px;
+}
+
+.lineClass{
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-right: 4px;
+}
+
+
+/*
+	height:20%;
+	width: 276px;
+	/*
+	溢出显示时隐藏
+	*/
+	/*
+	overflow: hidden;*/
+	
+	/*
+	white-space : normal | pre | nowrap
+
+	取值：
+
+	normal  :　 默认值。默认处理方式。文本自动处理换行。假如抵达容器边界内容会转到下一行
+
+	pre  :　 换行和其他空白字符都将受到保护。这个值需要IE6+或者 !DOCTYPE 声明为 standards-compliant mode 支持。如果 !DOCTYPE 声明没有指定为 standards-compliant mode ，此属性可以使用，但是不会发生作用。结果等同于 normal 。参阅 pre 对象
+
+	nowrap  :　 强制在同一行内显示所有文本，直到文本结束或者遭遇 br 对象。参阅 noWrap 属性
+	*/
+	/*
+	white-space: nowrap;
+
+	/*
+	text-overflow:clip | ellipsis
+
+	clip：不显示省略标记(...)，而是简单的裁切
+
+	ellipsis：当对象向内文本溢出时显示省略标记(...)
+	*/
+	/*
+	text-overflow:ellipsis;
+
+	*/

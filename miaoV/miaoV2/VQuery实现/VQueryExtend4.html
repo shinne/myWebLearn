@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#divId{
+		height: 100px;
+		width: 100px;
+		background: red;
+	/* 	filter:alpha(opacity:30);
+	opacity: 0.3; */
+	}
+
+
+</style>
+	<script type="text/javascript" src="VQuery.js"></script>
+	<script type="text/javascript" src="VQuery_animate.js"></script>
+<body>
+	<div id="divId">
+		
+
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+
+	$().extend("size",function(){
+		return this.elements.length;
+	});
+
+	alert($("div").size());
+
+
+	$("#divId").animate({"height":"200","width":"300"});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>	
+
+		//这个函数实现数组交换
+		function swap(A,a,b){
+			var temp = A[b] ; 
+			A[b] = A[a];
+			A[a] = temp;
+		}
+		function  bubbleSort(A){
+			for(var i = 0 ; i < A.length ; i ++){
+				var sorted = true;
+				for(var j = 0 ; j < A.length - i - 1 ; j ++){
+					if(A[j] > A[j+1]){
+						swap(A,j,j+1);
+						sorted = false;
+					}
+				}
+				if(sorted){
+					return;
+				}
+			}
+		}
+
+		var a = [2,3,5,1,7,4,9,6,8];
+		var sort = bubbleSort(a);
+		console.log(a);
+
+	</script>
+</body>
+</html>

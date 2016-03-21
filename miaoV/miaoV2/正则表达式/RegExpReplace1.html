@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<textarea name="" id="text1" cols="30" rows="10"></textarea>
+<button id="btn1">过滤</button>
+<textarea name="" id="text2" cols="30" rows="10"></textarea>
+	<script type="text/javascript">
+	window.onload = function() {
+		var oText1 = document.getElementById("text1");
+		var oText2 = document.getElementById("text2");
+		var oBtn = document.getElementById("btn1");
+
+		oBtn.onclick = function () {
+			var re = /你们|我们|他们/g;
+			oText2.value =  oText1.value.replace(re,"***");
+		}
+	}
+	
+	
+	</script>
+</body>
+</html>

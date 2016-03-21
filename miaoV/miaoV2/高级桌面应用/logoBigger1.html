@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0px;
+		padding:0px;
+	}
+	#imgDiv{
+		position: absolute;
+		bottom: 0px;
+		text-align: center;
+		width: 100%;
+	}
+	img{
+		height: 76px;
+	}
+
+	</style>
+</head>
+<body>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<div id="imgDiv">
+		<img src="img/ie.jpg" alt="">
+		<img src="img/chrome.jpg" alt="">
+		<img src="img/safari.jpg" alt="">
+		<img src="img/edge.jpg" alt="">
+		<img src="img/firefox.jpg" alt="">
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function() {
+		var aInput = document.getElementsByTagName("input");
+		var oImgDiv = document.getElementById("imgDiv");
+		var aImg = document.getElementsByTagName("img");
+		document.onmousemove = function (ev) {
+			var oEvent = ev || window.event;
+			for(var i = 0 ; i < aImg.length ; i ++){
+				//算出物体的中心点
+				var x = aImg[i].offsetLeft + oImgDiv.offsetLeft + aImg[i].offsetWidth/2;
+				var y = aImg[i].offsetTop + oImgDiv.offsetTop + aImg[i].offsetHeight/2;
+				//算出物体的中心点
+
+				//算出坐标的位置
+				var clientX = oEvent.clientX;
+				var clientY = oEvent.clientY;
+				//算出坐标的位置
+
+				//算出鼠标与物体的位置差
+				var disX = x - clientX;
+				var disY = y - clientY;
+				var dis = parseInt(Math.sqrt(disX * disX + disY * disY));
+				//算出鼠标与物体的位置差
+
+				//计算比例
+				var percent = dis/300;
+				//由于要越靠近的越大，所以要1-
+				percent = 1 - percent.toFixed(2);
+
+				//当物体特别小的时候就要还原到正常范围
+				if(percent < 0.5){
+					percent = 0.5;
+				}
+				var height = percent * 156;
+				aInput[i].value = "dis:" + dis + "percent:" + percent;
+				aImg[i].style.height = height + "px";
+			}
+		}
+	}
+
+
+	</script>
+</body>
+</html>

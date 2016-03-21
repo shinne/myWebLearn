@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			height: 100px;
+			width: 100px;
+			background: green;
+			margin-bottom: 5px;
+
+		}
+		li{
+			width: 100px;
+			height: 10px;
+		}
+	
+	</style>
+	<script type="text/javascript" src="VQuery.js"></script>
+</head>
+<body>
+
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<ul id="ul1">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<ul id="ul2">
+		<li class="liclass"></li>
+		<li class="liclass"></li>
+		<li class="liclass"></li>
+	</ul>
+
+	<ul>
+		<li class="liclass1"></li>
+		<li class="liclass3"></li>
+		<li class="liclass1"></li>
+	</ul>
+	<div>
+		<button>0</button>
+		<button>1</button>
+		<button>2</button>
+	</div>
+	
+	<script>
+		$("div").eq(1).css("background","red");
+		$("#ul1").find("li").css("background","red");
+		$("#ul2").find(".liclass").css("background","green");
+	
+		$("button").click(function(){
+			var index = $(this).index();
+			console.log(index);
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+    ul{
+        list-style-type: none;
+    }
+
+
+  /*
+  若要垂直列表则这里不需设置float:left;
+  */
+    .bigNav{
+        float: left;
+    }
+
+
+    .bigNav>a{      
+        font-weight:bold;
+    }
+
+    a{
+        text-decoration: none;
+        margin-right: 2px;
+        display: block; 
+        width: 100px;
+        height: 25px;
+        background-color: black;
+        text-align: center;
+        color: white;
+        line-height: 25px;
+    }
+
+    
+    .bigNav a:hover{
+        background-color: #888888;
+        cursor: pointer;
+
+    }
+
+
+    ul,li{
+        padding: 0px;
+        margin:0px;
+    }
+
+    .bigNav ul{
+        display:block;
+        display: none;
+    }
+
+    /*
+    在hover的时候设置ul的显示方式
+    */
+    li.bigNav:hover ul{
+        display: list-item;
+    }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="menu">
+       <ul>
+           <li  class="bigNav">
+               <a href="#">category1</a>
+               <ul>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+               </ul>
+           </li>
+
+           <li class="bigNav"><a href="#">category1</a>
+               <ul>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+               </ul>
+           </li>
+
+           <li class="bigNav"><a href="#">category1</a>
+               <ul>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+               </ul>
+           </li>
+
+           <li class="bigNav"><a href="#">category1</a>
+               <ul>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+               </ul>
+           </li>
+
+           <li class="bigNav"><a href="#">category1</a>
+               <ul>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+                   <li class="smallNav"><a href="#">sub-nav1</a></li>
+               </ul>
+           </li>
+
+
+
+
+       </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0px;
+		padding:0px;
+	}
+	#imgDiv{
+		position: absolute;
+		bottom: 0px;
+		text-align: center;
+		width: 100%;
+	}
+	img{
+		height: 76px;
+	}
+
+	</style>
+</head>
+<body>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<div id="imgDiv">
+		<img src="img/ie.jpg" alt="">
+		<img src="img/chrome.jpg" alt="">
+		<img src="img/safari.jpg" alt="">
+		<img src="img/edge.jpg" alt="">
+		<img src="img/firefox.jpg" alt="">
+	</div>
+
+	<script>
+	window.onload = function(){
+		var aImg = document.getElementsByTagName("img");
+		var oDiv = document.getElementById("imgDiv");
+		var BigHeight = aImg[0].offsetHeight * 2;
+
+
+		document.onmousemove = function(ev){
+			var oEvent = ev || window.event;
+			for(var i = 0 ; i < aImg.length ; i++){
+				var l = oDiv.offsetLeft + aImg[i].offsetLeft + aImg[i].offsetWidth/2;
+				var t = oDiv.offsetTop + aImg[i].offsetTop+ aImg[i].offsetHeight/2;
+				var disX = l - oEvent.clientX;
+				var disY = t - oEvent.clientY;
+				var dis = Math.sqrt(disX*disX + disY*disY);
+				var percentDis = dis/300;
+				percentDis = 1- percentDis;
+				if(percentDis < 0.5){
+					percentDis = 0.5
+				}
+				aImg[i].style.height = BigHeight * percentDis + "px";
+			}
+		}
+	}
+
+
+	</script>
+</body>
+</html>

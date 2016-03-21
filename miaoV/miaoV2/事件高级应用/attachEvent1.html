@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>点击我</button>
+
+	<script type="text/javascript">
+
+	function aaa(){
+		alert("aaa");
+	}
+
+	function bbb(){
+		alert("bbb");
+	}
+
+	var oBtn = document.getElementsByTagName("button")[0];
+	/*
+	这是在IE下面的写法,但是IE11已经不是这样了
+	*/
+	
+	/*
+	oBtn.attachEvent("onclick",aaa);
+	oBtn.attachEvent("onclick",bbb);
+	*/
+
+
+	/*
+	这是在FF,Chrome下面的写法
+	*/
+	/*var oBtn = document.getElementsByTagName("button")[0];
+	oBtn.addEventListener("click",aaa);
+	oBtn.addEventListener("click",bbb);*/
+
+
+	function myAddEvent(obj,sEvent,fn){
+		if(obj.attachEvent){
+			obj.attachEvent("on" + sEvent ,fn);
+		}
+		else{
+			obj.addEventListener(sEvent,fn);
+		}
+	}
+
+	myAddEvent(oBtn,"click",aaa);
+	myAddEvent(oBtn,"click",bbb);
+
+	</script>
+</body>
+</html>

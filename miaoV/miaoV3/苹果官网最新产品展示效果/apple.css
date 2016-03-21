@@ -1,0 +1,116 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	color: #777;
+	font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+}
+
+body{
+	background: #EBEBED;
+}
+
+#bodyWrapper{
+	width: 980px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+#title{
+	padding-top: 10px;
+	width: 100%;
+}
+
+#titleLeft{
+	float: left;
+}
+
+#titleRight{
+	float: right;
+}
+
+#bodyContent{
+	margin-top: 30px;
+	height: auto;
+	width: 100%;
+	background: white;
+	/*
+	阴影的shadow
+	*/
+	-webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	box-shadow: rgba(0,0,0,0.3) 0 1px 3px; 
+	box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	border-color: #E5E5E5 #DBDBDB #D2D2D2;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#imgContent{
+	width: 820px;
+	height: 158px;
+	margin:0 70px;
+	overflow: hidden;
+	/*
+	当这里要设置样式的时候，ul才不会超出
+	*/
+	position: relative; 
+}
+
+#navContent{
+	width: 980px;
+	height: 30px;
+	background: url(img/nav_bg.png);
+	border-bottom: 1px solid #ebebeb;
+}
+
+ul.imgUl{
+	list-style: none;
+	width: 1680px;
+	height: 158px;
+
+}
+
+li.imgLi{
+	display: block;
+	float: left;
+	height: 158px;
+	margin-right:10px;
+	text-align: center;
+}
+
+li.imgLi>a{
+	text-decoration: none;
+	
+}
+
+li.imgLi>a>p{
+	margin-top:4px;
+	color: #7F7F7F;
+	font-weight: 500;
+
+}
+
+#navContent{
+	text-align: center;
+}
+a.nav{
+	display: inline-block;
+	margin-top: 10px;
+	width: 100px;
+	cursor: pointer;
+}
+
+a.show{
+	color: black;
+}
+
+#caret{
+	position: absolute;
+	left: 656px;
+	top: 199px;
+	width: 13px;
+	height: 7px;
+	background: url(img/caret_active.gif);
+}
+

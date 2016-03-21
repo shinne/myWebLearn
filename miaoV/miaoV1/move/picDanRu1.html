@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<img style="opacity:0.5;"src="img/picDanRu.jpg">
+</body>
+<script type="text/javascript">
+
+
+	window.onload = function(){
+		var timer = null;
+		var iSpeed = 0;
+		var img = null;
+		var img = document.getElementsByTagName("img")[0];
+
+		function picDanRu(iOpacity){
+  		    //alert(iTarget.style.opacity > iOpacity);
+			if(parseFloat(img.style.opacity) > iOpacity){
+				iSpeed = -0.05;
+			}
+			else{
+				iSpeed = 0.05;
+				
+			}
+			clearInterval(timer);
+			timer = setInterval(function(){
+				
+				if(parseFloat(img.style.opacity) == iOpacity){
+					clearInterval(timer);
+				}
+				else{
+					img.style.opacity = parseFloat(img.style.opacity) + iSpeed + "";
+
+				}
+			},30);
+
+
+		}
+
+		
+		img.onmouseover = function(){
+			/*alert("dddd");*/
+			picDanRu(1);
+		};
+
+		img.onmouseout = function(){
+			picDanRu(0.5);
+		}
+	}
+
+
+
+</script>
+</html>

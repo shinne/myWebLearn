@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value='开始运动'/>
+	<div id="div" style="width:300px;height:400px;background:green;position:absolute;left:680px;border:1px solid black;"></div>
+	<div id="pressDiv" style="width:80px;height:80px;background:red;position:absolute;left:0px"></div>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+window.onload = function(){
+	var iSpeed=0;
+	var oTime=null;
+	function startMove(oObj,iTarget){
+		
+			//确保在每一次onclick的时候只有一个oTime在运行，需在每一次click的时候将以前的oTime清楚掉
+			clearInterval(oTime);
+			oTime = setInterval(function(){
+
+				//距离终点越近速度越慢
+				/*
+				注意这里是offsetLeft，类型要人命啊！折磨人啊！
+				*/
+				iSpeed = (iTarget - oObj.offsetLeft)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed):Math.floor(iSpeed);
+				//超出500的时候就将这个溢出
+				if(oObj.offsetLeft == iTarget){
+					clearInterval(oTime);
+				}
+				//用if-else判断是否超过500，如果不用else则在每一次onclick的时候都要再往右边移动10px
+				else{
+					oObj.style.left = oObj.offsetLeft + iSpeed + "px";
+				}
+			},30);
+	}
+
+	var btn = document.getElementById("btn");
+	var oObj = document.getElementById("pressDiv");
+	btn.onclick = function(){
+
+		/*
+
+		注意这里也是要680也是要整数，如果不是要parseInt();
+		*/
+		startMove(oObj,680);
+
+		/*
+		在匀速运动中，如果速度足够的近，则用abs判断，如果足够的近，无法支持一次运动，
+		则把obj.style.left = iTarget
+
+		*/
+	}
+}
+</script>

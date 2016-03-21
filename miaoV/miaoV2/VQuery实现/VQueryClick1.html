@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="VQuery.js"></script>
+</head>
+<body>
+
+<button class='button'>class</button>
+<button id='button'>id</button>
+<button id='button1'>object</button>
+<input type = "submit">tagName</button>
+<script>
+	/*new VQuery(function(){
+		alert("a");
+	});
+	new VQuery(function(){
+		alert("b");
+	});
+	new VQuery(function(){
+		alert("c");
+	});*/
+
+/*	new VQuery(".button").click(function(){alert('class')});
+	new VQuery("#button").click(function(){alert('id')});
+	new VQuery("input").click(function(){alert('tagName')});*/
+	var objectButton = document.getElementById("button1");
+	console.log(objectButton);
+	$(".button").click(function(){alert('class')});
+	$("#button").click(function(){alert('id')});
+	$("input").click(function(){alert('tagName')});
+	$(objectButton).click(function(){alert('object')});
+
+
+</script>
+
+	
+</body>
+</html>

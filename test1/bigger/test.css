@@ -1,0 +1,46 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+#smallWrapper{
+	margin: 5px;
+	border: solid 1px grey;
+	height: 200px;
+	width: 200px;
+	padding: 5px;
+	position: absolute;
+}
+
+#smallDiv{
+	position: absolute;
+	height: 200px;
+	width: 200px;
+}
+
+#opacityDiv{
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	filter:alpha(opacity:60);
+	opacity: 0.6;
+	background: white;
+	display: none; 
+	border: 1px solid black;
+}
+
+#bigWrapper{
+	position: absolute;
+	left: 240px;
+	height: 250px;
+	width: 250px;
+	top: 5px;
+	border: 1px solid #939796;
+	overflow: hidden;
+	display: none; 
+}
+
+#bigImg{
+	position: absolute;
+/* 	left:-100px; */
+}

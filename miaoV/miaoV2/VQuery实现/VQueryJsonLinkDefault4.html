@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#divId{
+		height: 100px;
+		width: 100px;
+		background: red;
+	}
+
+	#big{
+		height: 500px;
+		width: 500px;
+		background: grey;
+		float: left;
+	}
+
+	#center{
+		height: 300px;
+		width: 300px;
+		background: red;
+		float: left;
+	}
+
+	#small{
+		height: 100px;
+		width: 100px;
+		background: green;
+		float: left;
+	}
+
+	</style>
+	<script type="text/javascript" src="VQuery.js"></script>
+</head>
+<body>
+	<div id="divId">CssJson,link</div>
+	<button id="buttonId">bind</button>
+
+	<div id="big">
+		<div id="center">
+			<div id="small"></div>
+		</div>
+	</div>
+	<script>
+	$("#divId").hover(function(){
+		$("#divId").css("height","200px").css({"background":"green","width":"500px"});
+	},function(){
+		$("#divId").css("height","100px").css({"background":"red","width":"100px"})
+	}).click(function(){
+		alert("you are beautiful!");
+	});
+
+	$(document).bind("contextmenu",function(){
+		console.log("我是一个bind");
+		return false;
+	});
+
+
+	$("div").click(function(){
+		alert("阻止冒泡事件");
+		return false;
+	})
+
+	</script>
+</body>
+</html>

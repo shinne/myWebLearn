@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="pressDiv" style="width:100px;height:100px;background:red;position:absolute;"></div>
+
+	<script type="text/javascript">
+
+	window.onload = function(){
+		new TuoZhuai("pressDiv");
+	}
+	/*
+	将面向过程转换成面向对象s
+	*/
+	//第一步把所有的函数都脱离处理
+	//第二部把一部分变量改写成全局变量
+	//第三部把window.onload里面使用的脱离成构造函数,并把全局变量写到构造函数里面去
+	
+	function TuoZhuai(id){
+		/*
+		使用这步将构造函数里的this环境保存下来，以防之后的事件函数引起变化
+		*/
+		var _this = this;
+		this.disY = 0 ; 
+		this.disX = 0;
+		this.oDiv = document.getElementById(id);
+		this.oDiv.onmousedown = function(){
+			console.log(_this.fnDown);
+			_this.fnDown();
+		};
+	}
+
+	TuoZhuai.prototype.fnDown = function(ev){
+		var _this = this;
+		//FF，需要使用window.event（event无法识别）
+		var oEvent = window.event || ev ;
+		this.disX = this.oDiv.offsetLeft - oEvent.clientX; 
+		this.disY = this.oDiv.offsetTop - oEvent.clientY; 
+
+		// 如果给oDiv加mouse事件，鼠标移动太快的时候会失效
+		document.onmousemove = function(ev){
+			_this.fnMove();
+		}
+		
+
+		// 在up的时候，将move属性的function删除
+		document.onmouseup = function(){
+			_this.fnUp();
+		}
+		return false;
+	};
+
+	TuoZhuai.prototype.fnMove = function(ev){
+		var _this = this;
+		var oEvent = window.event || ev ;
+
+		//当鼠标超出可视区域时，固定在边缘上
+		var left = oEvent.clientX + this.disX;
+		var top = oEvent.clientY + this.disY;
+		if (left < 0 ) {
+			left = 0;
+		}
+		else if(left > document.documentElement.clientWidth - this.oDiv.offsetWidth){
+			left = document.documentElement.clientWidth - this.oDiv.offsetWidth;
+		}
+
+		if (top < 0) {
+			top = 0;
+		}
+		else if(top > document.documentElement.clientHeight - this.oDiv.offsetHeight){
+			top = document.documentElement.clientHeight - this.oDiv.offsetHeight
+		}
+		this.oDiv.style.left = left + "px";
+		this.oDiv.style.top = top + "px";
+	};
+
+	TuoZhuai.prototype.fnUp = function(ev){
+		document.onmousemove = null;
+		document.onmouseup = null;
+	};
+	
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <title>Angular JS 视图</title>
+   <script src = "../js/angular/angular.min.js"></script>
+   <script src="../js/angular/angular-route.min.js"></script>
+</head>
+<body>
+   <h2>AngularJS 视图应用示例</h2>
+   <div ng-app="mainApp">
+   //这里控制了url的变化，当后面是addStudent的时候使用的是addStudent.html。另外一种则亦然。
+      <p><a href="#addStudent">添加学生</a></p>
+      <p><a href="#viewStudents">查看学生</a></p>
+      <div ng-view></div>
+      <script type="text/ng-template" id="addStudent.html">
+         <h2> 添加学生 </h2>
+         {{message}}
+      </script>
+      <script type="text/ng-template" id="viewStudents.html">
+         <h2> 查看学生 </h2>	    
+         {{message}}
+      </script>	
+   </div>
+
+   <script>
+      var mainApp = angular.module("mainApp", ['ngRoute']);
+      
+      mainApp.config(['$routeProvider',
+         function($routeProvider) {
+            $routeProvider.
+               when('/addStudent', {
+                  templateUrl: 'addStudent.html',
+                  controller: 'AddStudentController'
+               }).
+               when('/viewStudents', {
+                  templateUrl: 'viewStudents.html',
+                  controller: 'ViewStudentsController'
+               }).
+               otherwise({
+                  redirectTo: '/addStudent'
+               });
+         }]);
+
+         mainApp.controller('AddStudentController', function($scope) {
+            $scope.message = "这个页面是用于显示学生信息的输入表单";
+         });
+
+         mainApp.controller('ViewStudentsController', function($scope) {
+            $scope.message = "这个页面是用于显示所有学生信息";
+         });
+   </script>
+</body>
+</html>

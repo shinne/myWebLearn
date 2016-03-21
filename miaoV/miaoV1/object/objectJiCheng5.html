@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function Person(name,sex){
+		this.name = name;
+		this.sex = sex;
+	}
+
+	Person.prototype.showName = function(){
+		alert(this.name);
+	}
+
+	Person.prototype.showSex = function(){
+		alert(this.sex);
+	}
+
+	function Worker(name,sex,job){
+		Person.call(this,name,sex);
+		this.job = job;
+	}
+
+	Worker.prototype = Person.prototype;
+	Worker.prototype.showJob = function(){
+		alert(this.job);
+	}
+
+	var oW = new Worker("yoyo","female","coder");
+	oW.showName();
+	oW.showSex();
+	oW.showJob();
+	var oP = new Person("youting","female");
+	oP.showName();
+	oP.showSex();
+	/*
+	oP.showJob();这里存在的问题是person依旧有showJob的方法，因为Worker.prototype = Person.prototype;只是引用而已，改变其中一个其他都会改变。
+	*/
+	
+	</script>
+</body>
+</html>

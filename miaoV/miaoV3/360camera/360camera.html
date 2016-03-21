@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0px;
+	}
+
+	img{
+		position: absolute;
+		height:378px;
+		width: 640px;
+		left: 30%;
+		top: 100px; 
+		display: none;
+	}
+
+	#img1{
+		display: block;
+	}
+
+	</style>
+</head>
+<body>
+	<img id="img1" src="img/miaov (0).jpg" />
+	<script type="text/javascript">
+	window.onload = function(){
+
+
+		//为每个图片都创建一个img，这样使得浏览器的运行速度快，不需要频繁的切换src
+
+		//这种方法ie下会闪屏
+		for(var i = 1 ; i < 77 ; i++){
+			var newImg = document.createElement("img");
+			newImg.src = "img/miaov (" + i + ").jpg";
+			console.log(newImg.src);
+			document.body.appendChild(newImg);
+		}
+		//这种方法ie下会闪屏
+
+		//这种方法视频中不会，但结果还是会
+		/*for(i=1;i<77;i++)
+		{
+				(function (oNewImg){
+				var oImg=new Image();
+				
+				oImg.onload=function ()
+				{
+					oNewImg.src=this.src;
+				};
+				oImg.src='img/miaov ('+i+').jpg';
+				
+				oNewImg.style.display='none';
+				
+				document.body.appendChild(oNewImg);
+			})(document.createElement('img'));
+		}*/
+		//这种方法视频中不会，但结果还是会
+
+		var img = null;
+		var nowX = 0;
+		var disX = 0;
+		var imgNum = 0;
+		var lastX = 0;;
+		var realMove = 0;
+		var timer = null;
+		var iSpeed = 0;
+		var oLastImg = null;
+		img = document.getElementById("img1");
+		oLastImg = img;
+		var aImg=document.getElementsByTagName('img');
+		document.onmousedown = function(ev){
+			var oEvent = window.event || ev;
+			var disX = oEvent.clientX - nowX;
+			clearInterval(timer);
+
+			document.onmousemove = function(ev){
+				var oEvent = window.event || ev;
+
+				//计算每次移动的位置
+				nowX = oEvent.clientX - disX;
+
+				//计算这次移动位置和上次移动的位置之差，就可以计算出速度
+				iSpeed = nowX - lastX;
+				/*
+				将这一次的位置赋值给最后一次位置
+				*/
+				lastX = nowX;
+				move();
+				
+			};
+
+
+			document.onmouseup = function(ev){
+
+				document.onmousemove=null;
+				document.onmouseup=null;
+				timer = setInterval(function(){
+					nowX += iSpeed;
+					move();
+				},30);
+			};
+
+			/*
+			除去默认行为
+			*/
+			return false;
+		};
+
+		function move(){
+			
+			if(iSpeed > 0){
+				iSpeed--;
+			}
+			else if(iSpeed < 0){
+				iSpeed++;
+			}
+			else if(iSpeed == 0){
+				clearInterval(timer);
+			}
+			/*
+			取负号能够让运动符合现实的要求，即往左边滑做运动，往右边滑右运动
+			*/
+			realMove = -parseInt(nowX/10);
+			/*
+			计算运动，通过运动实现应该显示哪张图片
+			*/
+			/*console.log(typeof realMove);*/
+			if(realMove > 0 ){
+				imgNum = realMove % 77;
+			}
+			else{
+				imgNum = realMove - Math.floor(realMove/77)*77;
+			}
+
+			//可以在title里看到速度的变化
+			document.title=iSpeed;
+			console.log(document.title);
+			if(oLastImg != aImg[imgNum] ){
+				console.log(aImg[imgNum]);
+				aImg[imgNum].style.display = "block";
+				oLastImg.style.display = "none";
+				oLastImg = aImg[imgNum];
+			}
+		}
+	}
+
+	
+	</script>
+</body>
+</html>

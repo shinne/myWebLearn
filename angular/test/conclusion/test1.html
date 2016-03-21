@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src = "../js/angular/angular.min.js"></script>
+</head>
+ <body ng-app="myapp">
+      <div ng-controller="HelloController" >
+         <h2>你好 ！第一个{{helloTo.title}}程序示例</h2>
+      </div>
+      <script>
+         angular.module("myapp", [])
+         .controller("HelloController", function($scope) {
+            $scope.helloTo = {};
+            $scope.helloTo.title = "AngularJS";
+         });
+      </script>
+   </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#centerPic{
+		height: 500px;
+		width: 500px;
+		margin: 50px auto;
+		border: 5px dashed #939796;
+		text-align: center;
+	}
+
+	ul>li{
+		float: left;
+		height: 120px;
+		width: 120px;
+		margin: 5px;
+		list-style: none;
+		border: 1px solid red;
+		z-index: 1;
+		background: yellow;
+	}
+
+	ul>li>img{
+		height: 100%;
+		width: 100%;
+	}
+
+	
+	</style>
+	<script src = "js/perfectMove52.js"></script>
+</head>
+<body>
+	<div id="centerPic">
+		<ul id="picUl">
+			<!-- <li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li>
+			<li><img src="img/9.jpg" alt="images"></li> -->
+
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+			<li><img src="img/1.jpg" alt="images"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	var i = 0 ;
+	var iMinZIndex = 2;
+	var picLi = document.getElementsByTagName("li");
+	for(i = 0; i < picLi.length; i++){
+		picLi[i].style.left = picLi[i].offsetLeft + "px";
+		picLi[i].style.top = picLi[i].offsetTop + "px";
+	}
+
+	for(i = 0; i < picLi.length; i++){
+		/*
+		当把offsetLeft设置成元素的left的时候已经把margin包含进去了，
+		所以为了避免margin再次发挥效果，要把margin设置成0
+		*/
+		picLi[i].style.margin = "0px";
+		picLi[i].style.position = "absolute";
+	}
+
+	for(i = 0; i < picLi.length; i++){
+		/*
+		当鼠标滑过的时候要图片从中心开始展开变大，于是应该将它的margin也相应的变化
+		marginLeft = oldMarginLeft - width:（new-old）/2
+		marginTop = oldMarginTop - height:（new-old）/2
+		这里要从120变成180，则marginLeft： 5 - (180-120)/2 = -25
+		*/
+
+		picLi[i].onmouseover = function(){
+			/*
+			当这边速度非常快的时候无法回到原来的地方，这是一个问题
+
+			*/
+			var marginLeft =parseInt(this.style.marginLeft) - (180-120)/2;
+			var marginTop =parseInt(this.style.marginTop) - (180-120)/2;
+			this.style.zIndex = iMinZIndex++;
+			startMove(this,{"height":180,"width":180,"marginTop":marginTop,"marginLeft":marginLeft});
+		}
+
+		picLi[i].onmouseout = function(){
+			var marginLeft =parseInt(this.style.marginLeft) - (120-180)/2;
+			var marginTop =parseInt(this.style.marginTop) - (120-180)/2;
+			startMove(this,{"height":120,"width":120,"marginTop":marginTop,"marginLeft":marginLeft});
+		}
+
+
+		
+	}
+
+
+	</script>
+</body>
+</html>

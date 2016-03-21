@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src = "../js/angular/angular.min.js"></script>
+</head>
+<body>
+<h1>Sample Application</h1>
+<div ng-app="" ng-init="quantity=1;cost=30; student={firstname:'李',lastname:'刚',rollno:101};marks=[82,91,78,77,64]">
+   <p>Hello {{student.firstname + " " + student.lastname}}!</p>   
+   <p>Expense on Books : {{cost * quantity}} Rs</p>
+   <p>Roll No: {{student.rollno}}</p>
+   <p>Marks(Math): {{marks[3]}}</p>
+</div>
+<script src="http://www.yiibai.com/js/angular.min.js"></script>
+</body>
+</html>

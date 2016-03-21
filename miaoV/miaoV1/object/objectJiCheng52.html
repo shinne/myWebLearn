@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function Person(name,sex){
+		this.name = name;
+		this.sex = sex;
+	}
+
+	Person.prototype.showName = function(){
+		alert(this.name);
+	}
+
+	Person.prototype.showSex = function(){
+		alert(this.sex);
+	}
+
+	function Worker(name,sex,job){
+		Person.call(this,name,sex);
+		this.job = job;
+	}
+
+	//通过for将Person.prototype移植到worker.prototype,这样就不会有引用问题
+	for(var i in Person.prototype){
+		Worker.prototype[i] = Person.prototype[i];
+	}
+	
+	Worker.prototype.showJob = function(){
+		alert(this.job);
+	}
+
+	var oW = new Worker("yoyo","female","coder");
+	oW.showName();
+	oW.showSex();
+	oW.showJob();
+	var oP = new Person("youting","female");
+	oP.showName();
+	oP.showSex();
+	/*//showJob方法是不存在的
+	oP.showJob();*/
+
+	
+	
+	</script>
+</body>
+</html>

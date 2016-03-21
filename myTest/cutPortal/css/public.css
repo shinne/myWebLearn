@@ -1,0 +1,236 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "宋体";
+}
+
+body{
+	height: 1000px;
+	width: 100%;
+	background: url(../images/replyBg.png) repeat-x;
+}
+
+#head{
+	width: 100%;
+	height: 210px;
+
+}
+
+#body{
+	width: 100%;
+	height: 800px;
+}
+
+#foot{
+	width: 100%;
+	height: 236px;
+	background: url(../images/footBg.gif) repeat-x;
+	opacity: 0.7;
+	text-align: center;
+
+}
+
+
+.loginClass{
+	/*
+	设置背景透明文字不透明
+	*/
+	background:rgba(255,255,255,0.1) none repeat scroll !important;
+	width: 255px;
+	height: 28px;
+	margin-right: 260px;
+	margin-top: 15px;
+	line-height: 28px;
+	text-align: center;
+	float: right;
+
+}
+
+.loginClass p.login{
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+p.leader{
+	margin-top: 80px;
+	margin-left: 400px;
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	float: left;
+	font-size: 40px;
+}
+
+
+.replyClass{
+	/*
+	设置背景透明文字不透明
+	*/
+	background:rgba(255,255,255,0.1) none repeat scroll !important;
+	width: 340px;
+	height: 35px;
+	margin-right: 260px;
+	margin-top: 35px;
+	line-height: 35px;
+	text-align: center;
+	float: right;
+}
+
+
+.replyClass p.login a{
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	font-family: "Arial";
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.navBar{
+	clear: both;
+	width: 100%;
+	height: 38px;
+	background: url(../images/navBar.png) repeat-x;
+}
+
+.navBar .navInfo{
+	width: 900px;
+	margin: 0px auto;
+	height: 100%;
+	line-height: 38px;
+}
+
+.navInfo ul{
+	list-style-type: none;
+}
+
+
+.navInfo ul li.navDscp a{
+	font-family: "微软雅黑";
+	display: block;
+	float: left;
+	margin-left: 30px;
+	margin-right: 30px;
+	text-decoration: none;
+	color: black;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+
+.formClass{
+	width: 245px;
+	height: 30px;
+	margin-right: 290px;
+	float: right;
+	margin-top: 10px;
+}
+
+.inputText{
+	border-radius: 1px;
+	height: 16px;
+	width: 170px;
+}
+
+.searchButton{
+	width: 60px;
+	height: 22px;
+	background-color: #3F93B5;
+	border-radius: 8px;
+	color: white;
+}
+
+.titleLabel{
+	padding-top: 10px;
+	padding-left: 22px;
+	height: 120px;
+	
+}
+
+.titleLabel span{
+	font-size: 14px;
+	color: #0F4A68;
+}
+
+.latestReply{
+	margin-top: 38px;
+	height: 38px;
+	width: 177px;
+	background: url(../images/chaxun.jpg);
+	line-height: 38px;
+	text-align: center;
+}
+
+.latestReply span{
+	font-size: 18px;
+	font-family: "微软雅黑";
+	color: white;
+	letter-spacing: 2px;
+}
+
+.bodyFoot{
+	height: 156px;
+	width: 980px;
+	margin: 0 auto;
+}
+
+.mainFoot{
+	padding-top: 110px;
+}
+
+.mainFoot ul{
+	list-style-type: none;
+	float: left;
+	padding-left: 20px;
+}
+
+.mainFoot ul li{
+	float: left;
+}
+
+.mainFoot ul li a{
+	color: #0061A0;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.footRight{
+	float: right;
+	width: 480px;
+	height: 47px;
+
+}
+
+.guanzhu{
+	font-size: 24px;
+	color: #0061A0;
+	font-weight: 700;
+}
+
+.imgPencil{
+	float: right;
+	margin-right: 120px;
+	margin-top: -40px;
+}
+
+
+.footCenter{
+	float: left;
+	margin-left: 600px;
+	padding-top: 45px;
+	width: 200px;
+	text-align: center;
+	color: #616969;
+	font-size: 12px;
+}
+
+.footRight2{
+	float: right;
+	width: 280px;
+	height: 20px;
+	margin-right: 220px;
+	padding-top: 45px;
+	padding-left: 0px;
+	font-size: 12px;
+}

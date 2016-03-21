@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0px;
+		padding: 0px;
+	}
+	#nav{
+		position: absolute;
+		left: 600px;
+		top:100px;
+		height: 30px;
+		width: auto;
+	}
+	
+	ul#navUl{
+		list-style: none;
+	}
+	ul#navUl>li{
+		width: 60px;
+		height: 30px;
+		display: inline-block;
+		border: 1px solid #939796;
+		text-align: center;
+		line-height: 30px;
+		float: left;
+	}
+	div.red{
+		position: absolute;
+		left: 0;
+		top: 26px;
+		height: 5px;
+		width: 62px;
+		background: red;
+
+	}
+	</style>
+</head>
+<body>
+	<div id="nav">
+		<ul id="navUl">
+			<li>首页</li>
+			<li>运动</li>
+			<li>弹簧</li>
+			<li>链式</li>
+		</ul>
+		<div class="red"></div>
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		/*
+		这个东西是控制目标点与物体之间的误差，通过小数的叠加最终还原成整数
+		*/
+		var left = 0;
+		function elasticFn(obj,iTarget){
+			if(obj.timer){
+				clearInterval(obj.timer);
+			}
+			var iSpeed = 0 ;
+			obj.timer = setInterval(function(){
+				/*
+				能够使物体速度随着目标点的距离变化而变化
+				*/
+				iSpeed += (iTarget - obj.offsetLeft)/8;
+
+				/*
+				为速度加上一个摩擦力，使他们慢慢变为0
+				*/
+				iSpeed *=0.7;
+				left += iSpeed;
+				/*
+				是否停止的判断条件
+				*/
+				if(Math.abs(iSpeed) < 1 && Math.abs(left-iTarget) < 1){
+					clearInterval(obj.timer);
+					obj.style.left = iTarget + "px";
+				}
+				else{
+					obj.style.left = left + "px";
+				}
+				
+				},30);
+		}
+
+		var i ;
+		var iLeft;
+		var oLi = document.getElementsByTagName("li");
+		var red = document.getElementsByClassName("red")[0];
+		var title = document.getElementsByTagName("title")[0];
+		/*console.log(red);*/
+		for(i = 0 ; i < oLi.length ; i ++){
+			oLi[i].onmouseover = function(){
+				var iLeft = this.offsetLeft;
+				/*console.log(iLeft);*/
+				elasticFn(red,iLeft);
+			}
+		}
+	}
+
+	</script>
+</body>
+</html>

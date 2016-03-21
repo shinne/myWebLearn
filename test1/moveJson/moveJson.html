@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#tuozhuai{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+			top:0px;
+			left: 0px;
+			height: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="tuozhuai"></div>	
+	<script>
+	function getStyle(obj,attr){
+		return getComputedStyle(obj,false)[attr];
+	}
+	window.onload = function(){
+
+		function startMove(obj,json,fn){
+			console.log("bbb");
+			var attr;
+			var bContinue = false;
+			var iCur;
+			var iSpeed = 10;
+			if (obj.timer){
+				clearInterval(obj.timer);
+			}
+			obj.timer = setInterval(function(){
+				bContinue = false;
+				for(attr in json){
+
+					iCur = parseInt(getStyle(obj,attr));
+					console.log(attr+iCur);
+					if(iCur != json[attr]){
+						iSpeed = (json[attr] - iCur)/10;
+						/*
+						ispeed向上向下取整很重要
+						*/
+						iSpeed = iSpeed > 0 ? Math.ceil(iSpeed):Math.floor(iSpeed);
+						bContinue = bContinue || true;
+						console.log("bContinue" + bContinue);
+						console.log("iSpeed" + iSpeed);
+						console.log("json" + json[attr]);
+						obj.style[attr] = iCur + iSpeed + "px";
+					}
+					/*iSpeed = (json[attr] - iCur)/5;*/
+											
+				}
+				if(!bContinue){
+					console.log(true);
+					clearInterval(obj.timer);
+					if(fn){
+						fn();
+					}
+				}
+
+
+			},30);
+
+			
+		}
+		var oDiv = document.getElementById("tuozhuai");
+		startMove(oDiv,{"height":400,"width":200,"left":100,"top":100},function(){
+			oDiv.style.opacity = "0.7";
+		});
+	}
+	
+
+
+	</script>
+	<a id="top">这里是TOP部分</a>
+<a id="content">这里是CONTENT部分</a>
+<a id="foot">这里是FOOT部分</a>
+</body>
+</html>

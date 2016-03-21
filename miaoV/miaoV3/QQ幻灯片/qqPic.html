@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/qqPic.css">
+	<script src = "js/startMove3.js"></script>
+</head>
+<body>
+	<div id="bodyWrap">
+		<div id="bigUl">
+			<ul>
+				<li class="active"><img src="img/pic_1.jpg" alt=""></li>
+				<li><img src="img/pic_2.jpg" alt=""></li>
+				<li><img src="img/pic_3.jpg" alt=""></li>
+				<li><img src="img/pic_4.jpg" alt=""></li>
+				<li><img src="img/pic_5.jpg" alt=""></li>
+				<li><img src="img/pic_6.jpg" alt=""></li>
+				<li><img src="img/pic_7.jpg" alt=""></li>
+				<li><img src="img/pic_8.jpg" alt=""></li>
+				<li><img src="img/pic_9.jpg" alt=""></li>
+				<li><img src="img/pic_10.jpg" alt=""></li>
+				<li><img src="img/pic_11.jpg" alt=""></li>
+				<li><img src="img/pic_12.jpg" alt=""></li>
+				<li><img src="img/pic_13.jpg" alt=""></li>
+				<li><img src="img/pic_14.jpg" alt=""></li>
+			</ul>
+			
+		</div>
+
+		<div id="smallTextUl">
+			<ul>
+				<li class="show">《武则天秘史》[至22集]姐姐与皇上偷情，媚娘抓奸在床...</li>
+				<li>《无底洞》金钱、美女、权利、复仇等欲望让人不可自拔...</li>
+				<li>《巴黎宝贝》邓超巴黎当奶爸，上演基情、卖萌、跨国恋..</li>
+				<li>《我的女儿是花儿》[至3集]“富二代”冰王子恋上贫家女..</li>
+				<li>《法证先锋3》[至26集]写字楼惊现“女僵尸”尸体！</li>
+				<li>《非常了得》孟非郭德纲大曝台下私生活，内地Hold姐来挑战</li>
+				<li>第二届九分钟电影11月20日独家首映 视觉盛宴恭迎各位看官</li>
+				<li>《快女微电影》 洪辰脸伤痊愈 快女微电影收官作复拍</li>
+				<li>《称心如意》京城第一“育婴男”Hold住全场 萝莉热舞走光</li>
+				<li>《男人帮》[全30集]悲喜双响炮，一个完美结局</li>
+				<li>《辛亥革命》成龙、赵文瑄、李冰冰、胡歌演绎革命腥风血雨</li>
+				<li>《李献计历险记》房祖名患差时症为寻女友开启超时空冒险</li>
+				<li>Justin bieber女友动感热单全球首发。</li>
+				<li>第八届中国（重庆）国际园林博览会</li>	
+			</ul>
+			
+		</div>
+
+		<div id="smallUl">
+			<ul>
+				<li class="active"><img src="img/ico_1.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_2.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_3.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_4.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_5.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_6.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_7.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_8.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_9.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_10.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_11.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_12.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_13.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+				<li><img src="img/ico_14.jpg" alt="妙味课堂富有人性化的IT培训"/></li>
+			</ul>
+		</div>
+		<div id="btnDiv">
+			<a class = "btn" id = "picPrev" href="#"></a>
+			<a class = "btn showBtn" id = "picNext" href="#"></a>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var bigPicLi = document.getElementById("bigUl").getElementsByTagName("ul")[0].getElementsByTagName("li");
+		var smallPicLi = document.getElementById("smallUl").getElementsByTagName("ul")[0].getElementsByTagName("li");
+		var textLi = document.getElementById("smallTextUl").getElementsByTagName("ul")[0].getElementsByTagName("li");
+		var moveUl = document.getElementById("smallUl").getElementsByTagName("ul")[0];
+		var btnPrev = document.getElementById("picPrev");
+		var btnNext = document.getElementById("picNext");
+
+		var bigUl = document.getElementById("bigUl");
+		var iNow = 0;
+		var iWidth = smallPicLi[0].offsetWidth;
+		var iNowUlLeft = 0;
+		var timer = null;
+
+		for(var i = 0 ; i < smallPicLi.length ; i++){
+			smallPicLi[i].index = i ; 
+			smallPicLi[i].onmouseover = function(){
+				this.style.opacity = 1;
+			}
+
+			smallPicLi[i].onmouseout = function(){
+				if(iNow != this.index){
+					this.style.opacity = 0.5;
+				}
+				
+			}
+			smallPicLi[i].onclick = function(){
+				
+				if(iNow != this.index){
+					iNow = this.index;
+					if(iNow >= smallPicLi.length - 7){
+						iNowUlLeft = 7;
+					}
+					else{
+						iNowUlLeft = iNow;
+					}
+					tab();
+					ulLeft();
+				}
+				
+			}
+		}
+
+		/*
+		左右点击图片进行小图的翻滚，同时控制左右键的隐掉和亮起来
+		*/
+		btnPrev.onclick = function(){
+			iNowUlLeft--;
+			iNowLeft();
+			ulLeft();
+			prevOrNext();
+		}
+
+		btnNext.onclick = function(){
+			iNowUlLeft++;
+			iNowLeft();
+			ulLeft();
+			prevOrNext()
+		}
+		/*
+		左右点击图片进行小图的翻滚，同时控制左右键的隐掉和亮起来
+		*/
+
+		/*
+		将所有的都关闭掉，把文字切换成对应的，大图切换成对应的，小图也亮起来
+		*/
+		function tab(){
+		for(var i = 0 ; i < smallPicLi.length ; i++){
+			bigPicLi[i].className = "";
+			smallPicLi[i].className = "";
+			textLi[i].className = "";
+			bigPicLi[i].style.opacity = 0;
+		}
+
+		smallPicLi[iNow].className = "active";
+		textLi[iNow].className = "show";
+		startMove(bigPicLi[iNow],"opacity",100);
+		}
+
+		/*
+		根据iNow来实现小图的ul的left控制，这里得到iNowLeft的应得值
+		*/
+		function iNowLeft(){
+			if(iNowUlLeft > smallPicLi.length - 7){
+				iNowUlLeft = smallPicLi.length - 7;
+			}
+			if(iNowUlLeft < 0){
+				iNowUlLeft = 0;
+			}
+		}
+
+		/*
+		ulLeft的移动
+		*/
+		function ulLeft(){
+			if(iNow >= smallPicLi.length - 7){
+						iNowUlLeft = 7;
+					}
+					else{
+						iNowUlLeft = iNow;
+					}
+			startMove(moveUl,"left",-(iNowUlLeft)*iWidth);
+		}
+
+		/*
+		小图的位置来设置箭头灰掉和亮起
+		*/
+		function prevOrNext(){
+			if(iNowUlLeft == 0){
+				btnPrev.style.opacity = 0.5;
+			}
+
+			else if(iNowUlLeft >= smallPicLi.length - 7){
+				btnNext.style.opacity = 0.5;
+			}
+
+			else{
+				btnPrev.style.opacity = 1;
+				btnNext.style.opacity = 1;
+			}
+		}
+
+		/*
+		最开始图片自动播放
+		*/
+		var timer = null;
+		function autoPlay(){
+			timer = setInterval(function(){
+			iNow++;
+			iNowUlLeft = iNow;
+			if(iNow >= smallPicLi.length){
+				iNow = 0;
+			}
+			tab();
+			ulLeft();
+			prevOrNext();
+		},3 000);
+		}
+
+		autoPlay();
+
+		/*
+		鼠标移入自动停止
+		*/
+		bigUl.onmouseover = function(){
+			clearInterval(timer);
+		}
+		/*
+		鼠标移出自动播放
+		*/
+		bigUl.onmouseout = function(){
+			autoPlay(); 
+		}
+
+	};
+
+
+	</script>
+	
+</body>
+</html>

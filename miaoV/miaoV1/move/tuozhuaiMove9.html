@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	#block{
+		height: 50px;
+		width: 100px;
+		background: red;
+		position: absolute;
+		left:0px;
+		top:0px;
+	}
+	div{
+		height: 3px;
+		width: 3px;
+		background: black;
+		position: absolute;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="block">
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var timer = null;
+		var block = document.getElementById("block");
+		var oo = document.getElementById("oo");
+		var disX = 0;
+		var disY = 0;
+		var iSpeedX = 0;
+		var iSpeedY = 0;
+		var iLastX = 0;
+		var iLastY = 0;
+		block.onmousedown = function(ev){
+			var oEvent = ev || document.event;
+			disX = oEvent.clientX - block.offsetLeft;
+			disY = oEvent.clientY - block.offsetTop;
+			console.log(block.offsetLeft);
+			console.log(block.offsetTop);
+			document.onmousemove = function(ev){
+				var oEvent = ev || document.event;
+				var l = oEvent.clientX - disX;
+				var t = oEvent.clientY - disY;
+				block.style.left = l + "px";
+				block.style.top = t + "px";
+				iSpeedX = l - iLastX;
+				iSpeedY = t - iLastY;
+				iLastX = l;
+				iLastY = t;
+				/*var b = document.getElementsByTagName("title")[0];
+				b.innerHTML = "iSpeedX:" + iSpeedX + ",iSpeedY:" + iSpeedY;*/
+			}
+
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				console.log("iSpeedX" + iSpeedX);
+				console.log("iSpeedY" + iSpeedY);
+				elasticMove(block,iSpeedX,iSpeedY);
+			}
+			/*
+			当鼠标再次点击的时候，清除掉定时器，以免抖动
+			*/
+			clearInterval(timer);
+		}
+
+		function elasticMove(block,iSpeedX,iSpeedY){
+			var l ;
+			var t ;
+			var allX;
+			var allY;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				/*
+				每一次跳动的纵向速度都增加
+				*/
+				iSpeedY += 3;
+				l = block.offsetLeft + iSpeedX;
+				t = block.offsetTop + iSpeedY;
+				
+				allX = document.documentElement.clientWidth - block.offsetWidth;
+				allY = document.documentElement.clientHeight - block.offsetHeight;
+
+				/*
+				每次撞墙的时候速度都变成原来的0.8倍
+				*/
+				if(l >= allX ){
+					iSpeedX *= -0.8;
+					l = allX;
+				}
+				else if(l <= 0){
+					iSpeedX *= -0.8;
+					l = 0;
+				}
+
+				if(t >= allY ){
+					iSpeedY *= -1;
+					iSpeedX *= 0.8;
+					t = allY;
+
+				}
+				else if(t <= 0){
+					iSpeedY *= -1;
+					iSpeedX *= 0.8;
+					t = 0;
+				}
+				if(Math.abs(iSpeedX) < 1){
+					iSpeedX = 0;
+				}
+
+				if(Math.abs(iSpeedY) < 1){
+					iSpeedY = 0;
+				}
+				block.style.left = l + "px";
+				block.style.top = t  + "px";
+
+			},30); 
+		}	
+
+	}	
+
+	</script>
+</body>
+</html>

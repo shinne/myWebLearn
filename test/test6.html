@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0px;
+		padding: 0px;
+	}
+	.block{
+		height: 50px;
+		width: 100px;
+		background: red;
+		margin:10px;
+		float: left;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="block">
+	</div>
+	<div class="block">
+	</div>
+	<div class="block">
+	</div>
+	<div class="block">
+	</div>
+	<script type="text/javascript">
+	var li = document.getElementsByClassName("block");
+	for(var i = 0 ; i < li.length ; i ++){
+		li[i].style.left = li[i].offsetLeft + "px";
+	}
+
+	for(var i = 0 ; i < li.length ; i ++){
+		li[i].style.margin = "0px";
+		li[i].style.marginTop = "10px";
+		li[i].style.position = "absolute";
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#tuozhuai{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="tuozhuai"></div>
+	<script>
+	window.onload = function(){
+		var oDiv = document.getElementById("tuozhuai");
+		oDiv.onmousedown = function(ev){
+			console.log("ddd");
+			var oEvent = ev || window.event;
+			var disX = oEvent.clientX - oDiv.offsetLeft ; 
+			var disY = oEvent.clientY - oDiv.offsetTop;
+
+			document.onmousemove = function(ev){
+				console.log("ccc");
+				var oEvent = ev || window.event;
+				var l = oEvent.clientX - disX;
+				var t = oEvent.clientY - disY;
+				if(l < 0 ){
+					l =0;
+				}
+				else if(l > document.documentElement.clientWidth - oDiv.offsetWidth){
+					l = document.documentElement.clientWidth - oDiv.offsetWidth;
+				}
+				if(t < 0 ){
+					t =0;
+				}
+				else if(t > document.documentElement.clientHeight - oDiv.offsetHeight){
+					t = document.documentElement.clientHeight - oDiv.offsetHeight;
+				}
+				oDiv.style.left  = l + "px";
+				oDiv.style.top = t + "px";
+			}
+
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+
+		}
+	}
+
+	</script>
+</body>
+</html>

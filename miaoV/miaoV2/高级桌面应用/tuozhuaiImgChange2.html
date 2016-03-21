@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0px;
+			padding:0px;
+		}
+
+		#imgDiv{
+			position: relative;
+			margin: 20px auto;
+			width: 700px;
+			height: 1000px;
+			text-align: center;
+		}
+
+
+		ul{
+			list-style: none;
+		}
+
+		li{
+			display: block;
+			float: left;
+			margin: 10px;
+			height: 150px;
+			width: 200px;
+		}
+
+		img{
+			height: 150px;
+			width: 200px;
+		}
+
+		.active{
+			border:1px dashed black;
+		}
+
+	</style>
+	<!-- <script src = "miaov.js"></script> -->
+	<script src = "perfectMove5.js"></script>
+</head>
+<body>
+	<div id="imgDiv">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+			<li><img src="img/7.jpg" alt=""></li>
+			<li><img src="img/8.jpg" alt=""></li>
+		</ul>
+
+
+	</div>
+	<script type="text/javascript">
+	window.onload = function() {
+		var aImg = document.getElementsByTagName("li");
+		var aPos = [];
+		var minZIndex = 2;
+		var i = 0;
+
+		//将相对定位变为绝对定位
+		for(i = 0 ; i < aImg.length ; i ++){
+			aPos[i] = {};
+			/*
+			这里加上index为以后的变化位置做准备
+			*/
+			aImg[i].index = i;
+			aPos[i] = {left:aImg[i].offsetLeft,top:aImg[i].offsetTop};
+		}
+
+		for(i = 0 ; i < aImg.length ; i ++){
+			aImg[i].style.left = aPos[i].left + "px";
+			aImg[i].style.top = aPos[i].top + "px";
+			aImg[i].style.position = "absolute";
+			aImg[i].style.margin = "0px";	
+		}
+		//将相对定位变为绝对定位
+		
+		for(i = 0 ; i < aImg.length ; i ++){
+			setDrag(aImg[i]);
+		}
+		
+
+
+		//拖拽内容
+		function setDrag(obj){
+			var disX = 0;
+			var disY = 0;
+			obj.onmousedown = function(ev) {
+				obj.style.zIndex = minZIndex++ ;
+
+				var oEvent = ev || window.event;
+			    disX = oEvent.clientX - obj.offsetLeft;
+				disY = oEvent.clientY - obj.offsetTop;
+			
+
+			document.onmousemove = function(ev) {
+
+				var oEvent = ev || window.event;
+				obj.style.left = oEvent.clientX - disX + "px";
+				obj.style.top = oEvent.clientY - disY + "px";
+
+				//在每一次运动之前都把所有的img的className清空，即去掉多余的border
+				for(var i = 0 ; i <aImg.length ; i ++){
+					aImg[i].className = "";
+				}
+				
+				//找出碰撞且最近的物体
+				var nearestImg =NearSet(obj);
+				if(nearestImg){
+					nearestImg.className = "active";
+				}
+			}
+
+			document.onmouseup = function() {
+
+				document.onmousemove = null;
+				document.onmouseup = null;
+				var nearestImg = NearSet(obj);
+				if(nearestImg){
+					nearestImg.className = "";
+
+					//位置进行交换
+					console.log("near" + aPos[nearestImg.index].left + "top:" + aPos[nearestImg.index].top);
+					console.log("obj" + aPos[obj.index].left + "top:" + aPos[obj.index].top);
+				/*	nearestImg.style.left = aPos[obj.index].left + "px";
+					nearestImg.style.top = aPos[obj.index].top + "px";
+					obj.style.left = aPos[nearestImg.index].left + "px";
+					obj.style.top = aPos[nearestImg.index].top + "px";*/
+					/*miaovStartMove(nearestImg,aPos[obj.index],MIAOV_MOVE_TYPE.FLEX);
+					miaovStartMove(obj,aPos[nearestImg.index],MIAOV_MOVE_TYPE.FLEX);*/
+					startMove(nearestImg,aPos[obj.index],null);
+					alert("dd");
+					startMove(obj,aPos[nearestImg.index],null);
+
+					//同时index也要进行交换，不然以后位置会混乱
+					var tmp = 0;
+					tmp = obj.index;
+					obj.index = nearestImg.index;
+					nearestImg.index = tmp;
+					//同时index也要进行交换，不然以后位置会混乱
+				}
+				else{
+					startMove(obj,aPos[obj.index],null);
+					console.log("d");
+					/*miaovStartMove(obj,aPos[obj.index],MIAOV_MOVE_TYPE.FLEX);*/
+				}
+				
+
+			}
+			clearInterval(obj.timer);
+			return false;
+			}
+		}
+
+		//碰撞检测
+		function collision(obj1,obj2){
+			var l1 = obj1.offsetLeft;
+			var r1 = obj1.offsetLeft + obj1.offsetWidth;
+			var t1 = obj1.offsetTop;
+			var b1 = obj1.offsetTop + obj1.offsetHeight;
+
+			var l2 = obj2.offsetLeft;
+			var r2 = obj2.offsetLeft + obj2.offsetWidth;
+			var t2 = obj2.offsetTop;
+			var b2 = obj2.offsetTop + obj2.offsetHeight;
+			if(l1 > r2 || r1 < l2 || t1 > b2 || b1 < t2){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		//碰撞检测
+
+		//计算碰撞时彼此的最小距离，返回的是最小距离的aImg[minIndex]
+		function NearSet(obj){
+			var minDis = 99999999;
+			var minIndex = -1;
+			for(var i = 0 ; i < aImg.length ; i ++){
+				if(obj == aImg[i]){
+					continue;
+				}
+				if(collision(obj,aImg[i])){
+					var a = obj.offsetLeft - aImg[i].offsetLeft;
+					var b = obj.offsetTop - aImg[i].offsetTop;
+					var dis = Math.sqrt(a*a + b*b);
+					if(dis < minDis){
+						minDis = dis;
+						minIndex = i;
+					}
+				}
+			}
+			if(minIndex == -1){
+				return null;
+			}
+			else{
+				return aImg[minIndex];
+			}
+		}
+
+		//计算碰撞时彼此的最小距离
+	}
+	</script>
+</body>
+</html>

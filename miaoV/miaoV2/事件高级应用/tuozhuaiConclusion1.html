@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="pressDiv" style="width:100px;height:100px;background:red;position:absolute;"></div>
+   和急急急急急急急急急急急急急急急急急急
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("pressDiv");
+		var disX = 0 ;
+		var disY = 0 ;
+
+		/*
+		ie的解决阻止默认事件的解决办法
+		*/
+		oDiv.onmousedown = function(ev){
+			//FF，需要使用window.event（event无法识别）
+			var oEvent = window.event || ev ;
+			disX = oDiv.offsetLeft - oEvent.clientX; 
+			disY = oDiv.offsetTop - oEvent.clientY; 
+
+			if (oDiv.setCapture) {
+				// 如果给oDiv加mouse事件，鼠标移动太快的时候会失效
+				oDiv.onmousemove = fnMove;
+				oDiv.setCapture();
+				// 在up的时候，将move属性的function删除
+				oDiv.onmouseup = fnUp;
+			}
+			else{
+				// 如果给oDiv加mouse事件，鼠标移动太快的时候会失效
+				document.onmousemove = fnMove;
+				// 在up的时候，将move属性的function删除
+				document.onmouseup = fnUp;
+			}
+			
+		};
+
+
+			function fnMove(ev){
+					var oEvent = window.event || ev ;
+
+					//当鼠标超出可视区域时，固定在边缘上
+					var left = oEvent.clientX + disX;
+					var top = oEvent.clientY + disY;
+					if (left < 0 ) {
+						left = 0;
+					}
+					else if(left > document.documentElement.clientWidth - this.offsetWidth){
+						left = document.documentElement.clientWidth - this.offsetWidth;
+					}
+
+					if (top < 0) {
+						top = 0;
+					}
+					else if(top > document.documentElement.clientHeight - this.offsetHeight){
+						top = document.documentElement.clientHeight - this.offsetHeight
+					}
+					oDiv.style.left = left + "px";
+					oDiv.style.top = top + "px";
+				};
+
+
+				function fnUp(ev){
+					this.onmousemove = null;
+					this.onmouseup = null;
+					if (this.setCapture) {
+						this.releaseCapture();
+					}
+					
+			};
+	};
+
+	</script>
+</body>
+</html>

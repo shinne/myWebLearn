@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .div1{
+        width: 300px;
+        height: 400px;
+        background-color: #111111;
+        float: left;
+    }
+     .div2{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        float: left;
+    }
+     .div3{
+        width: 400px;
+        height: 400px;
+        background-color: green;
+        clear: left;
+    }
+
+</style>
+<body>
+   <div class="div1"></div>
+   <div class="div2"></div>
+   <div class="div3"></div>
+    <button class="myButton">aaa</button>
+    
+</body>
+<script type="text/javascript">
+    var a = document.querySelector("#myDiv")
+    var q = document.querySelector("em")
+    var y = a.innerText;
+    var p = y.split();
+    p.toString();
+    console.log(p);
+    console.log(q.compareDocumentPosition(a));
+    var s = a.outerHTML;
+    console.log(s);
+    var c = a.dataset.mmm = "dddddd";
+    console.log(c);
+    var m = a.dataset.mmm;
+    a.classList.remove("dd")
+    var b = a.className.split();
+    console.log(b);
+    var button1 = document.getElementsByTagName("myButton");
+
+    var bb = document.defaultCharset;
+    console.log(bb);
+</script>
+</html>

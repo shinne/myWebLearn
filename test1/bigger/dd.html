@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		#myDiv{
+			height: 100px;
+			width:100px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<button id="clickButton">开始运动</button>
+	<div id="myDiv">ffffff</div>
+	<script>
+		window.onload = function(){
+			var oTime;
+			var oButton = document.getElementById("clickButton");
+			var oDiv = document.getElementById("myDiv");
+			oButton.onclick = function(){
+				clearInterval(oTime);
+
+				oTime = setInterval(function(){
+					if(oDiv.offsetLeft >= 500){
+						clearInterval(oTime);	
+					}
+					else{
+						console.log(oDiv.offsetLeft);
+
+						oDiv.style.left = oDiv.offsetLeft + 10 + "px";
+					}
+				},100);
+			}
+		}
+
+	</script>
+</body>
+</html>

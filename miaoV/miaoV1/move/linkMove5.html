@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/linkMove5.css">
+	<script src = "js/linkMove5.js"></script>
+</head>
+<body>
+	<div id="bodyBlock">
+			<div id="navBlock">
+				<p>点我关闭</p>
+				<ul>
+					<li><a href="#">clickMe,hava a try</a></li>
+					<li><a href="#">clickMe,hava a try</a></li>
+					<li><a href="#">clickMe,hava a try</a></li>
+					<li><a href="#">clickMe,hava a try</a></li>
+					<li><a href="#">clickMe,hava a try</a></li>
+				</ul>
+			</div>
+
+			<div id="weatherDiv">
+				我这里是天气情况
+			</div>
+
+			<div id="btnDiv">
+				点我
+			</div>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function(){
+		var btn = document.getElementById("btnDiv");
+		var navBlock = document.getElementById("navBlock");
+		var weatherDiv = document.getElementById("weatherDiv");
+		var closeBtn = document.getElementsByTagName("p")[0];
+
+
+		btn.onclick = function(){
+			weatherDiv.style.display = "block";
+			startMove(weatherDiv,"left",0,function(){
+				navBlock.style.display = "block";
+				startMove(navBlock,"left",0);
+			});
+		};
+
+		closeBtn.onclick = function(){
+			startMove(navBlock,"left",-220,function(){
+				navBlock.style.display = "none";
+				startMove(weatherDiv,"left",154);
+				weatherDiv.style.display = "none";
+			});
+		};
+	}
+
+	</script>
+</body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul>    
+<li id="a1">aa</li>    
+<li id="a2">aa</li>   
+<li id="a3">aa</li>   
+</ul>   
+ 
+<script>
+     function obj(o){
+         function F(){};
+         F.prototype = o;
+         return new F();
+     }
+    var box = {
+        name : 'trigkit4',
+        arr : ['brother','sister','baba']
+    };
+    var b1 = obj(box);
+    alert(b1.name);//trigkit4
+
+    /*b1.__proto__.name = 'mike';*/
+    b1.name="mike";
+    alert(b1.name);//mike
+    alert(b1.arr);//brother,sister,baba
+    b1.arr = ["dd"];
+    b1.arr.push('parents');
+    alert(b1.arr);//brother,sister,baba,parents
+
+    var b2 = obj(box);
+    alert(b2.name);//trigkit4
+    alert(b2.arr);//brother,sister,baba,parents</script>
+</body>
+</html>

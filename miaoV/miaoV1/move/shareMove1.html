@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="ulDiv" style="width:80px;height:180px;background:red;position:absolute;left:-80px;float:left;">
+		<span style="width:20px;height:80px;background:green;position:absolute;left:80px;top:50px;">
+		<p>分</p>
+		<p>享</p>
+	</span>
+
+	</div>
+
+	<script type="text/javascript">
+
+	
+	window.onload = function(){
+
+		//通过设置一个函数可以将左右移动的两个函数整合成一个
+		function startMove(iTarget){
+			if(oDiv.offsetLeft < iTarget){
+				var iSpeed = 10;
+			}
+			else{
+				var iSpeed = -10;
+			}
+		
+			//确保在每一次onclick的时候只有一个oTime在运行，需在每一次click的时候将以前的oTime清楚掉
+			clearInterval(oTime);
+			oTime = setInterval(function(){
+				//超出500的时候就将这个溢出
+				if(oDiv.offsetLeft == iTarget){
+					clearInterval(oTime);
+				}
+				//用if-else判断是否超过500，如果不用else则在每一次onclick的时候都要再王右边移动10px
+				else{
+					oDiv.style.left = oDiv.offsetLeft + iSpeed + "px";
+				}
+			},30);
+	}
+
+	/*function startMove2(){
+		var iSpeed = -10;
+			
+			//确保在每一次onclick的时候只有一个oTime在运行，需在每一次click的时候将以前的oTime清楚掉
+			clearInterval(oTime);
+			oTime = setInterval(function(){
+				//超出500的时候就将这个溢出
+				if(oDiv.offsetLeft <= -80){
+					clearInterval(oTime);
+				}
+				//用if-else判断是否超过500，如果不用else则在每一次onclick的时候都要再王右边移动10px
+				else{
+					oDiv.style.left = oDiv.offsetLeft + iSpeed + "px";
+				}
+			},30);
+	}*/
+
+		var oTime = null;
+		var oDiv = document.getElementById("ulDiv");
+		var oSpan = document.getElementsByTagName("span")[0];
+
+		oDiv.onmouseover = function(){
+			startMove(0);
+		};
+
+		oDiv.onmouseout = function(){
+			startMove(-80);
+		};
+
+	};
+
+
+	</script>
+	
+	
+</body>
+</html>

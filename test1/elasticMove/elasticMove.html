@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#move{
+			height: 100px;
+			width: 100px;
+			background: green;
+			position: absolute;
+			left: 10px;
+			top:50px;
+		}
+
+		#line{
+			position: absolute;
+			left: 500px;
+			height: 200px;
+			width: 200px;
+			border-left: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<button id="button">开始运动</button>
+	<div id="move"></div>
+	<div id="line"></div>
+	<script>
+	window.onload = function() {
+		var oButton = document.getElementById("button");
+		var oMove = document.getElementById("move");
+		var oLine = document.getElementById("line");
+
+		oButton.onclick = function(){
+			var iSpeed = 0;
+			var timer = setInterval(function(){
+				var iCur = oMove.offsetLeft;
+				iSpeed += (500 - iCur)/5;
+				iSpeed *= 0.7;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				if(Math.abs(500-iCur) <1 || Math.abs(iSpeed) < 1){
+					oMove.style.left = 500 + "px";
+				}
+				else{
+					oMove.style.left = iCur + iSpeed + "px";
+				}
+			},30);
+
+			
+		}
+	}
+
+	</script>
+</body>
+</html>

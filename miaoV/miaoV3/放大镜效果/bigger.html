@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="bigger.css">
+</head>
+<body>
+	<div id="bodyWrapper">
+		<div id="smallPic">
+			<div id="opacityDiv"></div>
+			<img id="smallImg" src="img/small.png" alt="">
+		</div>
+
+		<div id="bigPic">
+			<img id="bigImg"src="img/big.png" alt="">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function () {
+		var oSmallImg = document.getElementById("smallImg");
+		var oSmallDiv = document.getElementById("smallPic");
+		var oBigDiv = document.getElementById("bigPic");
+		var oBigImg = document.getElementById("bigImg");
+		var oBodyDiv = document.getElementById("bodyWrapper");
+		var oLayer = document.getElementById("opacityDiv");
+
+		/*
+		*
+		*
+		如果把osmallImg进行添加监听器，则会出现闪烁问题.这就是为什么要找一个容器盛装oLayer和smallImg的原因
+		*
+		*
+		*/
+		oSmallDiv.onmouseover = function(){
+			oLayer.style.display = "block";
+			oBigDiv.style.display = "block";
+
+		};
+
+		oSmallDiv.onmouseout = function(){
+			oLayer.style.display = "none";
+		};
+
+		oSmallDiv.onmousemove = function(ev){
+			var oEvent = ev || window.event ;
+			/*
+			计算鼠标在图片的哪个位置
+			*/
+			/*
+			要获得border的宽度，需要考虑兼容性
+			*/
+			var iBorder = 0;
+			if(oBodyDiv.currentStyle){
+				iBorder = parseInt(oBodyDiv.currentStyle.borderWidth);
+			}
+			else if(window.getComputedStyle){
+				iBorder = parseInt(getComputedStyle(oBodyDiv,null).borderWidth);
+			}
+			
+			var t = oEvent.clientY - oBodyDiv.offsetTop - oSmallDiv.offsetTop - iBorder - oLayer.offsetHeight/2;
+			var l = oEvent.clientX - oBodyDiv.offsetLeft - oSmallDiv.offsetLeft - iBorder - oLayer.offsetWidth/2;
+			if(t <= 0){
+				t = 0;
+			}
+			else if(t > oSmallImg.offsetWidth - oLayer.offsetWidth){
+				t = oSmallImg.offsetWidth - oLayer.offsetWidth;
+			}
+
+			if(l <= 0){
+				l = 0 ;
+			}
+
+			else if(l > oSmallImg.offsetHeight - oLayer.offsetHeight){
+				l = oSmallImg.offsetHeight - oLayer.offsetHeight;
+			}
+			oLayer.style.left = l + "px";
+			oLayer.style.top = t + "px";
+			/*
+			计算鼠标一共能移动的距离比例
+			*/
+			var iPercentX  = l/(oSmallImg.offsetWidth - oLayer.offsetWidth);
+			var iPercentY  = t/(oSmallImg.offsetHeight - oLayer.offsetHeight);
+			/*
+			计算大图移动的距离
+			*/
+			oBigImg.style.left = -iPercentX * (oBigImg.offsetWidth - oBigDiv.offsetWidth) + "px";
+			oBigImg.style.top = -iPercentY * (oBigImg.offsetHeight - oBigDiv.offsetHeight) + "px";
+		};
+
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+
+/*
+设置进度条的样式
+*/
+#progressbar{
+	height: 30px;
+	width: 700px;
+}
+
+.ui-progressbar-value{ 
+background : orange; 
+} 
+
+#menu{
+	width: 250px;
+}
+
+#slider{
+	width: 500px;
+}
+
+#spinner{
+	height: 12px;
+	width: 100px;
+}
+
+.tooltips{
+	background: orange;
+}
+
+
+

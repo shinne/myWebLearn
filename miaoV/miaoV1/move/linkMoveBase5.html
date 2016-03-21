@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src = "js/linkMove5.js"></script>
+</head>
+<body>
+	<div id="linkMove" style="height:200px;width:200px;filter:alpha(opacity:50);opacity:0.5 ;background:red;"></div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("linkMove");
+		oDiv.onmouseover = function(){
+			startMove(oDiv,"width",300,function(){
+			startMove(oDiv,"height",300,function(){
+				startMove(oDiv,"opacity",100);
+			})
+		});
+		}
+		
+	}
+
+
+	</script>
+
+
+
+</body>

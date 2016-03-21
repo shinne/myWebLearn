@@ -1,0 +1,259 @@
+#body{
+	height: 966px;
+}
+.bodyClass{
+
+    
+	width: 980px;
+	height: 810px;
+	background:rgba(255,255,255,0.5) none repeat scroll !important;
+	margin: 0px auto;
+}
+
+.mainReply{
+
+	height: 362px;
+	width: 925px;
+	margin: 0px auto;
+	background-color: #F7F7F7;
+	/*
+	box-shadow:  投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色; 
+	*/
+	/*firefox*/
+	-webkit-box-shadow: 1px 3px 10px #D6D5D5;  
+	/*Safariand Google chrome10.0*/
+    -moz-box-shadow: 1px 3px 10px #D6D5D5;  
+    box-shadow: 1px 3px 10px #D6D5D5;  
+}
+
+.mainClass{
+	margin-left: 22px;
+	margin-right: 20px;
+	height: 680px;
+
+}
+
+.mainLeft{
+	float: left;
+	width: 595px;
+	height: 100%;
+	padding-left: 18px;
+}
+
+
+.leftTitle{
+	height: 30px;
+	width: 100%;
+	background-color:#B0CFCD;
+	text-align: center;
+	font-size: 12px;
+	color: blue; 
+	line-height:30px;
+	letter-spacing: 2px;
+	font-family: "宋体";
+
+
+}
+.mainRight{
+	float: left;
+	margin-left: 20px;
+	width: 305px;
+	height: 710px;
+	margin-top: -30px;
+}
+
+.rightTitle{
+	height: 30px;
+	width: 100%;
+}
+
+.leftMain{
+	margin-top: 10px;
+	height: 640px;
+	width: 100%;
+}
+
+.leftMain ul{
+	list-style-type: none;
+	width: 575px;
+	margin-left: 5px;
+	margin-right: 5px;
+	
+}
+.leftMain .leftLi{
+	border-bottom: 1px dashed #C0C0C0;
+	height: 36px;
+	line-height: 36px;
+}
+
+.leftLi .liLeft{
+	float: left;
+	width: 485px;
+	height: 100%;
+	/*
+	进行文本截断处理
+	*/
+	white-space: nowrap;  
+	overflow: hidden;  
+	text-overflow:ellipsis;      /*兼容IE*/  
+
+}
+
+.leftLi .liRight{
+	float: right;
+	width: 85px;
+	height: 100%;
+	text-align: right;
+}
+
+.leftMain ul li a,.leftMain ul li {
+	font-size: 14px;
+	color: #868686;
+	text-decoration: none;
+}
+
+.bigTitleA{
+	font-size: 16px;
+	color:#1B80C0;
+	width: 135px;
+	text-align: center;
+	margin-left: 80px;
+	line-height: 30px;
+}
+
+.smallMore a{
+	float: right;
+	line-height: 30px;
+	font-size: 12px;
+	color: #494949;
+	text-decoration: none;
+}
+
+.rightOne{
+	height: 30px;
+	width: 100%;
+	margin: 0px auto;
+	border-bottom: 1px dashed #979693;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	background-color: #B0CFCD;
+	
+}
+
+.rightOne .first{
+	color: #004F9E;
+}
+
+.rightTwo{
+	padding-top: 8px;
+	width: 266px;
+	padding-left: 17px;
+	padding-right: 22px;
+	background-color: #B0CFCD;
+}
+
+.rightTwo tr{
+	display: block;
+	padding-top: 14px;
+	color: #494949;
+}
+
+
+.td1{
+
+
+	font-family: "castellar";
+	font-size: 24px;
+	color: red;
+	/*
+	设置为斜体
+	*/
+	font-style: italic;
+
+}
+
+
+.td2{
+	padding-left: 18px;
+	padding-right: 12px;
+	font-size: 16px;
+}
+
+.td3{
+	padding-right: 0px;
+}
+
+.rightThree{
+	margin-top: 15px;
+	width: 288px;
+	height: 102px;
+	background-color: #EFEFEF;
+	padding: 16px 8px;
+	padding-bottom: 0px;
+
+}
+
+.latestData{
+	color: #2B7797;
+	font-size: 17px;
+	font-style: italic;
+	font-weight: 500;
+	font-family: "黑体";
+	padding-left: 10px;
+}
+
+.blockWhite{
+	margin-top: 6px;
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	padding-top: 6px;
+	/*
+	设置行间距
+	*/
+	line-height: 140%;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+.spanClass1{
+	padding-left: 15px;
+	float: left;
+}
+
+.spanClass2{
+	padding-right: 15px;
+	float: right;
+}
+
+.number{
+	color: #2C7797;
+}
+
+.rightFour{
+	width: 285px;
+	height: 72px;
+	margin: 0px auto;
+	margin-top: 16px;
+	text-align: center;
+	line-height: 72px;
+}
+
+.rightFour a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #085590;
+	border-radius: 2px;
+	text-decoration: none;
+	color: white;
+	font-size: 28px;
+
+}
+
+.imgLetter{
+	height: 28px;
+	width: 28px;
+	margin-right: 5px;
+}

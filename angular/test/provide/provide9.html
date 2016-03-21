@@ -1,0 +1,60 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <title>AngularJS 依赖注入</title>
+   <script src = "../js/angular/angular.min.js"></script>
+   <script src="../js/angular/angular-route.min.js"></script>
+</head>
+<body>
+   <h2>AngularJS 依赖注入应用示例</h2>
+   <div ng-app="mainApp" ng-controller="CalcController">
+      <p>输入一个整数: <input type="number" ng-model="number" />
+      <button ng-click="square()">X<sup>2</sup></button>
+      <p>结果值: {{result}}</p>
+   </div>
+   <script src="http://www.yiibai.com/js/angular.min.js"></script>
+   <script>
+      var mainApp = angular.module("mainApp", []);
+	  
+      mainApp.config(function($provide) {
+         $provide.provider('MathService', function() {
+            this.$get = function() {
+               var factory = {};  
+               factory.multiply = function(a, b) {
+                  return a * b; 
+               }
+               return factory;
+            };
+         });
+      });
+
+      mainApp.value("defaultInput", 5);
+
+      
+      //其实provide和factory可以达到相同的效果，提供一些服务，这些服务是什么
+     mainApp.factory('MathService', function() {     
+         var factory = {};  
+         factory.multiply = function(a, b) {
+            return a * b; 
+         }
+         return factory;
+      }); 
+      //其实provide和factory可以达到相同的效果，提供一些服务，这些服务是什么
+      
+      mainApp.service('CalcService', function(MathService){
+            this.square = function(a) { 
+            return MathService.multiply(a,a); 
+         }
+      });
+
+      mainApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+            $scope.number = defaultInput;
+            $scope.result = CalcService.square($scope.number);
+
+            $scope.square = function() {
+            $scope.result = CalcService.square($scope.number);
+         }
+      });
+   </script>
+</body>
+</html>

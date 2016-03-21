@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="test.css">
+</head>
+<body>
+	<div id="smallWrapper">	
+		<div id="smallDiv">
+			<img src="small.png" alt="" id="smallImg">
+			<div id="opacityDiv"></div>
+		</div>
+		
+		
+	</div>
+
+	<div id="bigWrapper">
+		<img src="big.png" alt="" id="bigImg">
+	</div>
+	<script>
+	window.onload = function(){
+		var oSmallWrapper = document.getElementById("smallWrapper");
+		var oSmallDiv = document.getElementById("smallDiv");
+		var oSmallImg = document.getElementById("smallImg");
+		var oLayer = document.getElementById("opacityDiv");
+		var oBigWrapper = document.getElementById("bigWrapper");
+		var oBigImg = document.getElementById("bigImg");
+
+		oSmallDiv.onmouseover = function() {
+			oLayer.style.display = "block";
+			oBigWrapper.style.display = "block";
+		}
+
+		oSmallDiv.onmouseout = function(){
+			oLayer.style.display = "none";
+			oBigWrapper.style.display = "none";
+		}
+
+		oSmallDiv.onmousemove = function(ev) {
+			var oEvent = ev || window.event;
+			var iBorder = 0;
+			if(oSmallWrapper.currentStyle){
+				iBorder = oSmallWrapper.currentStyle.borderWidth;
+				/*console.log(iBorder);*/
+			}
+			else{
+				iBorder = parseInt(getComputedStyle(oSmallWrapper,null).borderWidth);
+				/*console.log(iBorder);*/
+			}
+			var l = 0 ; 
+			var t = 0 ;
+			/*
+			计算鼠标在图片上的位置
+			*/
+			l = oEvent.clientX - oSmallWrapper.offsetLeft - oSmallDiv.offsetLeft - iBorder - oLayer.offsetWidth/2;
+			t = oEvent.clientY - oSmallWrapper.offsetTop - oSmallDiv.offsetTop - iBorder - oLayer.offsetHeight/2;
+			console.log(l   + "    " + t);
+			console.log(oSmallWrapper.offsetWidth);
+			if(l < 0){
+				l = 0;
+			}
+			else if(l > oSmallImg.offsetWidth - oLayer.offsetWidth){
+				l = oSmallImg.offsetWidth - oLayer.offsetWidth;
+			}
+			if(t < 0){
+				t = 0;
+			}
+			else if(t > oSmallImg.offsetHeight - oLayer.offsetHeight){
+				t = oSmallImg.offsetHeight - oLayer.offsetHeight;
+			}
+			oLayer.style.left = l + "px";
+			oLayer.style.top = t +"px";
+			var lPercent = l/(oSmallImg.offsetWidth - oLayer.offsetWidth);
+			var tPercent = t/(oSmallImg.offsetHeight - oLayer.offsetHeight);
+			var moveL = lPercent * (oBigImg.offsetWidth - oBigWrapper.offsetWidth);
+			var moveT = tPercent * (oBigImg.offsetHeight - oBigWrapper.offsetHeight);
+			oBigImg.style.left = -moveL + "px";
+			oBigImg.style.top = -moveT + "px";
+		}
+
+	}
+	</script>
+</body>
+</html>

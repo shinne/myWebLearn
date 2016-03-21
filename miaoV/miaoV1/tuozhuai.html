@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="pressDiv" style="width:100px;height:100px;background:red;position:absolute;"></div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("pressDiv");
+		var disX = 0 ;
+		var disY = 0 ;
+		oDiv.onmousedown = function(ev){
+			//FF，需要使用window.event（event无法识别）
+			var oEvent = window.event || ev ;
+			disX = oDiv.offsetLeft - oEvent.clientX; 
+			disY = oDiv.offsetTop - oEvent.clientY; 
+
+			// 如果给oDiv加mouse事件，鼠标移动太快的时候会失效
+			document.onmousemove = function(ev){
+				var oEvent = window.event || ev ;
+
+				//当鼠标超出可视区域时，固定在边缘上
+				var left = oEvent.clientX + disX;
+				var top = oEvent.clientY + disY;
+				if (left < 0 ) {
+					left = 0;
+				}
+				else if(left > document.documentElement.clientWidth - oDiv.offsetWidth){
+					left = document.documentElement.clientWidth - oDiv.offsetWidth;
+				}
+
+				if (top < 0) {
+					top = 0;
+				}
+				else if(top > document.documentElement.clientHeight - oDiv.offsetHeight){
+					top = document.documentElement.clientHeight - oDiv.offsetHeight
+				}
+				oDiv.style.left = left + "px";
+				oDiv.style.top = top + "px";
+			};
+
+			// 在up的时候，将move属性的function删除
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			return false;
+		};
+	};
+
+	</script>
+</body>
+</html>

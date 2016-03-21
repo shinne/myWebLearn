@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="appleMove.css">
+	<script type="text/javascript" src = "startMove.js"></script>
+</head>
+<body>
+	<div id="bodyWrapper">
+		<div id="title">
+			<div id="titleLeft">妙味课堂　http://www.miaov.com</div>
+			<div id="titleRight">联系我们</div>
+		</div>
+
+		<div id="bodyContent">
+			<div id="imgContent">
+				<ul class="imgUl">
+					<li class="imgLi"><a href="#">
+						<img src="img/1.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/2.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/3.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/4.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/5.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/6.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/7.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/8.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/9.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/10.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/11.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+					<li class="imgLi"><a href="#">
+						<img src="img/12.jpg" alt="">
+						<p>iPod shuffle</p>
+						</a></li>
+				</ul>
+			</div>
+			<div id="navContent">
+				<span id="caret"></span>
+				<a class="nav show">Products</a>
+				<a class="nav">iTunes and more</a>
+			</div>
+
+		</div>
+	</div>
+
+	<script>
+	window.onload = function(){
+		var aLi = document.getElementsByTagName("li");
+		var oCaret = document.getElementById("caret");
+		var aButton = document.getElementsByClassName("nav");
+		var aPos = [];
+		for(var i = 0 ; i < aLi.length ; i ++){
+			aPos[i] = aLi[i].offsetLeft;
+		}
+		/*		alert(0);*/
+		for(var i = 0 ; i < aLi.length ; i ++){
+			aLi[i].style.position = "absolute";
+			aLi[i].style.left = aPos[i] + "px";
+		}
+		
+		aButton[1].onclick = function(){
+			this.className = "nav show";
+			aButton[0].className = "nav"; 
+			var timer = null;
+			var i = 0;
+
+
+			var left = this.offsetLeft + this.offsetWidth/2;
+			startMove(oCaret,{"left":left});
+
+			//进行第一个图片的left移动
+			
+			leftMove();
+			var timer = null;
+			function leftMove(){
+				console.log(i + "  ");
+				if(i < aLi.length/2){
+					startMove(aLi[i],{"left":-200});
+					i++;
+					timer = setTimeout(leftMove,100);
+				}
+				else{
+					/*clearTimeout(timer);*/
+					leftMove2();
+
+				}
+			}
+
+			function leftMove2(){
+				if(i < aLi.length){
+
+					startMove(aLi[i],{"left":aPos[i - aLi.length/2]});
+					i++;
+					timer = setTimeout(leftMove2,100);
+				}
+			}
+
+
+		}
+		aButton[0].onclick = function(){
+			this.className = "nav show";
+			aButton[1].className = "nav";
+			var left = this.offsetLeft + this.offsetWidth/2;
+			startMove(oCaret,{"left":left});
+			rightMove();
+			var timer = null;
+			var i = aLi.length - 1;
+			rightMove();
+
+			function rightMove(){
+				console.log(i + "iiiiiii");
+				if(i >= aLi.length/2){
+					startMove(aLi[i],{"left":aPos[i]});
+					i--;
+					timer = setTimeout(rightMove,100);
+				}
+				else{
+					/*clearTimeout(timer);*/
+					rightMove2();
+
+				}
+			}
+
+			function rightMove2(){
+				if(i >=0 ){
+
+					startMove(aLi[i],{"left":aPos[i]});
+					i--;
+					timer = setTimeout(rightMove2,100);
+				}
+			}
+		}
+
+
+		
+
+	}
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点击我进行ajax</button>
+	//此文件需要放在服务器下运行
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				var oAjax = null;
+				//ie6以上使用这个
+				if(window.XMLHttpRequest){
+					oAjax = new XMLHttpRequest();
+				}
+				//ie6以下使用这个 
+				else{
+
+					oAjax = new ActiveXobject("Microsoft.XMLHTTP");
+				}
+				//建立连接
+				oAjax.open("GET","ajax.json",true);
+
+				//当请求端与服务器的状态readyState改变时，会触发下面的这个函数
+				oAjax.onreadystatechange = function(){
+					console.log(oAjax.readyState);
+					if(oAjax.readyState == 4){
+						if(oAjax.status == 200){
+							var result = JSON.parse(oAjax.responseText);
+							console.log("name:" + result.name);
+							console.log("age:" + result.age)
+
+						}
+						else{
+							alert("failed");
+						}
+					}
+				}
+				//真正的发送请求
+				oAjax.send();
+			}
+		}
+	</script>
+</body>
+</html>
