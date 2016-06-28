@@ -3,8 +3,200 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style id="style">
+	*{
+		margin: 0;
+		padding:0;
+	}
+	.body-wrapper{
+		position: absolute;
+		height: 360px;
+		width: 800px;
+		margin: auto;
+		top: 80px;
+		right: 0;
+		left: 0;
+/* 		border:1px solid red; */
+	}
+
+	ul.pic-list{
+		list-style-type: none;
+		height: 360px;
+		width: 800px;
+		-webkit-perspective:800px;
+	 	/* -webkit-perspective-origin:center center -180px ; */
+	}
+
+	ul.pic-list li{
+		display: block;
+		float: left;
+		position: relative;
+		height: 360px;
+		width: 25px;
+		-webkit-transform-style:preserve-3d;
+		-webkit-transform-origin:center center -180px;
+		/* -webkit-transform:rotateX(60deg); */
+		/* -webkit-transform-origin:center center ; */
+		/* -webkit-transform:rotateX(30deg); */
+	}
+
+	ul.pic-list li a{
+		display: block;
+		position: absolute;
+		height: 360px;
+		width:25px;
+		left: 0;
+		top: 0;
+	}
+
+	ul.pic-list li a:nth-of-type(1){
+		background: url(1.jpg) no-repeat;
+	}
+
+	ul.pic-list li a:nth-of-type(2){
+		background: url(2.jpg) no-repeat;
+		top:-360px;
+		-webkit-transform-origin:bottom;
+		-webkit-transform:rotateX(90deg);
+	}
+
+	ul.pic-list li a:nth-of-type(3){
+		background: url(3.jpg) no-repeat;
+		-webkit-transform-origin:center;
+		-webkit-transform:translateZ(-360px) rotateX(180deg);
+	}
+
+	ul.pic-list li a:nth-of-type(4){
+		background: url(4.jpg) no-repeat;
+		top:360px;
+		-webkit-transform-origin:top;
+	    -webkit-transform:rotateX(-90deg);
+	}
+
+	ul.select-ul{
+		position: absolute;
+		top: 380px;
+		right: 0;
+		width: 200px;
+		height: 40px;
+		text-align: right;
+		list-style-type: none;
+	}
+	
+	ul.select-ul li{
+		display: block;
+		float: left;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		-webkit-border-radius:50%;
+		-moz-border-radius:50%;
+		-o-border-radius:50%;
+		border-radius: 50%;
+		background: black;
+		margin-right: 10px;
+		text-align: center;
+		font:italic 30px/40px Arial;
+		color: white;
+		cursor:pointer;
+	}
+
+	ul.select-ul li.active{
+		background: orange;
+	}
+
+
+	</style>
 </head>
 <body>
-	 <div class="body-wrapper"></div>
+	 <div class="body-wrapper">
+	 	<ul class="pic-list" id="picList">
+	 		<li>
+	 			<a href=""></a>
+	 			<a href=""></a>
+	 			<a href=""></a>
+	 			<a href=""></a>
+
+	 		</li>
+
+	 		<li>
+	 			<a href=""></a>
+	 			<a href=""></a>
+	 			<a href=""></a>
+	 			<a href=""></a>
+
+	 		</li>
+	 	</ul>
+
+	 	<ul class="select-ul" id="selectUl">
+	 		<li class="active">1</li>
+	 		<li>2</li>
+	 		<li>3</li>
+	 		<li>4</li>
+	 	</ul>
+	 </div>
+
+	 <script>
+	 	window.onload = function(){
+	 		var oPicList = document.getElementById("picList");
+	 		var aLi = oPicList.getElementsByTagName("li");
+
+	 		var oSelectUl = document.getElementById("selectUl");
+	 		/*console.log(oSelectUl)*/
+	 		var aBtn = oSelectUl.getElementsByTagName("li");
+	 		var oCss = document.getElementById("style");
+	 		var iLiw = 25;
+	 		var len = oPicList.offsetWidth/iLiw;
+	 		var sLi = "";
+	 		var sCss = "";
+	 		var iZindex = 0;
+	 		console.log(len);
+
+	 		for(var i = 0 ; i < len ; i++){
+	 			//添加li以及li中的a
+	 			//因为li的position：relative。所以右侧面要比左侧面的高，所以右边部分层级高于左侧页面
+	 			//右侧就会出现镂空状况，因此从左到中间层级++，从中间到右边层级--
+	 			i>len/2?iZindex--:iZindex++;
+	 			sLi += '<li>\
+				 			<a href=""></a>\
+				 			<a href=""></a>\
+				 			<a href=""></a>\
+				 			<a href=""></a>\
+	 					</li>'; 
+
+	 			sCss += "ul.pic-list li:nth-of-type(" + (i+1) + ") a{ background-position:-"	
+	 					+ i*iLiw + "px 0;}";	
+
+	 			sCss += "ul.pic-list li:nth-of-type("+(i+1)+"){z-index:"+iZindex+"}";
+	 		}
+
+	 		oCss.innerHTML += sCss;
+	 		oPicList.innerHTML = sLi;
+
+
+	 		var aSelect = document.getElementById("selectUl").children;
+	 		console.log(aSelect);
+
+	 		for(var i = 0 ; i < aBtn.length; i++){
+	 			(function(j){
+	 				console.log("ddd" + j);
+	 				aBtn[j].onclick = function(){	
+	 					console.log(aBtn[j]);			
+	 					for(var c = 0 ; c < aLi.length ; c++){
+	 						aLi[c].style.transition = "0.5s " + c*50 + "ms";
+	 						aLi[c].style.transform = "rotateX(-" + 90*j + "deg)";
+	 					}
+	 					for(var d = 0 ; d < aBtn.length ; d++){
+	 						aBtn[d].className = "";
+	 					}
+	 					this.className = "active";
+	 				}
+	 			})(i)
+	 		}
+
+	 	}
+
+
+	 </script>
 </body>
 </html>
