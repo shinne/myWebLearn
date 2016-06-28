@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		padding: 2em;
+	}
+	.body-wrapper{
+		position: absolute;
+		/* height: 200px; */
+		height: auto;
+		width: 800px;
+		border:1px solid red;
+		margin: auto;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		display: flex;
+		text-align: center;
+		-webkit-flex-flow: column-reverse wrap;
+	  	flex-flow: column-reverse wrap;
+	  	/* -webkit-flex-flow: row wrap;
+	  	flex-flow: row wrap; */
+	  	justify-content:space-between;
+	}
+
+	.box{
+		/* width: 20px; */
+		/* height: 100px; */
+		/* flex: 1 100%;  */
+		/* overflow: hidden; */
+		/* font-size: 200px; */
+		padding:20px;
+	}
+
+	.box:nth-of-type(1){
+		flex: 4; 
+		width: 100%;
+		background: tomato;
+		box-sizing: border-box;
+		/* order: 3; */
+	}
+
+	.box:nth-of-type(2){
+		flex: 1; 
+		/* order: 2; */
+		background: lightgreen;
+	}
+
+	.box:nth-of-type(3){
+		/* order: 1; */
+		flex: 1; 
+		background: deepskyblue;
+	}
+
+	.box:nth-of-type(4){
+		/* order: 5; */
+		flex: 1; 
+		background: gold;
+	}
+
+	.box:nth-of-type(5){
+		/* order: 4; */
+		flex: 1; 
+		background: hotpink;
+	}
+	</style>
+</head>
+<body>
+	<div class="body-wrapper">
+		<div class="box">1sunshine</div>
+		<div class="box">2sunshine</div>
+		<div class="box">3sunshine</div>
+		<div class="box">4sunshine</div>
+		<div class="box">5sunshine</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .test_box {
+    display: -moz-box; 
+    display: -webkit-box; 
+    display: box; 
+    
+    width: 800px; 
+    margin: 40px auto; 
+    padding: 20px; 
+    background: #f0f3f9;
+     }
+
+    .list {
+        padding: 0 1em; 
+        font: bold 36px/200px monaco; 
+        text-shadow: 1px 1px #eee;
+    }
+
+    .list_one {
+        -moz-box-flex: 1; 
+        -webkit-box-flex: 1; 
+        box-flex: 1;
+    }
+    
+    .list_two{
+        -moz-box-flex: 2; 
+        -webkit-box-flex: 2; 
+        box-flex: 2;
+    }
+
+
+</style>
+<body>
+    HTML代码：
+<div class="test_box">
+    <div class="list list_two">1</div>
+    <div class="list list_one">2</div>
+    <div class="list list_one">3</div>
+</div>
+</body>
+</html>
+
+

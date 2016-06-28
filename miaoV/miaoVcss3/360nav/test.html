@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.foot-wrapper{
+		position: absolute;
+		bottom: 50px;
+		right: 50px;
+		height: 50px;
+		width: 50px;
+	}
+
+	.home{
+		background: url(home.png);
+		z-index: 2;
+		transition: 1s ease;
+		border-radius: 50%;
+	}
+
+	.nav{
+		margin:4px;
+		height: 42px;
+		width: 42px;
+	}
+
+	.nav img{
+		position: absolute;
+		border-radius: 50%;
+		left: 0;
+		top: 0;
+	}
+
+	.nav img.open{
+		transform: rotate(90deg);
+	}
+
+	</style>
+</head>
+<body>
+	 <div class="foot-wrapper home" id="home">	
+	 </div>
+
+	 <div class="foot-wrapper nav">	
+	 	<img src="prev.png" alt=""/>
+        <img src="open.png" alt="" />
+        <img src="clos.png" alt="" />
+        <img src="full.png" alt="" />
+        <img src="refresh.png" alt="" />
+	 </div>
+
+	 <script>
+	 	window.onload = function(){
+	 		var oBtn = document.getElementById("home");
+	 		var bOpen = false;
+	 		var radius = -150;
+	 		var navImgs = document.querySelectorAll("img");
+	 		console.log(navImgs);
+
+	 		function getXY(deg,radius){
+	 			return {
+	 				x:radius * Math.sin(deg*Math.PI/180),
+	 				y:radius * Math.cos(deg*Math.PI/180),
+	 			}
+	 		}
+
+	 		function openNavs(){
+	 			var len = navImgs.length;
+	 			oBtn.style.WebkitTransform = "rotate(-360deg)";
+	 			console.log("ddd");
+	 			for(var i = 0 ; i < len ; i ++){
+	 				var pos = getXY(i / (len - 1 ) * 90,radius);
+	 				navImgs[i].style.transition = "0.5s " + i * 0.1 + "s ease";
+	 				navImgs[i].style.left = pos.x + "px";
+	 				navImgs[i].style.top = pos.y +　"px";
+	 				navImgs[i].style.WebkitTransform = "rotate(-720deg)";
+	 			}
+	 		}
+
+	 		function closeNavs(){
+	 			var len = navImgs.length;
+	 			oBtn.style.WebkitTransform = "rotate(360deg)";
+	 			console.log("ddd");
+	 			for(var i = 0 ; i < len ; i ++){
+	 				/*var pos = getXY(i / (len - 1 ) * 90,radius);*/
+	 				navImgs[i].style.transition = "1s ease";
+	 				navImgs[i].style.left = 0 + "px";
+	 				navImgs[i].style.top = 0 +　"px";
+	 				navImgs[i].style.WebkitTransform = "rotate(0deg)";
+	 			}
+	 		}
+	 		oBtn.onclick = function(){
+	 			if(bOpen){
+	 				closeNavs();
+	 			}
+
+	 			else{
+	 				openNavs();	
+	 			}
+
+	 			bOpen = !bOpen;
+	 		}
+
+	 	}
+
+
+	 </script>
+</body>
+</html>

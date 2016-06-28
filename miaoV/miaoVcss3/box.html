@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.body-wrapper{
+		position: absolute;
+		height: 300px;
+		width: 300px;
+		border: 2px solid black;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		perspective:200px;
+		-webkit-perspective-origin:center center;
+		/*视角从哪儿开始看*/
+		/* -webkit-perspective-origin:left center; */
+	}
+
+	.boxes{
+		position: absolute;
+		height: 100px;
+		width: 100px;
+		top: 100px;
+		left: 100px;
+		transform-style:preserve-3d;
+		-webkit-transform-origin:center center -50px;
+		transition: 4s;
+	}
+
+	.boxes div{
+		line-height: 100px;
+		font-size: 80px;
+		color: white;
+		text-align: center;
+	}
+
+	div.box:nth-of-type(1){
+		position: absolute;
+		left: 0;
+		top: -100px;
+		height: 100px;
+		width: 100px;
+		background-color:tomato;
+		transform-origin: bottom;
+		transform: rotateX(90deg);
+	}
+
+	div.box:nth-of-type(2){
+		position: absolute;
+		left: 0;
+		top: 0px;
+		height: 100px;
+		width: 100px;
+		background-color:#09c;
+	}
+
+	div.box:nth-of-type(3){
+		position: absolute;
+		left: 0;
+		top: 100px;
+		height: 100px;
+		width: 100px;
+		background-color:#c15;
+		transform-origin: top;
+		transform: rotateX(-90deg);
+	}
+
+	div.box:nth-of-type(4){
+		position: absolute;
+		left: -100px;
+		top: 0;
+		height: 100px;
+		width: 100px;
+		background-color:yellow;
+		transform-origin: right;
+		transform: rotateY(-90deg);
+	}
+
+	div.box:nth-of-type(5){
+		position: absolute;
+		left: 100px;
+		top: 0;
+		height: 100px;
+		width: 100px;
+		background-color:orange;
+		transform-origin: left;
+		transform: rotateY(90deg);
+	}
+
+	div.box:nth-of-type(6){
+		position: absolute;
+		left: 0;
+		top: 0px;
+		height: 100px;
+		width: 100px;
+		background-color:lightblue;
+		transform: translateZ(-100px) rotateX(180deg);
+	}
+
+	.body-wrapper:hover div.boxes{
+		transform: rotateX(360deg);
+	}
+	</style>
+</head>
+<body>
+	<div class="body-wrapper">
+		<div class="boxes">
+			<div class="box">1</div>
+			<div class="box">2</div>
+			<div class="box">3</div>
+			<div class="box">4</div>
+			<div class="box">5</div>
+			<div class="box">6</div>
+		</div>
+
+	</div>
+</body>
+</html>
