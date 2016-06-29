@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@keyframes move{
+		0%{
+			width:0; 
+		}
+
+		50%{
+			width: 200px;
+		}
+		100%{
+			width: 500px;
+		}
+	}
+
+	div.box{
+		width: 0;
+		height: 100px;
+		background-color: red;
+		-webkit-animation: 5s move ease-in infinite;
+	}
+
+	div.box-wrapper{
+		position: absolute;
+		left: 0;
+		top: 120px;
+		height: 400px;
+		width: 400px;
+		border: 1px solid red;
+	}
+
+
+	@keyframes move-box{
+		0%{
+			top: 0;
+			left: 0;
+		}
+		25%{
+			top: 0;
+			left: 370px;
+		}
+		50%{
+			top: 370px;
+			left: 370px;
+		}
+		75%{
+			top:370px;
+			left: 0;
+		}
+		100%{
+			top: 0;
+			left: 0;
+		}
+	}
+
+	div.move-box{
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 30px;
+		width: 30px;
+		background-color: tomato;
+		-webkit-animation:10s move-box linear infinite;
+	}
+
+	
+
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+
+	<div class="box-wrapper">
+		<div class="move-box"></div>
+	</div>
+</body>
+</html>

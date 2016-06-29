@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.body-wrapper{
+		position: absolute;
+		margin: auto;
+		left: 0;
+		top: 100px;
+		right: 0;
+		width: 700px;
+		height: 300px;
+	}
+
+	div.img-wrapper{
+		position: absolute;
+		left: 70px;
+		right: 70px;
+		height: 300px;
+		-webkit-perspective:1000px;
+		-webkit-transform-style:preserve-3d;
+	}
+
+	div.img-wrapper img{
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		
+	}
+
+	@keyframes show{
+		0%{
+			-webkit-transform:rotateX(180deg);
+			opacity: 0;
+		}
+
+		60%{
+			-webkit-transform:rotateX(0deg);
+			opacity: 0.7;
+		}
+	
+		72%{
+			-webkit-transform:rotateX(-20deg);
+			opacity: 0.8;
+		}
+
+		80%{
+			-webkit-transform:rotateX(-6deg);
+			opacity: 0.8;
+		}
+
+		90%{
+			-webkit-transform:rotateX(8deg);
+			opacity: 0.9;
+		}
+
+		100%{
+			-webkit-transform:rotateX(0deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes hide{
+		0%{
+			-webkit-transform:rotateX(0deg);
+			opacity: 1;
+		}
+
+		100%{
+			-webkit-transform:rotateX(-180deg);
+			opacity: 0;
+		}
+	}
+
+/* 	img:nth-of-type(1){
+	-webkit-transform-origin:bottom;
+	-webkit-transform:rotateX(70deg);
+	-webkit-animation:1s show ease-in;
+	-webkit-transform:rotateX(0deg);
+	opacity: 1;
+}
+ */
+	div.img-wrapper img.show{
+		-webkit-transform-origin:bottom;
+		-webkit-transform:rotateX(0deg);
+		-webkit-animation:1s show ease-in;
+		opacity: 1;
+	}
+
+	div.img-wrapper img.hide{
+		-webkit-transform-origin:bottom;
+		-webkit-transform:rotateX(70deg);
+		-webkit-animation:1s hide ease-in;
+		-webkit-transform:rotateX(-180deg);
+		opacity: 0;
+	}
+
+	div.prev,div.next{
+		position: absolute;
+		margin: auto;
+		height: 40px;
+		width: 40px;
+		-webkit-border-radius:50%;
+		font:italic normal 14px/40px arial;
+		box-shadow: 2px 2px 2px #909090;
+		text-align: center;
+	}
+	div.prev{	
+		left: 0;
+		top: 0;
+		bottom: 0;
+		
+	}
+
+	div.next{
+		right: 0;
+		top: 200px;
+		bottom: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div class="body-wrapper">
+		<div class="img-wrapper">
+			<img src="img/img1.jpg" alt="" class="show">
+		    <img src="img/img2.jpg" alt="" >
+			<img src="img/img3.jpg" alt="">
+			<img src="img/img4.jpg" alt="">
+			<img src="img/img5.jpg" alt="">
+		</div>
+
+		<div class="prev" id="prev">prev</div>
+		<div class="next" id="next">next</div>
+
+	</div>
+
+	<script>
+		window.onload = function(){
+			var iCur = 0;
+			var aImgs = document.getElementsByClassName("img-wrapper")[0].getElementsByTagName("img");
+			console.log(aImgs);
+			oPrev = document.getElementById("prev");
+			oNext = document.getElementById("next");
+			oPrev.onclick = function(){
+				aImgs[iCur].className = "hide";
+				iCur--;
+				iCur = iCur<0?aImgs.length-1:iCur;
+				aImgs[iCur].className = "show";
+			}
+
+			oNext.onclick = function(){
+				aImgs[iCur].className = "hide";
+				iCur++;
+				iCur = (iCur==aImgs.length)?0:iCur;
+				aImgs[iCur].className = "show";
+			}
+		}
+
+	</script>
+</body>
+</html>

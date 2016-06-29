@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.body-wrapper{
+		position: absolute;
+		margin: auto;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		height: 60px;
+		width: 300px;
+		border: 1px solid red;
+		overflow: hidden;
+	}
+
+	ul.list{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200%;
+		height: 100%;
+		list-style-type:none;
+		margin: 0;
+		padding: 0; 
+		-webkit-animation:5s move linear infinite;
+	}
+
+	ul.list li{
+		float: left;
+		display: block;
+		height: 60px;
+		width: 60px;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		text-align: center;
+		background-color: #000;
+		color: #fff;
+		/*font-style
+		  font-variant
+		  font-weight
+	      font-size/line-height
+		  font-family*/
+		font:italic bold 28px/60px arial;
+		box-sizing: border-box;
+	}
+
+	@keyframes move{
+		0%{
+			left: 0;
+		}
+
+		100%{
+			left: -300px;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div class="body-wrapper">
+		<ul class="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+</body>
+</html>
