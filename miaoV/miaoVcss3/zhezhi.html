@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		-webkit-transform-style:preserve-3d;
+		-webkit-perspective:800px;
+	}
+
+	div.wrap h4{
+		position: relative;
+		margin: 0;
+		height: 32px;
+		line-height: 32px;
+		text-align: center;
+		background-color: tomato;
+		z-index: 10;
+	}
+	div.wrap{
+		position: absolute;
+		height: auto;
+		margin: auto;
+		top: 100px;
+		left: 0;
+		right: 0;
+		width: 300px;
+		height: 500px;
+	}
+
+	div.wrap div{
+		position: absolute;
+		top: 32px;
+		left: 0;
+		width: 300px;
+		background-color: red;
+		-webkit-transform-style:preserve-3d;
+		-webkit-transform-origin:top;
+		-webkit-transform:rotateX(-120deg);
+
+	}
+
+	div.wrap>div{
+		
+		
+	}
+
+	div.wrap span{
+		display: block;
+		height: 30px;
+		font:italic 16px/30px arial;
+		text-indent: 10px;
+		color: #fff;
+	}
+
+	@-webkit-keyframes open
+	{
+		0%
+		{
+			-webkit-transform:rotateX(-120deg);
+		}
+		25%
+		{
+			-webkit-transform:rotateX(30deg);
+		}
+		50%
+		{
+			-webkit-transform:rotateX(-15deg);
+		}
+		75%
+		{
+			-webkit-transform:rotateX(8deg);
+		}
+		100%
+		{
+			-webkit-transform:rotateX(0deg);
+		}
+	}
+
+	@-webkit-keyframes clos
+	{
+		0%
+		{
+			-webkit-transform:rotateX(0deg);
+		}
+		100%
+		{
+			-webkit-transform:rotateX(-120deg);
+		}
+	}
+
+	div.wrap div.open{
+		-webkit-animation:1s open;
+		-webkit-transform:rotateX(0deg);
+	}
+
+	div.wrap div.close{
+		-webkit-animation:1s clos;
+		-webkit-transform:rotateX(0deg);
+	}
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	<h4 id="btn">标题</h4>
+		<div>
+			<span>1</span>
+			<div>
+				<span>2</span>
+				<div>
+					<span>3</span>
+					<div>
+						<span>4</span>
+						<div>
+							<span>5</span>
+							<div>
+								<span>6</span>
+								<div>
+									<span>7</span>
+									<div>
+										<span>8</span>
+										<div>
+											<span>9</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>	
+		window.onload = function(){
+			var iClick = 0;
+			var oBtn = document.getElementById("btn");
+			var aDiv = document.getElementsByClassName("wrap")[0].getElementsByTagName("div");
+			
+			oBtn.onclick = function(){
+
+
+				if(!(iClick%2)){
+					var i = 0;
+					console.log(iClick);
+					var oTime = null;
+					oTime = setInterval(function(){
+						aDiv[i].style.transition = "1s "+ i*2000 + "ms";
+						aDiv[i].className = "open";
+						i++
+						if(i == aDiv.length){
+							clearInterval(oTime);
+							oTime = null;
+						}
+					},200);
+					
+				}
+				else{
+					var i = aDiv.length - 1;
+					var oTime = null;
+					oTime = setInterval(function(){
+						aDiv[i].style.transition = "1s "+ i*2000 + "ms";
+						aDiv[i].className = "close";
+						i--;
+						if(i == 0){
+							clearInterval(oTime);
+							oTime = null;
+						}
+					},200);
+				}
+				iClick ++;
+			}
+		}
+	</script>
+</body>
+</html>
