@@ -34,24 +34,21 @@
 		top: 32px;
 		left: 0;
 		width: 300px;
-		background-color: red;
 		-webkit-transform-style:preserve-3d;
 		-webkit-transform-origin:top;
 		-webkit-transform:rotateX(-120deg);
 
 	}
 
-	div.wrap>div{
-		
-		
-	}
-
+	/*变换之前的颜色*/
 	div.wrap span{
 		display: block;
 		height: 30px;
 		font:italic 16px/30px arial;
 		text-indent: 10px;
-		color: #fff;
+		color:#fff;
+		background:#CF3;
+		transition:1s;
 	}
 
 	@-webkit-keyframes open
@@ -84,20 +81,32 @@
 		{
 			-webkit-transform:rotateX(0deg);
 		}
+		
 		100%
 		{
 			-webkit-transform:rotateX(-120deg);
 		}
 	}
+   
+   /*展开之后的颜色*/
+ 	div.wrap div.open>span{
+		background:green;
+	}
+
+	/*收回时候的颜色*/
+	div.wrap div.close>span{
+		background:#CF3;
+	}
 
 	div.wrap div.open{
-		-webkit-animation:1s open;
+		-webkit-animation:1s open ease;
 		-webkit-transform:rotateX(0deg);
 	}
 
 	div.wrap div.close{
-		-webkit-animation:1s clos;
-		-webkit-transform:rotateX(0deg);
+		-webkit-animation:1s clos ease-in;
+		-webkit-transform:rotateX(-120deg);
+
 	}
 
 	</style>
@@ -164,7 +173,7 @@
 						aDiv[i].style.transition = "1s "+ i*2000 + "ms";
 						aDiv[i].className = "close";
 						i--;
-						if(i == 0){
+						if(i == -1){
 							clearInterval(oTime);
 							oTime = null;
 						}
@@ -174,5 +183,12 @@
 			}
 		}
 	</script>
+
+	<div style="position: relative;background: red;width: 200px;">
+		<span style="display:block;height: 20px;width: 200px;"></span>
+		<div style="position: absolute;top: 24px;background: red;">
+			<span style="display:block;height: 20px;width: 200px;"></span>
+		</div>
+	</div>
 </body>
 </html>
