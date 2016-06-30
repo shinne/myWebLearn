@@ -47,7 +47,7 @@
 		font:italic 16px/30px arial;
 		text-indent: 10px;
 		color:#fff;
-		background:#CF3;
+		background:green;
 		transition:1s;
 	}
 
@@ -81,7 +81,7 @@
 		{
 			-webkit-transform:rotateX(0deg);
 		}
-		
+
 		100%
 		{
 			-webkit-transform:rotateX(-120deg);
@@ -90,12 +90,13 @@
    
    /*展开之后的颜色*/
  	div.wrap div.open>span{
-		background:green;
+		background:#CF3;
 	}
 
 	/*收回时候的颜色*/
 	div.wrap div.close>span{
-		background:#CF3;
+	
+		background:green;
 	}
 
 	div.wrap div.open{
@@ -112,6 +113,8 @@
 	</style>
 </head>
 <body>
+
+	<!-- absolute的高度只会由内部元素的非absolute撑开 -->
 	<div class="wrap">
 	<h4 id="btn">标题</h4>
 		<div>
