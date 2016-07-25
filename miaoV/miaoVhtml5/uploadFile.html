@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	li{
+		display: block;
+		height: 30px;
+		width: 100px;
+		background-color: yellow;
+		margin-top: 10px;
+	}
+
+	div.box{
+		 position: absolute;
+		 left: 300px;
+		 top: 60px;
+		 height: 150px;
+		 line-height: 150px;
+		 text-align: center;
+		 width: 150px;
+		 background: #ddd;
+	}
+
+
+	</style>
+</head>
+<body>
+	<ul></ul>
+	<div class="box" id="box">拖拽文件进来</div>
+
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName("ul")[0];
+			var oBox = document.getElementById("box");
+			oBox.ondragenter = function(){
+				this.innerHTML = "释放鼠标~";
+			}
+
+			oBox.ondragover = function(ev){
+				this.style.background = "green";
+				//当要使用ondrop的时候就要阻止默认事件才行。
+				ev.preventDefault();
+
+			}
+
+			oBox.ondragleave = function(){
+				this.style.background = "#ddd";
+				this.innerHTML = "拖拽文件进来";
+			}
+
+			/*oBox.ondragend = function(){
+				this.style.background = "red";
+			}*/
+
+			oBox.ondrop  = function(ev){
+				this.style.background = "#ddd";
+				this.innerHTML = "拖拽文件进来";
+
+				//阻止默认事件，本来文件拖拽进来到浏览器的时候，浏览器是要显示的
+				ev.preventDefault();
+
+				var fs = ev.dataTransfer.files;
+
+				
+
+				for(var i = 0 ; i < fs.length; i ++){
+					if(fs[i].type.indexOf("image") != -1){
+						/*if(fs[i].type )*/
+						//创建一个reader读取文件
+						var fd = new FileReader();
+						fd.readAsDataURL(fs[i]);
+						fd.onload = function(){
+							var img = document.createElement("img");
+							img.src = this.result;
+							var li = document.createElement("li");
+							li.appendChild(img);
+							oUl.appendChild(li);
+						}
+					}
+					else{
+						alert("第" + (i+1) + "个文件并不是图片");
+						continue;
+					}
+					
+				}
+				
+			}
+
+		}
+
+
+	</script>
+</body>
+</html>

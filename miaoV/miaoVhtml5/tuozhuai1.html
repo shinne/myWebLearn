@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	li{
+		display: block;
+		height: 30px;
+		width: 100px;
+		background-color: yellow;
+		margin-top: 10px;
+	}
+
+	div.box{
+		 position: absolute;
+		 left: 300px;
+		 top: 260px;
+		 height: 150px;
+		 line-height: 150px;
+		 text-align: center;
+		 width: 150px;
+		 background: #ddd;
+	}
+
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li draggable="true">1</li>
+		<li draggable="true">2</li>
+		<li draggable="true">3</li>
+	</ul>
+
+	<div class="box" id="box">垃圾箱</div>
+	<img src="miaov.png" alt="">
+
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName("ul")[0];
+			var aLi = document.getElementsByTagName("li");
+			var oImg = document.getElementsByTagName("img")[0];
+			var oBox = document.getElementById("box");
+			var j = 0; 
+			for(var i  = 0 ; i < aLi.length ; i++){
+				aLi[i].index = i;
+				aLi[i].ondragstart = function(ev){
+					ev.dataTransfer.setData('index',this.index);
+					this.style.background = "red";
+					ev.dataTransfer.setDragImage(oImg,0,0);
+				}
+
+				aLi[i].ondrag = function(){
+					document.title = j++;
+				}
+
+				aLi[i].ondragend = function() {
+					this.style.background = "yellow";
+				}
+			}
+
+
+			oBox.ondragenter = function(){
+				this.innerHTML = "快进来吧，孩子~";
+			}
+
+			oBox.ondragover = function(ev){
+				this.style.background = "green";
+				//当要使用ondrop的时候就要阻止默认事件才行。
+				ev.preventDefault();
+
+			}
+
+			oBox.ondragleave = function(){
+				this.style.background = "#ddd";
+				this.innerHTML = "垃圾箱";
+			}
+
+			/*oBox.ondragend = function(){
+				this.style.background = "red";
+			}*/
+
+			oBox.ondrop  = function(ev){
+				this.style.background = "#ddd";
+				this.innerHTML = "垃圾箱";
+				oUl.removeChild( aLi[ev.dataTransfer.getData('index')] );
+				for(var i = 0 ; i < aLi.length; i ++){
+					aLi[i].index = i;
+				}
+			}
+
+		}
+
+
+	</script>
+</body>
+</html>

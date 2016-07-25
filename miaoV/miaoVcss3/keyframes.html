@@ -7,6 +7,7 @@
 	@keyframes move{
 		0%{
 			width:0; 
+			height: 0;
 		}
 
 		50%{
@@ -68,14 +69,41 @@
 	}
 
 	
+	.bowen{
+		height: 50px;
+		width: 50px;
+		-webkit-animation:10s move-bowen linear infinite;
+	}
+	@keyframes move-bowen{
+		0%{
+			height: 50px;
+			width: 50px;
+		}
+
+		50%{
+			height: 200px;
+			width: 200px;
+		}
+		
+		/*75%{
+			height: 50px;
+			width: 50px;
+		} */
+		100%{
+			height: 50px;
+			width: 50px;
+		}
+	}
 
 	</style>
 </head>
 <body>
+
 	<div class="box"></div>
 
 	<div class="box-wrapper">
 		<div class="move-box"></div>
 	</div>
+	<img src="bowen.jpg" alt="" class="bowen">
 </body>
 </html>

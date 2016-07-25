@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var Util = {
+    URL:function () {
+        /**
+         * 在建立构造函数的时候进行初始化操作
+         */
+        /*console.log(self);
+        console.log(this);*/
+        this.initialize.apply(this,arguments);
+    },
+}
+
+Util.URL.prototype = {
+    constructor:Util,
+    /**
+     * 在new object的时候进行初始化操作，进行一些参数的初始化
+     * @param  {[json]} options [new Util时传入的初始化参数，没有可不传]
+     *        new Util({url:"http://www.google.com"})
+     */
+    initialize:function(options){
+      
+      /**
+       * [url 原始的url]
+       * @type {[string]}
+       */
+        this.url = (options && options.url)?options.url:location.href;
+        /**
+         * [source 去除掉anchor和params之后的url]
+         * @type {[type]}
+         */
+        this.source = this.url;
+        /**
+         * [params ？后面的参数值对]
+         * @type {Object}
+         */
+        this.params = {};
+        /**
+         * [anchor 锚点]
+         * @type {Object}
+         */
+        this.anchor = {};
+        this.parseAnchor();
+        this.parseParams();
+    },
+
+    /**
+     * [parseAnchor 解析锚点]
+     * @return {[type]} [description]
+     */
+    parseAnchor:function(){
+        var anchor = this.url.match(/\#(.*)/gi);
+        anchor = anchor[0]?anchor[0].slice(1):'';
+        if(anchor){
+            this.anchor = this.stringToKeyValue(anchor);
+            this.url = this.url.replace(/\#(.*)/gi,'');
+        }
+    },
+    /**
+     * [通过url解析出提交的键值对]
+     * @param  {[string]} url [url可输入也可不输入，在不输入的情况下是location.href]
+     * @return {[json]} [url '?' 后的键值对对象]
+     */
+    parseParams:function(){
+        var seg = this.url.split("?");
+        /**
+         * 考虑没有参数的情况下split("&")会出错
+         */
+        this.params = seg[1]?this.stringToKeyValue(seg[1]):{};
+        /*console.log("this.params:" );
+        console.log(this.params)*/
+        this.source = this.url.replace(/\?(.*)/,'');
+        /*console.log("this.source:" );
+        console.log(this.source);*/
+    },
+
+    /**
+     * [setParams 新增一些参数值]
+     * @param {[json]} params [输入json对象]
+     */
+    setParams:function(params){
+        for(var attr in params){
+            console.log(attr);
+            this.params[attr] = params[attr];
+        }
+        return this;
+       /* console.log(this.params);*/
+    },
+
+   /**
+    * [getParams 得到params的键值对]
+    * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
+    * new Util.URL().getParams("name")取得名为name的params数据
+    * or new Util.URL().getParams()取得所有params数据
+    * new Util.URL().getParams(["name1","name2",...,"namex"]])取得名为数组中值得params
+    * 
+    * @return {[type]}     [description]
+    */
+    getParams:function(req){
+        var len = arguments.length;
+        var res = {};
+        if(len){
+            var attrs = arguments[0];
+            if (attrs instanceof Array){
+                for(var attr in attrs){
+                    /*console.log(attrs[attr]);*/
+                    res[attrs[attr]] = this.params[attrs[attr]];
+                }
+            }
+            else{
+                res[attrs] = this.params[attrs];
+            }
+        }
+        /**
+         * 当没有参数输入时，则默认为取全部的params
+         */
+        else{
+            res = this.params;
+        }
+        return res;
+    },
+
+    /**
+     * [clearParams 清空params]
+     * @return {[type]} [description]
+     */
+     clearParams:function(){
+        this.params = {};
+        return this;
+    },
+
+    /**
+    * [getAnchor 得到anchor的键值对]
+    * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
+    * new Util.URL().getAnchor("name")取得名为name的anchor数据
+    * or new Util.URL().getAnchor()取得所有anchor数据
+    * new Util.URL().getAnchor(["name1","name2",...,"namex"]])取得名为数组中值得anchor
+    * 
+    * @return {[type]}     [description]
+    */
+    getAnchor:function(req){
+        var len = arguments.length;
+        var res = {};
+        if(len){
+            var attrs = arguments[0];
+            if (attrs instanceof Array){
+                for(var attr in attrs){
+                    /*console.log(attrs[attr]);*/
+                    res[attrs[attr]] = this.anchor[attrs[attr]];
+                }
+            }
+            else{
+                res[attrs] = this.anchor[attrs];
+            }
+        }
+        else{
+            res = this.anchor;
+        }
+        return res;
+    },
+
+    /**
+     * [setParams 新增一些参数值]
+     * @param {[json]} params [输入json对象]
+     */
+    setAnchor:function(anchors){
+        for(var attr in anchors){
+            console.log(attr);
+            this.anchor[attr] = anchors[attr];
+        }
+        return this;
+    },
+
+    /**
+     * [clearParams 清空params]
+     * @return {[type]} [description]
+     */
+    clearAnchor:function(){
+         this.anchor = {};
+         return this;
+    },
+
+    /**
+     * [getSource 得到没有anchor和参数的纯url]
+     * @return {[string]} [返回source]
+     */
+    getSource:function(){
+        return this.source;
+    },
+
+    /**
+     * [setSource 重置source]
+     * @param {[string]} source 
+     */
+    setSource:function(source){
+        this.source = source;
+        return this;
+    },
+
+
+    /**
+     * [setUrl重置url]
+     */
+    setUrl:function(url){
+        this.url = url;
+        this.parseAnchor();
+        this.parseParams();
+        return this;
+    },
+
+    /**
+     * [getUrl 返回原始的url，这里的url可能是经过source,params,anchor改变之后的url]
+     * @return {[string]} 
+     */
+    getUrl:function(){
+        /**
+         *params的拼接
+         */
+        var url = this.source + "?";
+        for(var attr in this.params){
+            url += attr + "=" + this.params[attr] + "&";
+        }
+        url = url.slice(0,-1);
+        /**
+         * 锚点的拼接
+         */
+        url += "#";
+        for(var attr in this.anchor){
+           url += attr + "=" + this.anchor[attr] + "&";
+        }
+        url = url.slice(0,-1);
+        return url;
+    },
+
+    /**
+     * [getInitialUrl 得到未作任何param,anchor等修改的url]
+     * @return {[type]} [description]
+     */
+    getInitialUrl:function(){
+        return this.url;
+    },
+
+    /**
+     * [stringToKeyValues,将string解析成键值对]
+     * @param  {[string]} str [string]
+     * @return {[json]}     [键值对]
+     */
+    stringToKeyValue:function(str){
+        var res = {};
+        var seg = str.split("&");
+        var len = seg.length;
+        var s;
+        for (var i =0 ; i < len; i++) {
+            if (!seg[i]) {
+                continue;
+            }
+            s = seg[i].split("=");
+            res[s[0]] = s[1];
+        }
+        return res;
+    }
+};
+
+module.exports = Util;
+
+var test = new Util.URL({url:"http:www.baidu.com?a=1&b=2#dfdsf=f&a=b"});
+test.setSource("www.google.com")
+    .setParams({
+        yoyo:"happyo",
+    })
+    .setAnchor({
+        mao:"miao"
+    })
+    .getUrl();
+
+</script>
+</body>
+</html>
+			

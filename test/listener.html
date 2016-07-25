@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button type="button">点击我</button>
+
+	<script>
+		var btn = document.getElementsByTagName("button")[0];
+		btn.addEventListener("click",fn,false);
+
+		function fn(ev){
+			//通过这样的方式将事件ev引入其中
+			console.log(ev);
+		}
+
+	</script>
+</body>
+</html>

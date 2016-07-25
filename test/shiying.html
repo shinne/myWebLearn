@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+		div.body-wrapper{
+			height: 80%;
+			border:1px solid red; 
+			height: auto;
+			font-size: 0;
+			overflow: auto;
+		}
+
+		div.body-wrapper div.img-wrapper{
+		    float: left;
+			height: 100px;
+			width: 30%;
+			border:1px solid black;
+			margin: 0;
+			margin-right: 5%;
+			padding: 0;
+			font-size: 16px;
+			box-sizing: border-box;
+		}
+
+		div.img-wrapper:nth-of-type(3n){
+			margin-right: 0 !important;		
+		}
+
+		div.img-wrapper:last-child:after{
+			clear: both;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="body-wrapper">
+		<div class="img-wrapper">对方水电费</div>
+		<div class="img-wrapper"></div>
+		<div class="img-wrapper"></div>
+		<div class="img-wrapper"></div>
+		<div class="img-wrapper">你妹的</div>
+	</div>
+</body>
+</html>

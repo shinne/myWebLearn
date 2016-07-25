@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.book-wrapper{
+			height:200px;
+			width: 1200px;
+			border:1px solid black;
+			overflow-y: scroll;
+		}
+
+		div.book{
+			float: left;
+			width: 22%;
+			height: 160px;
+			box-sizing: border-box;
+			margin-right: 2%;
+			margin-top: 10px;
+			border:1px solid black;
+		}
+		div.book:nth-of-type(4){
+			margin-right: 0;
+		}
+
+		div.book img{
+			display: block;
+			width: 100%;
+			height: 120px;
+		}
+
+		div.book p{
+			height: 20px;
+			line-height: 20px;
+			margin:0;
+		}
+
+		div.book p:nth-of-type(1){
+			border-bottom:1px dashed black;
+		}
+
+		div.count{
+			position: relative;
+			margin-top: 40px;
+			width: 800px;
+			height: auto;
+			overflow: auto;
+			padding: 10px;
+			padding-bottom: 40px;
+			border:1px solid red;
+		}
+
+		div.cast span{
+			display: block;
+			float: left;
+			width: 30%;
+			border-bottom: 1px dashed black;
+			height: 30px;
+			line-height: 30px;
+
+		}
+
+		div.cast span:nth-of-type(2){
+			display: block;
+			float: left;
+			width: 40%;
+		}
+
+		div.all-money{
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="book-wrapper">
+		<div class="book">
+			<img src="img1.jpg" alt="">
+			<p>javascript语言精粹</p>
+			<p>60￥</p>
+		</div>
+		
+		<div class="book">
+			<img src="img2.jpg" alt="">
+			<p>javascript权威指南</p>
+			<p>80￥</p>
+		</div>
+
+		<div class="book">
+			<img src="img3.jpg" alt="">
+			<p>精通javascript</p>
+			<p>70￥</p>
+		</div>
+
+		<div class="book">
+			<img src="img4.jpg" alt="">
+			<p>javascript编程艺术</p>
+			<p>30￥</p>
+		</div>
+	</div>
+
+	<div class="count">
+		<div class="all-money"></div>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var aBooks = document.getElementsByClassName("book");
+			var oCast = document.getElementsByClassName("count")[0];
+			var aList = document.getElementsByClassName("cast");
+			var oAllMoney = document.getElementsByClassName("all-money")[0];
+			var obj = {};
+			var allMoney = 0;
+			for(var i = 0 ; i < aBooks.length ; i++){
+				aBooks[i].ondragstart = function(ev){
+					var children = this.children;
+					ev.dataTransfer.setData("title",children[1].innerHTML);
+					ev.dataTransfer.setData("money",children[2].innerHTML)
+				}
+			}
+
+			oCast.ondragover = function(ev){
+				ev.preventDefault();
+			}
+
+			oCast.ondrop = function(ev){
+				var title = ev.dataTransfer.getData("title");
+				var money = ev.dataTransfer.getData("money");
+				var oDiv;
+				if(!obj[title]){
+					
+					oDiv = document.createElement("div");
+					oDiv.className = "cast";
+
+					oNum = document.createElement("span");
+					oTitle = document.createElement("span");
+					oMoney = document.createElement("span");
+
+					oNum.innerHTML = "1";
+					oTitle.innerHTML = title;
+					oMoney.innerHTML = money;
+
+					oDiv.appendChild(oNum);
+					oDiv.appendChild(oTitle);
+					oDiv.appendChild(oMoney);
+					oCast.appendChild(oDiv);
+					obj[title] = 1;
+				} 
+
+				else{
+					for(var i = 0 ; i < aList.length ; i++){
+						if(aList[i].children[1].innerHTML == title){
+							aList[i].children[0].innerHTML = parseInt(aList[i].children[0].innerHTML) + 1;
+						}
+					}
+				}
+
+				allMoney += parseInt(money) ;
+				oAllMoney.innerHTML = "￥" + allMoney;
+				
+			}
+		}
+
+
+	</script>
+</body>
+</html>
