@@ -6,13 +6,17 @@
 </head>
 <body>
     <script>
+/**
+ * yoyo
+ * @type {{URL: Util.URL}}
+ */
 var Util = {
     URL:function () {
         /**
          * 在建立构造函数的时候进行初始化操作
          */
         /*console.log(self);
-        console.log(this);*/
+         console.log(this);*/
         this.initialize.apply(this,arguments);
     },
 }
@@ -25,11 +29,11 @@ Util.URL.prototype = {
      *        new Util({url:"http://www.google.com"})
      */
     initialize:function(options){
-      
-      /**
-       * [url 原始的url]
-       * @type {[string]}
-       */
+
+        /**
+         * [url 原始的url]
+         * @type {[string]}
+         */
         this.url = (options && options.url)?options.url:location.href;
         /**
          * [source 去除掉anchor和params之后的url]
@@ -56,10 +60,10 @@ Util.URL.prototype = {
      */
     parseAnchor:function(){
         var anchor = this.url.match(/\#(.*)/gi);
-        anchor = anchor[0]?anchor[0].slice(1):'';
         if(anchor){
-            this.anchor = this.stringToKeyValue(anchor);
-            this.url = this.url.replace(/\#(.*)/gi,'');
+            anchor = anchor[0]?anchor[0].slice(1):'';
+                this.anchor = this.stringToKeyValue(anchor);
+                this.url = this.url.replace(/\#(.*)/gi,'');
         }
     },
     /**
@@ -74,10 +78,10 @@ Util.URL.prototype = {
          */
         this.params = seg[1]?this.stringToKeyValue(seg[1]):{};
         /*console.log("this.params:" );
-        console.log(this.params)*/
+         console.log(this.params)*/
         this.source = this.url.replace(/\?(.*)/,'');
         /*console.log("this.source:" );
-        console.log(this.source);*/
+         console.log(this.source);*/
     },
 
     /**
@@ -90,18 +94,18 @@ Util.URL.prototype = {
             this.params[attr] = params[attr];
         }
         return this;
-       /* console.log(this.params);*/
+        /* console.log(this.params);*/
     },
 
-   /**
-    * [getParams 得到params的键值对]
-    * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
-    * new Util.URL().getParams("name")取得名为name的params数据
-    * or new Util.URL().getParams()取得所有params数据
-    * new Util.URL().getParams(["name1","name2",...,"namex"]])取得名为数组中值得params
-    * 
-    * @return {[type]}     [description]
-    */
+    /**
+     * [getParams 得到params的键值对]
+     * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
+     * new Util.URL().getParams("name")取得名为name的params数据
+     * or new Util.URL().getParams()取得所有params数据
+     * new Util.URL().getParams(["name1","name2",...,"namex"]])取得名为数组中值得params
+     *
+     * @return {[type]}     [description]
+     */
     getParams:function(req){
         var len = arguments.length;
         var res = {};
@@ -114,7 +118,7 @@ Util.URL.prototype = {
                 }
             }
             else{
-                res[attrs] = this.params[attrs];
+                return this.params[attrs];
             }
         }
         /**
@@ -130,20 +134,20 @@ Util.URL.prototype = {
      * [clearParams 清空params]
      * @return {[type]} [description]
      */
-     clearParams:function(){
+    clearParams:function(){
         this.params = {};
         return this;
     },
 
     /**
-    * [getAnchor 得到anchor的键值对]
-    * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
-    * new Util.URL().getAnchor("name")取得名为name的anchor数据
-    * or new Util.URL().getAnchor()取得所有anchor数据
-    * new Util.URL().getAnchor(["name1","name2",...,"namex"]])取得名为数组中值得anchor
-    * 
-    * @return {[type]}     [description]
-    */
+     * [getAnchor 得到anchor的键值对]
+     * @param  {[array,string,null]} req [可以输入数组，string或者不输入]
+     * new Util.URL().getAnchor("name")取得名为name的anchor数据
+     * or new Util.URL().getAnchor()取得所有anchor数据
+     * new Util.URL().getAnchor(["name1","name2",...,"namex"]])取得名为数组中值得anchor
+     *
+     * @return {[type]}     [description]
+     */
     getAnchor:function(req){
         var len = arguments.length;
         var res = {};
@@ -156,7 +160,7 @@ Util.URL.prototype = {
                 }
             }
             else{
-                res[attrs] = this.anchor[attrs];
+                return this.anchor[attrs];
             }
         }
         else{
@@ -182,8 +186,8 @@ Util.URL.prototype = {
      * @return {[type]} [description]
      */
     clearAnchor:function(){
-         this.anchor = {};
-         return this;
+        this.anchor = {};
+        return this;
     },
 
     /**
@@ -196,7 +200,7 @@ Util.URL.prototype = {
 
     /**
      * [setSource 重置source]
-     * @param {[string]} source 
+     * @param {[string]} source
      */
     setSource:function(source){
         this.source = source;
@@ -216,7 +220,7 @@ Util.URL.prototype = {
 
     /**
      * [getUrl 返回原始的url，这里的url可能是经过source,params,anchor改变之后的url]
-     * @return {[string]} 
+     * @return {[string]}
      */
     getUrl:function(){
         /**
@@ -232,7 +236,7 @@ Util.URL.prototype = {
          */
         url += "#";
         for(var attr in this.anchor){
-           url += attr + "=" + this.anchor[attr] + "&";
+            url += attr + "=" + this.anchor[attr] + "&";
         }
         url = url.slice(0,-1);
         return url;
@@ -268,6 +272,7 @@ Util.URL.prototype = {
 };
 
 module.exports = Util;
+
 
 var test = new Util.URL({url:"http:www.baidu.com?a=1&b=2#dfdsf=f&a=b"});
 test.setSource("www.google.com")

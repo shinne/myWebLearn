@@ -1,0 +1,129 @@
+/**
+ * @file webpack配置文件
+ * @author 孙庆伟
+ */
+
+var _ = require("lodash");
+var path = require("path");
+var webpack = require("webpack");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlwebpackPlugin = require("html-webpack-plugin");
+var DEBUG = _.indexOf(process.argv, '--release') < 0;
+
+var ROOT_PATH = path.resolve(__dirname);
+var VERSION = 'v20160728';
+var BUILD_PATH = path.resolve(ROOT_PATH, "build/client/" + VERSION);
+// 展示前台组件
+var components = {
+    "homepage": "./src/components/homepage",
+    "article": "./src/components/article",
+    "detail":"./src/components/detail"
+};
+
+// 示例组件
+var componentsExample = {};
+
+// 配置页面来承载组件，其中vendor和common是默认的，每个页面都需要引入
+var pages = [
+    {
+        chunks: ["vendor", "common-style", "homepage"],
+        title: "京东宝宝-文章发布系统-首页",
+        filename: "homepage.html",
+        template: "src/pages/homepage.ejs"
+    },
+    {
+        chunks: ["vendor", "common-style", "article"],
+        title: "京东宝宝-文章发布系统-首页",
+        filename: "article.html",
+        template: "src/pages/article.ejs"
+    },
+    {
+        chunks: ["vendor", "common-style", "detail"],
+        title: "文章详情",
+        filename: "detail.html",
+        template: "src/pages/article.ejs"
+    },
+];
+
+// 开发时请忽略之后的配置，一般不需要修改
+var config = {
+    "entry": {
+        "vendor": ["jquery", "velocityjs"],
+        "common-style": "./src/common-style"
+    },
+    "output": {
+        "path": BUILD_PATH,
+        "filename": "[name].js"
+        //libraryTarget: 'umd',
+        //umdNamedDefine: true
+        //libraryTarget: "umd",
+        //library: "Library",
+        //umdNamedDefine: true
+    },
+    "module": {
+        "loaders": [
+            {
+                "test": /\.vm?$/, "loader": "html"
+            },
+            {
+                "test": /\.css$/,
+                "loader": ExtractTextPlugin.extract("style-loader", "css-loader")
+            },
+            {
+                "test": /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                "loader": "url-loader?limit=8192&name=./images-and-fonts/[name].[ext]"
+            }
+        ]
+    },
+    "plugins": [
+        // CSS打包成文件必须在JS中require，使用插件打包为文件，不然直接打包到页面行内样式
+        new ExtractTextPlugin("[name].css"),
+        // 将jQuery和velocityjs导出到window下
+        new webpack.ProvidePlugin({
+            Velocity: "velocityjs",
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        })
+    ],
+    "isDebug": DEBUG
+};
+
+var vendorChunks = [];                                       // 展示前台系统模块key值
+if (DEBUG) {
+    config.devtool = 'eval';                                 // 开启webpack调试模式
+    config.entry = _.assign(config.entry, components);       // 入口模块中增加展示前台组件
+    config.entry = _.assign(config.entry, componentsExample);// 入口模块中增加示例组件
+
+    vendorChunks = vendorChunks.concat(_.keys(components));
+    vendorChunks = vendorChunks.concat(_.keys(componentsExample));
+
+    // 生成开发者首页html，导航到各个页面
+    config.plugins.push(new HtmlwebpackPlugin(
+        {
+            "chunks": ["vendor", "common-style"],
+            "title": "文章发布系统后台-导航页",
+            "filename": "index.html",
+            "template": "src/pages/index.ejs",
+            "pages": pages
+        }));
+
+
+    // 生成html页面并以标签形式引入各页面chunks依赖的模块
+    for (var i = 0; i < pages.length; i++) {
+        config.plugins.push(new HtmlwebpackPlugin(pages[i]));
+    }
+
+} else {
+    config.entry = _.assign(config.entry, components);     // 入口模块中增加展示前台组件
+    vendorChunks = vendorChunks.concat(_.keys(components));
+}
+
+// 展示前台系统公共js抽出到vendor.js
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    filename: "vendor.js",
+    name: "vendor",
+    chunks: vendorChunks
+}));
+
+module.exports = config;

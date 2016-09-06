@@ -1,0 +1,114 @@
+#set($cssNames=["article-details"])
+#set($jsNames=["zepto","article-details"])
+#set($title="文章详情")
+
+<input type="text" value="$!data.articleId" class="hide" id="articleId">
+<input type="text" value="${pageUtils.staticDomainPrefix}" class="hide" id="staticUrl">
+<input type="text" value="$!pageUtils.serverDomain" class="hide" id="baseUrl">
+#if(!$!data)
+<div class="null-content">无文章内容</div>
+#else
+<div class="theme">
+    <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-theme.png" data-src="$!data.image"  class="theme-img" lazy-img="jd-app" img-type="theme">
+</div>
+<div class="article-details">
+    <div class="article-title">$!data.title</div>
+    <div class="author-details">
+        <div class="author-icon-wrapper">
+            <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/nimin.png" data-src="$!data.userIcon" alt="" class="author-icon" lazy-img="jd-app" img-type="square">
+        </div>
+        <span class="author-name">
+                $!data.author
+        </span>
+        <span class="edit-time">$date.format($!data.gmtPublished)</span>
+        <span class="view">$!data.statInfo.browseNum</span>
+        <span class="view-num"></span>
+        </span>
+    </div>
+    <div class="article-content">
+        #foreach($content in $data.contentList)
+        #if($!content.contentType==1)
+        <p class="content-par">$!content.content</p>
+        #elseif($!content.contentType==2)
+            #if($content.clickUrl && $content.clickUrl.length()>0)
+                <a href="$!content.clickUrl">
+                    #if($content.imageUrl && $content.imageUrl.length()>0)
+                    <div class="content-img-wrapper">
+                        <img alt="" src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-img.png" data-src="$!content.imageUrl" class="content-img" lazy-img="jd-app" img-type="short">
+                    </div>
+                    #end
+                </a>
+            #else
+                #if($content.imageUrl && $content.imageUrl.length()>0)
+                <a href="javascript:void(0);"><div class="content-img-wrapper">
+                    <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-img.png" data-src="$!content.imageUrl" alt=""  class="content-img" lazy-img="jd-app" img-type="short"></div></a>
+                #end
+            #end
+        #elseif($!content.contentType==3)
+        #set($cont = $!content.content)
+        #if($cont.clickUrl && $cont.clickUrl.length()>0)
+        <a href=$cont.clickUrl>
+            <div class="content-in">
+                #if($!content.imageUrl)
+                <div class="in-img-wrapper">
+                    <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-img.png" data-src="$content.imageUrl" alt="" class="in-img" lazy-img="jd-app" img-type="short">
+                </div>
+                #end
+                <div class="in-title">$!cont.title
+                    <div class="go-view"></div>
+                </div>
+            </div>
+        </a>
+        #else
+        <div class="content-in">
+            #if($!content.imageUrl)
+            <div class="in-img-wrapper">
+                <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-img.png" data-src="$content.imageUrl" alt="" class="in-img" lazy-img="jd-app" img-type="short">
+            </div>
+            #end
+            <div class="in-title">$!cont.title
+                <div class="go-view"></div>
+            </div>
+        </div>
+        #end
+        #elseif($!content.contentType==4)
+        #set($cont = $!content.content)
+        #if($cont.clickUrl && $cont.clickUrl.length()>0)
+        <a href="$cont.clickUrl">
+            #end
+            <div class="content-sku">
+                #if($!content.imageUrl)
+                <div class="sku-img-wrapper">
+                    <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-src.png" data-src="$!content.imageUrl" alt="" class="sku-img"lazy-img="jd-app" img-type="square">
+                </div>
+                #end
+                <div class="sku-product">
+                    <div class="product-img-wrapper">
+                        <img src="${pageUtils.staticDomainPrefix}/images-and-fonts/no-src.png" class="product-img" data-src="$!cont.imageUrl" lazy-img="jd-app" img-type="square">
+                    </div>
+                    <div class="product-detail">
+                        <div class="product-title">$!cont.skuName</div>
+                        <div class="product-price">$!cont.price.mJdPrice</div>
+                        <div class="go-view"></div>
+                    </div>
+                </div>
+            </div>
+            #if($cont.clickUrl && $cont.clickUrl.length()>0)</a> #end
+        #end
+        #end
+    </div>
+</div>
+<!--热门评论-->
+<div class="popular-discuss hide" id="popularDiscuss">
+</div>
+<!--相关文章-->
+<div class="more-related hide" id="moreRelated">
+</div>
+<!--新增下载浮层 -->
+<div class="longer"></div>
+<div class="download-fixed">
+    <div class="baby-img"></div>
+    <div class="baby-text"></div>
+    <a href="$!downUrl"><div class="download-btn">点击下载</div></a>
+</div>
+#end

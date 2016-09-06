@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html style="font-size: 15px;">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="author" content="m.jd.com">
+    <meta name="keywords" content="我为奥运代“颜”,京东宝宝,京东母婴"/>
+    <meta name="description" content="我为奥运代“颜”-京东宝宝诚意出品"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" type="text/css" href="css/gjbb.css">
+    <title>我为奥运代“颜”</title>
+    <script type="text/javascript" src="js/util/responseFontSize.js"></script>
+</head>
+<body class="olympic-baby" user-type="ta">
+
+<!-- <input type="hidden" id="code" value="$!{code}"> -->
+
+<div class="viewport">
+    <div id="page-home">
+        <div class="banner">
+            <div class="baby"></div>
+            <div class="slogon"></div>
+            <div class="boy"></div>
+            <div class="girl"></div>
+            <div class="star"></div>
+            <!-- 共多少人参加 -->
+            <span class="count">12458</span>
+        </div>
+        <!-- 照片展示 Begin-->
+        <div class="img-list">
+            <ul>
+                <li class="line-1">
+                    <img src="img/gjbb.png">
+                </li>
+                <li class="line-2">
+                    <img src="img/gjbb.png">
+                </li>
+                <li class="line-3">
+                    <img src="img/gjbb.png">
+                </li>
+                <li class="line-1">
+                    <img src="img/gjbb.png">
+                </li>
+                <li class="line-2">
+                    <img src="img/gjbb.png">
+                </li>
+                <li class="line-3">
+                    <img src="img/gjbb.png">
+                </li>
+            </ul>
+            <!-- <div id="list_loading" class="list-loading">
+                <div class="text-1"><div class="loading-circle"></div>加载中...</div>
+            </div>
+            <div class="loading-nothing">
+                <div class="joy"><i class="i-joy"></i></div>
+                <p class="text-1">没有了~</p>
+            </div> -->
+        </div>
+        <!-- 照片展示 End-->
+    </div>
+
+    <!--微信分享 Begin-->
+    <div id="wechat-cover" class="full-page has-cover" style="display: none;">
+        <div class="page-cont">
+            <div class="share-line fadeInDown animated"></div>
+            <div class="cover-main">
+                <div class="rt-close" action="cpage" close-page="#wechat-cover"></div>
+                <div  class="desc">分享到朋友圈，呼唤好友帮你一起搜罗神器赢大奖！</div>
+                <div class="share-ico" style="display: block;"></div>
+            </div>
+        </div>
+    </div>
+    <!--微信分享 End-->
+
+    <div class="fixed-bottom take-photo">
+        <form id='myupload' action="data/upload.php">
+            <input type="file" id="fileupload" name="imgFile" accept="image/*" capture="camera">
+        </form>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/lib/zepto.min.js"></script>
+<!-- <script type="text/javascript" src="js/util/fastclick.js"></script> -->
+<!-- <script type="text/javascript" src="js/module/tip.js"></script> -->
+<!-- <script type="text/javascript" src="js/module/awardRotate.js"></script> -->
+<script type="text/javascript" src="js/module/template.js"></script>
+<script type="text/javascript" src="js/module/listScrollLoad.js"></script>
+<script type="text/javascript" src="js/module/upload.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<!-- 微信分享 Begin -->
+<input id="appId" type="hidden" value="$!{appId}"/>
+<input id="timestamp" type="hidden" value="$!{timestamp}"/
+<input id="nonceStr" type="hidden" value="${noncestr}"/>
+<input id="signature" type="hidden" value="${signature}"/>
+<input id="share_uri" type="hidden" value="${share_uri}"/>
+<input id="share_img" type="hidden" value="${staticResourcePreUrl}/bbxqc/css/i/share.jpg"/>
+<input id="share_tit" type="hidden" value="帮我一把！我的宝宝还差XXX米就能领到红包啦！"/>
+<input id="share_desc" type="hidden" value="戳进来帮xxx的宝宝向前冲，无限红包免费领！"/>
+<input id="opt_label" type="hidden" value="index"/>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- <script type="text/javascript" src="dist/tgnb/share.js"></script> -->
+<!-- 微信分享 End -->
+
+</body>
+</html>
