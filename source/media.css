@@ -1,0 +1,220 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+html {
+  //屏蔽浏览器默认字体大小
+  -webkit-text-size-adjust: none;
+  //去除a标签点击阴影
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'microsoft yahei', Arial, Verdana, "\5b8b\4f53";
+}
+
+//// --- iPhone (5) only landscape ---
+//@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: landscape) {
+//  html {
+//    font-size: 8.55px;
+//  }
+//}
+//(orientation: portrait)
+
+@media (device-width:320px){
+  html {
+    font-size: 8.53px;
+  }
+}
+@media (device-width:640px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 8.53px;
+  }
+}
+@media (device-width:960px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 8.53px;
+  }
+}
+
+
+@media (device-width:360px){
+  html {
+    font-size: 9.6px;
+  }
+}
+@media (device-width:720px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 9.6px;
+  }
+}
+@media (device-width:1080px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 9.6px;
+  }
+}
+
+
+@media (device-width:375px){
+  html {
+    font-size: 10px;
+  }
+}
+@media (device-width:750px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 10px;
+  }
+}
+@media (device-width:1125px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 10px;
+  }
+}
+
+
+@media (device-width:384px){
+  html {
+    font-size: 10.24px;
+  }
+}
+@media (device-width:768px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 10.24px;
+  }
+}
+@media (device-width:1152px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 10.24px;
+  }
+}
+
+
+@media (device-width:400px){
+  html {
+    font-size: 10.66px;
+  }
+}
+@media (device-width:800px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 10.66px;
+  }
+}
+@media (device-width:1200px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 10.66px;
+  }
+}
+
+
+@media (device-width:412px){
+  html {
+    font-size: 10.98px;
+  }
+}
+@media (device-width:824px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 10.98px;
+  }
+}
+@media (device-width:1236px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 10.98px;
+  }
+}
+
+
+@media (device-width:414px){
+  html {
+    font-size: 11.04px;
+  }
+}
+@media (device-width:828px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 11.04px;
+  }
+}
+@media (device-width:1242px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 11.04px;
+  }
+}
+
+@media (device-width:533px){
+  html {
+    font-size: 14.21px;
+  }
+}
+@media (device-width:1066px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 14.21px;
+  }
+}
+@media (device-width:1599px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 14.21px;
+  }
+}
+
+
+
+@media (device-width:600px){
+  html {
+    font-size: 16px;
+  }
+}
+@media (device-width:1200px) and (-webkit-device-pixel-ratio: 2){
+  html {
+    font-size: 16px;
+  }
+}
+@media (device-width:1800px) and (-webkit-device-pixel-ratio: 3){
+  html {
+    font-size: 16px;
+  }
+}
+
+
+@media (device-width:768px){
+  html {
+    font-size: 20.48px;
+  }
+}
+@media (device-width:800px){
+  html {
+    font-size: 21.33px;
+  }
+}
+@media (device-width:853px){
+  html {
+    font-size: 22.74px;
+  }
+}
+@media (device-width:960px){
+  html {
+    font-size: 25.6px;
+  }
+}
+@media (device-width:1024px){
+  html {
+    font-size: 27.30px;
+  }
+}
+@media (device-width:1280px){
+  html {
+    font-size: 34.13px;
+  }
+}
+@media (device-width:1366px){
+  html {
+    font-size: 36.42px;
+  }
+}
